@@ -1,7 +1,7 @@
 {
   "name": "form-sculpt",
   "description": "This package help to generate mui forms with yup validation from json data",
-  "license": "Apache License",
+  "license": "Apache-2.0",
   "author": {
     "name": "Amshen Yesudas",
     "email": "amshen.shanu07.ya@gmail.com"
@@ -15,7 +15,10 @@
     "lint": "lerna run lint",
     "cs-check":"lerna run cs-check",
     "cs-format":"lerna run cs-format",
-    "publish:package":"lerna run release --scope=form-sculpt --stream"
+    "build": "lerna run build --stream",
+    "publish": "lerna run release --stream",
+    "publish:package":"lerna run release --scope=form-sculpt --stream",
+    "publish:playground":"lerna run release --scope=playground --stream"
   },
   "workspaces": [
     "packages/*"
