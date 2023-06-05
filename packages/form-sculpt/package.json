@@ -1,7 +1,9 @@
 {
   "name": "form-sculpt",
   "version": "0.2.3",
-  "license": "MIT",
+  "description": "This package help to generate mui forms with yup validation from json data",
+  "homepage": "https://github.com/AmshenShanu07/form-sculpt",
+  "license": "Apache License",
   "author": {
     "email": "amshen.yesudas@gmail.com",
     "name": "Amshen Yesudas",
