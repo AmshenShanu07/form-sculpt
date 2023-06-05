@@ -1,0 +1,4 @@
+module.exports = {
+  "extends": ["../../.eslintrc"],
+  "plugins": ["@typescript-eslint", "jsx-a11y", "react", "import"]
+};
