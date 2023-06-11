@@ -1,3 +1,25 @@
+[![Build Status][build-shield]][build-url]
+[![Contributors][contributors-shield]][contributors-url]
+[![Apache 2.0 License][license-shield]][license-url]
+
+<p align="center">
+
+  <h2 align="center">Form Sculpt</h2>
+
+  <p align="center">
+    A <a href="http://facebook.github.io/react/">React</a> component to generate dynamic forms.
+    <br />
+    <a href="https://amshenshanu07.github.io/form-sculpt/docs/"><strong>Explore the docs »</strong></a>
+    <br />
+    <br />
+    <a href="https://amshenshanu07.github.io/form-sculpt/">View Playground</a>
+    ·
+    <a href="https://github.com/AmshenShanu07/form-sculpt/issues">Report Bug</a>
+    ·
+    <a href="https://github.com/AmshenShanu07/form-sculpt/issues">Request Feature</a>
+  </p>
+</p>
+
 # Form Sculpt
 A React package to generate dynamic forms
 
