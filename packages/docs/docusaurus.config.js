@@ -10,14 +10,13 @@ const config = {
   title: 'Form Sculpt',
   tagline: 'Create Beautiful forms with json data',
   favicon: 'img/favicon.ico',
-  
   // Set the production url of your site here
   url: 'https://amshenshanu07.github.io',
-  baseUrl: '/form-sculpt/docs',
-  organizationName: 'form-sculpt', // Usually your GitHub org/user name.
+  organizationName: 'AmshenShanu07', // Usually your GitHub org/user name.
   projectName: 'form-sculpt', // Usually your repo name.
   onBrokenLinks: 'ignore',
   onBrokenMarkdownLinks: 'warn',
+  baseUrl: '/form-sculpt/docs',
   i18n: {
     defaultLocale: 'en',
     locales: ['en'],
@@ -94,6 +93,8 @@ const config = {
         darkTheme: darkCodeTheme,
       },
       onBrokenLinks: 'ignore',
+      url:'https://github.com/AmshenShanu07/form-sculpt',
+      
     }),
 };
 
