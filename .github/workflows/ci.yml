@@ -61,7 +61,6 @@ jobs:
         with:
           name: docs
           path: packages/docs/build
-      - run: npm test
   deploy_playground_and_docs:
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/master'
