@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkdocs=self.webpackChunkdocs||[]).push([[176],{8879:t=>{t.exports=JSON.parse('{"title":"Introduction","description":"Get the basic idea of form-sculpt","slug":"/category/introduction","permalink":"/category/introduction","navigation":{"next":{"title":"Overview","permalink":"/Intoduction/overview"}}}')}}]);
