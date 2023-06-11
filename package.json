@@ -8,9 +8,10 @@
   },
   "homepage": "https://github.com/AmshenShanu07/form-sculpt",
   "scripts": {
-    "bootstrap": "lerna bootstrap --npm-client=yarn",
+    "bootstrap": "lerna bootstrap",
     "start:dev": "lerna run --parallel dev ",
     "start:package":"lerna run dev --scope=form-sculpt",
+    "start:docs":"lerna run dev --scope=docs",
     "start:playground":"lerna run dev --scope=playground",
     "lint": "lerna run lint",
     "cs-check":"lerna run cs-check",
@@ -18,7 +19,9 @@
     "build": "lerna run build --stream",
     "publish": "lerna run release --stream",
     "publish:package":"lerna run release --scope=form-sculpt --stream",
-    "publish:playground":"lerna run release --scope=playground --stream"
+    "publish:docs":"lerna run release --scope=docs --stream",
+    "publish:playground":"lerna run release --scope=playground --stream",
+    "clean": "lerna clean --yes"
   },
   "workspaces": [
     "packages/*"

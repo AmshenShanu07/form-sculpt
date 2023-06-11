@@ -1,6 +1,6 @@
 // import { CustomTemplateFieldProps } from './Context/PropContext/type';
 import Form from './Form';
-import { sampleJsonField } from './sampleData';
+import { portalData } from './sampleData';
 
 // const CustomTextField = (props:CustomTemplateFieldProps) => {
 //   const { data, onChange, error } = props;
@@ -17,17 +17,13 @@ import { sampleJsonField } from './sampleData';
 //   );
 // }
 
+
+
 const App = () => {
   return (
     <div>
       <Form
-        schema={sampleJsonField}
-        defaultValue={{
-          LeftEyeDetails: 'Amshen Yesudas',
-          Ishihara: 'Failed',
-          LeftFar: true,
-          LeftNear: true,
-        }}
+        schema={portalData}
         onSubmit={(d) => console.log(d)}
       />
     </div>

@@ -97,7 +97,12 @@ const FormComponent = () => {
   const onChangeHandler = (e: any, data: any, callback: (e: any) => any) => {
     const { fieldType, key } = data;
     const prvVal = values[key] || null;
+
     let tempVal = { ...values, [key]: e?.target?.value || '' };
+    console.log({ ...values, [key]: e?.target?.value || '' });
+    console.log("tempVal",tempVal);
+    
+    
 
     if (fieldType === 'checkbox') {
       tempVal = { ...tempVal, [key]: !values[key] };
@@ -126,7 +131,7 @@ const FormComponent = () => {
     for (const field of schema) {
       const { key, dependentParentLabel, ifValueIs, ...data } = field;
 
-      if (data.fieldType === 'select' && data.isRequired && data.options) {
+      if (!tempVal[key] && data.fieldType === 'select' && data.isRequired && data.options) {
         tempVal = { ...tempVal, [key]: data?.options[0] };
       }
 
@@ -137,6 +142,7 @@ const FormComponent = () => {
       if (tempVal[key]) {
         setValue(key, tempVal[key]);
       }
+      
     }
 
     setValues(tempVal);
@@ -178,8 +184,8 @@ const FormComponent = () => {
   };
 
   return (
-    <LocalizationProvider dateAdapter={AdapterDayjs}>
-      <form onSubmit={handleSubmit(onClickSubmit)}>
+    <LocalizationProvider dateAdapter={AdapterDayjs} >
+      <form onSubmit={handleSubmit(onClickSubmit)} >
         <Grid container spacing={3}>
           {renderFields(schema)}
           <Grid item xs={12}>
@@ -187,7 +193,6 @@ const FormComponent = () => {
           </Grid>
         </Grid>
       </form>
-      {/* <button onClick={()=>console.log(values)} >check</button> */}
     </LocalizationProvider>
   );
 };
