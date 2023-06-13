@@ -466,6 +466,13 @@ export const portalData:DynamicFormCardType[] = [
       key: 'ExpiryDate',
     },
     {
+      fieldLabel: { label: 'Expiry Date', placeholderText: 'Expiry Date', description: 'Expiry Date' },
+      fieldType: 'file',
+      fieldWidth: 0.5,
+      isRequired: true,
+      key: 'fileUpload',
+    },
+    {
       fieldLabel: {
         label: 'Treatment Description',
         placeholderText: 'Treatment Description',

@@ -98,11 +98,7 @@ const FormComponent = () => {
     const { fieldType, key } = data;
     const prvVal = values[key] || null;
 
-    let tempVal = { ...values, [key]: e?.target?.value || '' };
-    console.log({ ...values, [key]: e?.target?.value || '' });
-    console.log("tempVal",tempVal);
-    
-    
+    let tempVal = { ...values, [key]: e?.target?.value || '' };    
 
     if (fieldType === 'checkbox') {
       tempVal = { ...tempVal, [key]: !values[key] };

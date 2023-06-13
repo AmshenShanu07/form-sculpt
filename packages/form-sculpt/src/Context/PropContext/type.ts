@@ -100,7 +100,7 @@ export interface FormPropType {
   defaultValue?: any;
   onSubmit: (data: any) => void;
 
-  onFileUpload?: (data: File) => string;
+  onFileUpload?: (data: File) => string | Promise<string>;
 
   //Custom Styling
   templates?: CustomTemplatesType;

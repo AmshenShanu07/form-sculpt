@@ -20,11 +20,19 @@ import { portalData } from './sampleData';
 
 
 const App = () => {
+
+  const uploadFile = async (file:File) => {
+    console.log(file);
+    const url = await URL.createObjectURL(file);
+    return url;
+  };
+
   return (
     <div>
       <Form
         schema={portalData}
         onSubmit={(d) => console.log(d)}
+        onFileUpload={uploadFile}
       />
     </div>
   );
