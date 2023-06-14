@@ -1,10 +1,13 @@
 import { Button } from '@mui/material';
 import { useProps } from '../Context/PropContext/hook';
+import { ButtonTemplateProps } from '../Context/PropContext/type';
 
-const ButtomTemplate = () => {
+const ButtomTemplate = (props: ButtonTemplateProps) => {
   const { templates, inputFieldSize } = useProps();
+
   if (templates?.ButtonTemplates) {
-    return <>{templates?.ButtonTemplates}</>;
+    const { ButtonTemplates } = templates;
+    return <ButtonTemplates {...props} />;
   }
 
   return (
@@ -16,6 +19,6 @@ const ButtomTemplate = () => {
   );
 };
 
-const getButtonTemplate = () => ButtomTemplate();
+const getButtonTemplate = (props: ButtonTemplateProps) => ButtomTemplate(props);
 
 export default getButtonTemplate;

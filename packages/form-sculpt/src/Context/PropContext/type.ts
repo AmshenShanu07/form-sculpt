@@ -2,7 +2,7 @@ import { SxProps } from '@mui/material';
 import React from 'react';
 
 export interface CustomTemplatesType {
-  ButtonTemplates?: JSX.Element;
+  ButtonTemplates?: React.ComponentType<ButtonTemplateProps>;
   Select?: React.ComponentType<CustomTemplateFieldProps>;
   CheckBox?: React.ComponentType<CustomTemplateFieldProps>;
   TextArea?: React.ComponentType<CustomTemplateFieldProps>;
@@ -21,6 +21,11 @@ export interface CustomTemplateFieldProps {
   onChange: (e: any) => void;
   value: any;
   error: any;
+}
+
+export interface ButtonTemplateProps {
+  errors?: any;
+  values?: any;
 }
 
 export interface CustomTemplateFileProps {
@@ -100,7 +105,7 @@ export interface FormPropType {
   defaultValue?: any;
   onSubmit: (data: any) => void;
 
-  onFileUpload?: (data: File) => string;
+  onFileUpload?: (data: File) => string | Promise<string>;
 
   //Custom Styling
   templates?: CustomTemplatesType;

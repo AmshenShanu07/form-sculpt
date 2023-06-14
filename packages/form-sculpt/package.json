@@ -1,7 +1,6 @@
 {
   "name": "form-sculpt",
-  "version": "0.2.5",
-  "private":true,
+  "version": "0.2.9",
   "description": "This package help to generate mui forms with yup validation from json data",
   "homepage": "https://github.com/AmshenShanu07/form-sculpt",
   "license": "Apache-2.0",

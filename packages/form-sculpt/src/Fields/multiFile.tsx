@@ -29,7 +29,7 @@ const FormMultiFileUpload = (props: InputFieldProps) => {
     return '';
   };
 
-  const onUpload = (e: any) => {
+  const onUpload = async (e: any) => {
     let tempFiles = [...files];
 
     if (e.target.files.length) {
@@ -68,7 +68,7 @@ const FormMultiFileUpload = (props: InputFieldProps) => {
 
     for (const file of tempFiles) {
       if (onFileUpload) {
-        const url = onFileUpload(file);
+        const url = await onFileUpload(file);
         tempFileUrls.push(url);
       } else {
         tempFileUrls.push(URL.createObjectURL(file));
