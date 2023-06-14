@@ -29,7 +29,7 @@ const FormFileUpload = (props: InputFieldProps) => {
     return '';
   };
 
-  const onUpload = (e: any) => {
+  const onUpload = async (e: any) => {
     if (validation) {
       const size = Math.round((e.target.files[0]?.size / 1024) * 100) / 100;
       const type = e.target.files[0].type.split('/')[1];
@@ -49,7 +49,7 @@ const FormFileUpload = (props: InputFieldProps) => {
     setFile(e.target.files[0]);
 
     if (onFileUpload) {
-      const url = onFileUpload(e.target.files[0]);
+      const url = await onFileUpload(e.target.files[0]);
       setValues({ ...values, [key]: url });
     } else {
       setValues({ ...values, [key]: URL.createObjectURL(e.target.files[0]) });

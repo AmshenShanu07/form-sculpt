@@ -2,26 +2,19 @@
 import Form from './Form';
 import { portalData } from './sampleData';
 
-// const CustomTextField = (props:CustomTemplateFieldProps) => {
-//   const { data, onChange, error } = props;
-
-//   return (
-//   <>
-//     <label>{data.fieldLabel.label}</label>
-//     <textarea
-//       onChange={onChange}
-//       placeholder={data.fieldLabel.placeholderText}
-//     />
-//     <p>{error.message || ''}</p>
-//   </>
-//   );
-// }
-
-
+const ButtonTemplate = (props: { errors: any; values: any }) => {
+  const { errors, values } = props;
+  return (
+    <>
+      <button type='submit'>Submit</button>
+      <button onClick={() => console.log(errors)}>Errors</button>
+      <button onClick={() => console.log(values)}>Values</button>
+    </>
+  );
+};
 
 const App = () => {
-
-  const uploadFile = async (file:File) => {
+  const uploadFile = async (file: File) => {
     console.log(file);
     const url = await URL.createObjectURL(file);
     return url;
@@ -33,6 +26,9 @@ const App = () => {
         schema={portalData}
         onSubmit={(d) => console.log(d)}
         onFileUpload={uploadFile}
+        templates={{
+          ButtonTemplates: (props: any) => <ButtonTemplate {...props} />,
+        }}
       />
     </div>
   );

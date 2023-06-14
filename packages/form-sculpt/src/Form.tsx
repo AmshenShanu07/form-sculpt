@@ -2,12 +2,24 @@
 
 import FormComponent from './Fields/FormComponent';
 import { PropProvider } from './Context/PropContext';
-import { FormPropType } from './Context/PropContext/type';
 import { DataHolderProvider } from './Context/DataHolderContext';
 import { useEffect } from 'react';
+import {
+  FormPropType,
+  ButtonTemplateProps,
+  CustomTemplateFieldProps,
+  CustomTemplateFileProps,
+  CustomTemplatesType,
+  DynamicFormCardType,
+  FieldLabelType,
+  FieldType,
+  InputCustomStylingI,
+  InputFieldStyleI,
+  SessionStylingI,
+  ValidationType,
+} from './Context/PropContext/type';
 
 const Form = (props: FormPropType) => {
-
   // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => checkKeyDuplication(), []);
 
@@ -21,7 +33,6 @@ const Form = (props: FormPropType) => {
       }
       keys.add(key);
     }
-
   };
 
   return (
@@ -31,6 +42,21 @@ const Form = (props: FormPropType) => {
       </DataHolderProvider>
     </PropProvider>
   );
+};
+
+export {
+  FormPropType,
+  ButtonTemplateProps,
+  CustomTemplateFieldProps,
+  CustomTemplateFileProps,
+  CustomTemplatesType,
+  DynamicFormCardType,
+  FieldLabelType,
+  FieldType,
+  InputCustomStylingI,
+  InputFieldStyleI,
+  SessionStylingI,
+  ValidationType,
 };
 
 export default Form;

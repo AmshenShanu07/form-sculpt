@@ -98,7 +98,7 @@ const FormComponent = () => {
     const { fieldType, key } = data;
     const prvVal = values[key] || null;
 
-    let tempVal = { ...values, [key]: e?.target?.value || '' };    
+    let tempVal = { ...values, [key]: e?.target?.value || '' };
 
     if (fieldType === 'checkbox') {
       tempVal = { ...tempVal, [key]: !values[key] };
@@ -138,7 +138,6 @@ const FormComponent = () => {
       if (tempVal[key]) {
         setValue(key, tempVal[key]);
       }
-      
     }
 
     setValues(tempVal);
@@ -180,12 +179,12 @@ const FormComponent = () => {
   };
 
   return (
-    <LocalizationProvider dateAdapter={AdapterDayjs} >
-      <form onSubmit={handleSubmit(onClickSubmit)} >
+    <LocalizationProvider dateAdapter={AdapterDayjs}>
+      <form onSubmit={handleSubmit(onClickSubmit)}>
         <Grid container spacing={3}>
           {renderFields(schema)}
           <Grid item xs={12}>
-            {getButtonTemplate()}
+            {getButtonTemplate({ errors: formState.errors, values })}
           </Grid>
         </Grid>
       </form>
