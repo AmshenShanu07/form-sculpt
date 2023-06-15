@@ -76,7 +76,10 @@ function App() {
         />
       </div>
       <div className='form_container'>
-        <Form onSubmit={(data) => console.log(data)} schema={parseSchema()} />
+        <Form
+          onSubmit={(data) => console.log(data)}
+          schema={parseSchema()}
+        />
       </div>
     </div>
   );
