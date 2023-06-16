@@ -2,7 +2,7 @@ import { Grid, InputLabel, MenuItem, TextField } from '@mui/material';
 import { Controller } from 'react-hook-form';
 
 import { InputFieldProps } from './type';
-import { useProps } from '../Context/PropContext/hook';
+import { useProps } from '../../Context/PropContext/hook';
 
 const FormSelect = (props: InputFieldProps) => {
   const { control, data, error, onChange } = props;

@@ -2,8 +2,8 @@ import { Checkbox, FormControlLabel, Grid, InputLabel, Typography } from '@mui/m
 import { Controller } from 'react-hook-form';
 
 import { InputFieldProps } from './type';
-import { useValueHolder } from '../Context/DataHolderContext/hook';
-import { useProps } from '../Context/PropContext/hook';
+import { useValueHolder } from '../../Context/DataHolderContext/hook';
+import { useProps } from '../../Context/PropContext/hook';
 
 const FormCheckboxes = (props: InputFieldProps) => {
   const { control, data, error, onChange } = props;
@@ -18,7 +18,7 @@ const FormCheckboxes = (props: InputFieldProps) => {
         {data.isRequired && <span style={{ color: 'red' }}>*</span>}
       </InputLabel>
       {data.options &&
-        data.options.map((d, i) => {
+        data.options.map((d:string, i:number) => {
           return (
             <Controller
               key={i}
@@ -31,7 +31,7 @@ const FormCheckboxes = (props: InputFieldProps) => {
                   return (
                     <CheckBox
                       data={data}
-                      value={field.value}
+                      value={field.value || false}
                       error={error[data.key] || {}}
                       onChange={(e: any) => onChange(e, data, field.onChange)}
                     />
@@ -44,7 +44,7 @@ const FormCheckboxes = (props: InputFieldProps) => {
                       {...field}
                       sx={inputFieldStyle?.checkbox?.labelStyle || {}}
                       onClick={(e: any) => onChange(e, data, field.onChange)}
-                      checked={values[data.key] && values[data.key].includes(d)}
+                      checked={(values[data.key] && values[data.key].includes(d)) || false}
                       control={<Checkbox sx={inputFieldStyle?.checkbox?.fieldStyle || {}} />}
                     />
                   </>

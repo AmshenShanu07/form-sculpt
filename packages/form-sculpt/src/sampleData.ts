@@ -1,6 +1,6 @@
-import { DynamicFormCardType } from './Context/PropContext/type';
+import { SchemaType } from './Context/PropContext/type';
 
-export const sampleJsonField: DynamicFormCardType[] = [
+export const sampleJsonField: SchemaType[] = [
   {
     fieldWidth: 1 / 3,
     key: 'GeneralDetails',
@@ -391,7 +391,7 @@ export const sampleJsonField: DynamicFormCardType[] = [
   },
 ];
 
-export const portalData: DynamicFormCardType[] = [
+export const portalData: SchemaType[] = [
   {
     fieldWidth: 0.3333333333333333,
     key: 'TreatmentAuthorization',
@@ -444,6 +444,7 @@ export const portalData: DynamicFormCardType[] = [
     fieldType: 'select',
     fieldWidth: 0.5,
     isRequired: true,
+    defaultValue:'Diabetic',
     options: [
       'Asthma',
       'Diabetic',
@@ -481,6 +482,9 @@ export const portalData: DynamicFormCardType[] = [
     fieldWidth: 0.5,
     isRequired: false,
     key: 'TreatmentDescription',
+    validation:{
+      validation:'email'
+    }
   },
   {
     fieldLabel: { label: 'RX label ', placeholderText: 'RX label ', description: 'RX label ' },
@@ -1311,5 +1315,74 @@ export const portalData: DynamicFormCardType[] = [
     fieldWidth: 0.5,
     isRequired: false,
     key: 'Friday',
+  },
+];
+
+export const testData: SchemaType[] = [
+  {
+    fieldLabel: {
+      label: 'Left Near ',
+      placeholderText: 'Left Near ',
+      description: 'Left Near ',
+    },
+    fieldType: 'select',
+    fieldWidth: 1,
+    isRequired: false,
+    options: ['Saturday', 'Friday'],
+    key: 'LeftNear',
+  },
+  {
+    fieldLabel: {
+      label: 'Left Far ',
+      placeholderText: 'Left Far ',
+      description: 'Left Far ',
+    },
+    fieldType: 'radio',
+    fieldWidth: 1,
+    isRequired: false,
+    ifValueIs: 'Saturday',
+    options: ['Hearing Aid/ FM System Prescribed', 'Hearing Report Received'],
+    key: 'LeftNearIfValueOfLeftFarIsSaturday',
+    dependentParentLabel: 'LeftNear',
+  },
+  {
+    fieldLabel: {
+      label: 'Completed Date ',
+      placeholderText: 'Completed Date ',
+      description: 'Completed Date ',
+    },
+    fieldType: 'checkboxes',
+    fieldWidth: 1,
+    isRequired: false,
+    ifValueIs: 'Hearing Report Received',
+    options: ['Specialist Seen', 'Vision Report Received', 'Treatment Prescribed', 'Hearing Specialist Seen'],
+    key: 'LeftFarIfValueOfCompletedDateIsHearingReportReceived',
+    dependentParentLabel: 'LeftNearIfValueOfLeftFarIsSaturday',
+  },
+  {
+    fieldLabel: {
+      label: 'asdf',
+      placeholderText: '',
+      description: '',
+    },
+    fieldType: 'textField',
+    fieldWidth: 1,
+    isRequired: false,
+    ifValueIs: 'Vision Report Received',
+    key: 'CompletedDateIfValueOfIsVisionReportReceived',
+    dependentParentLabel: 'LeftFarIfValueOfCompletedDateIsHearingReportReceived',
+  },
+  {
+    fieldLabel: {
+      label: 'asdf',
+      placeholderText: '',
+      description: '',
+    },
+    fieldType: 'textField',
+    fieldWidth: 1,
+    isRequired: false,
+    ifValueIs: 'Hearing Specialist Seen',
+    key: 'CompletedDateIfValueOfIsHearingSpecialistSeen',
+    dependentParentLabel: 'LeftFarIfValueOfCompletedDateIsHearingReportReceived',
   },
 ];

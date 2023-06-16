@@ -1,6 +1,6 @@
 // import { CustomTemplateFieldProps } from './Context/PropContext/type';
-import Form from './Form';
-import { portalData } from './sampleData';
+import Form from './Components/Form';
+import { sampleJsonField } from './sampleData';
 
 const ButtonTemplate = (props: { errors: any; values: any }) => {
   const { errors, values } = props;
@@ -23,7 +23,7 @@ const App = () => {
   return (
     <div>
       <Form
-        schema={portalData}
+        schema={sampleJsonField}
         onSubmit={(d) => console.log(d)}
         onFileUpload={uploadFile}
         templates={{

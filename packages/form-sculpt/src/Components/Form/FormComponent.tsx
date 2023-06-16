@@ -1,13 +1,13 @@
 import { useEffect, Fragment } from 'react';
 
 import * as yup from 'yup';
-import getField from '../utils/getFields';
+import getField from '../../Utils/getFields';
 import { useForm } from 'react-hook-form';
 import { Grid } from '@mui/material';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { useProps } from '../Context/PropContext/hook';
-import { useValueHolder } from '../Context/DataHolderContext/hook';
-import getButtonTemplate from '../utils/getButtonTemplate';
+import { useProps } from '../../Context/PropContext/hook';
+import { useValueHolder } from '../../Context/DataHolderContext/hook';
+import getButtonTemplate from '../../Utils/getButtonTemplate';
 import { LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 
@@ -78,8 +78,19 @@ const FormComponent = () => {
 
       if (fieldType === 'checkbox') {
         validation = validation['boolean']();
+      } else if ( 
+        fieldType === 'date' || 
+        fieldType === 'dateTime' || 
+        fieldType === 'time' 
+      ){
+          validation = validation['date']();
+      } else if (
+          fieldType === 'checkboxes' ||
+          fieldType === 'multiFile'
+      ) {
+          validation = validation['array']()['of'](yup.string());
       } else {
-        validation = validation['string']();
+          validation = validation['string']();
       }
 
       if (isRequired) {
@@ -105,7 +116,7 @@ const FormComponent = () => {
     }
 
     if (fieldType === 'checkboxes') {
-      const vals = [...prvVal];
+      const vals = prvVal?[...prvVal]:[];
 
       const index = vals.findIndex((d) => d === e.target.name);
 
@@ -146,6 +157,7 @@ const FormComponent = () => {
 
   const checkIfValueIsEqual = (value: any, ifValue: any) => {
     if (value instanceof Array) {
+      
       return value.includes(ifValue);
     }
 

@@ -9,8 +9,8 @@
     "name": "Amshen Yesudas",
     "url": "https://github.com/AmshenShanu07"
   },
-  "main": "dist/cjs/Form.js",
-  "module": "dist/esm/Form.js",
+  "main": "dist/cjs/index.js",
+  "module": "dist/esm/index.js",
   "types": "dist/index.d.ts",
   "files": [
     "dist"

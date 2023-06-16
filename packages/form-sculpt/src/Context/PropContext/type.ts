@@ -17,7 +17,7 @@ export interface CustomTemplatesType {
 }
 
 export interface CustomTemplateFieldProps {
-  data: DynamicFormCardType;
+  data: SchemaType;
   onChange: (e: any) => void;
   value: any;
   error: any;
@@ -29,7 +29,7 @@ export interface ButtonTemplateProps {
 }
 
 export interface CustomTemplateFileProps {
-  data: DynamicFormCardType;
+  data: SchemaType;
   onUpload: (e: any) => void;
   value: string | string[];
   error: any;
@@ -42,7 +42,7 @@ export type FieldLabelType = {
 };
 
 export type ValidationType = {
-  validation?: string;
+  validation?: 'limit' | 'number' | 'email' | 'url' | 'password';
   min?: number;
   max?: number;
   fileType?: string[];
@@ -66,7 +66,7 @@ export type FieldType =
   | 'file'
   | 'multiFile';
 
-export type DynamicFormCardType = {
+export type SchemaType = {
   key: string;
   ifValueIs?: any;
   disable?: boolean;
@@ -101,7 +101,7 @@ export interface SessionStylingI {
 }
 
 export interface FormPropType {
-  schema: DynamicFormCardType[];
+  schema: SchemaType[];
   defaultValue?: any;
   onSubmit: (data: any) => void;
 

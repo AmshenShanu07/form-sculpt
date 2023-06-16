@@ -1,26 +1,29 @@
-import { Grid, InputLabel, TextField } from '@mui/material';
+import { Grid, InputLabel } from '@mui/material';
 import { Controller } from 'react-hook-form';
 
 import { InputFieldProps } from './type';
-import { useProps } from '../Context/PropContext/hook';
+// import moment from "moment";
+import { useProps } from '../../Context/PropContext/hook';
+import { TimePicker } from '@mui/x-date-pickers';
+import { useValueHolder } from '../../Context/DataHolderContext/hook';
 
-const FormTextField = (props: InputFieldProps) => {
+const FormTime = (props: InputFieldProps) => {
   const { control, data, error, onChange } = props;
 
   const { inputFieldSize, inputFieldStyle, templates } = useProps();
+  const { values } = useValueHolder();
 
   return (
     <Grid item xs={data.fieldWidth * 12}>
       <Controller
         name={data.key}
         control={control}
-        defaultValue=''
         render={({ field }) => {
-          if (templates?.TextField) {
-            const { TextField } = templates;
+          if (templates?.TimeField) {
+            const { TimeField } = templates;
 
             return (
-              <TextField
+              <TimeField
                 data={data}
                 value={field.value}
                 error={error[data.key] || {}}
@@ -35,20 +38,22 @@ const FormTextField = (props: InputFieldProps) => {
                 {data.fieldLabel.label}
                 {data.isRequired && <span style={{ color: 'red' }}>*</span>}
               </InputLabel>
-              <TextField
-                {...field}
-                sx={inputFieldStyle?.textField?.fieldStyle || {}}
-                size={inputFieldSize}
-                onChange={(e: any) => onChange(e, data, field.onChange)}
-                fullWidth
+              <TimePicker
+                value={new Date(values[data.key])}
                 disabled={Boolean(data.disable)}
-                placeholder={data.fieldLabel.placeholderText}
-                error={error[data.key] || '' ? true : false}
-                helperText={
-                  error[data.key] || ''
-                    ? (error[data.key]?.message as string).replace(data.key, data.fieldLabel.label)
-                    : ''
-                }
+                sx={inputFieldStyle?.textField?.fieldStyle || {}}
+                onChange={(e: any) => onChange(e, data, field.onChange)}
+                slotProps={{
+                  textField: {
+                    fullWidth: true,
+                    size: inputFieldSize,
+                    error: error[data.key] || '' ? true : false,
+                    helperText:
+                      error[data.key] || ''
+                        ? (error[data.key]?.message as string).replace(data.key, data.fieldLabel.label)
+                        : '',
+                  },
+                }}
               />
             </>
           );
@@ -58,4 +63,4 @@ const FormTextField = (props: InputFieldProps) => {
   );
 };
 
-export default FormTextField;
+export default FormTime;

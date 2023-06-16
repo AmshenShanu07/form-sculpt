@@ -2,7 +2,7 @@ import { FormControlLabel, Grid, InputLabel, Radio, RadioGroup, Typography } fro
 import { Controller } from 'react-hook-form';
 
 import { InputFieldProps } from './type';
-import { useProps } from '../Context/PropContext/hook';
+import { useProps } from '../../Context/PropContext/hook';
 
 const FormRadio = (props: InputFieldProps) => {
   const { control, data, error, onChange } = props;
