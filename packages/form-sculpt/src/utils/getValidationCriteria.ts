@@ -51,9 +51,8 @@ const getValidationCriteria = (data:SchemaType):yup.AnyObject => {
         const { min, max } = validation;
         yupObj = yupObj['number']();
 
-        if (min) {
-          yupObj = yupObj['min'](min);
-        }
+        if (min) yupObj = yupObj['min'](min);
+        
 
         if (max) {
           yupObj = yupObj['max'](max);
@@ -62,12 +61,11 @@ const getValidationCriteria = (data:SchemaType):yup.AnyObject => {
       } else if (validation?.validation && validation.validation === 'limit') {
         const { min, max } = validation;
         yupObj = yupObj['string']();
-        if (min) {
-          yupObj = yupObj['min'](min);
-        }
-        if (max) {
-          yupObj = yupObj['max'](max);
-        }
+        
+        if (min) yupObj = yupObj['min'](min);
+        
+        if (max) yupObj = yupObj['max'](max);
+        
       } else if (validation?.validation && validation.validation === 'email') {
         yupObj = yupObj['string']()['email']();
       } else if ( validation?.validation && validation.validation === 'url' ) {

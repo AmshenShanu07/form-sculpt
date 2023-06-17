@@ -1,20 +1,23 @@
 import { SxProps } from '@mui/material';
 import React from 'react';
 
-export interface CustomTemplatesType {
-  ButtonTemplates?: React.ComponentType<ButtonTemplateProps>;
-  Select?: React.ComponentType<CustomTemplateFieldProps>;
-  CheckBox?: React.ComponentType<CustomTemplateFieldProps>;
-  TextArea?: React.ComponentType<CustomTemplateFieldProps>;
-  DateField?: React.ComponentType<CustomTemplateFieldProps>;
-  TimeField?: React.ComponentType<CustomTemplateFieldProps>;
-  TextField?: React.ComponentType<CustomTemplateFieldProps>;
-  RadioButton?: React.ComponentType<CustomTemplateFieldProps>;
-  DateTimeField?: React.ComponentType<CustomTemplateFieldProps>;
+export type CustomTemplateComponentType<T> = React.ComponentType<T> | React.FC<T>;
 
-  FileUploadField?: React.ComponentType<CustomTemplateFileProps>;
-  MultiFileUploadField?: React.ComponentType<CustomTemplateFileProps>;
+export interface CustomTemplatesType {
+  ButtonTemplates?: CustomTemplateComponentType<ButtonTemplateProps>;
+  Select?: CustomTemplateComponentType<CustomTemplateFieldProps>;
+  CheckBox?: CustomTemplateComponentType<CustomTemplateFieldProps>;
+  TextArea?: CustomTemplateComponentType<CustomTemplateFieldProps>;
+  DateField?: CustomTemplateComponentType<CustomTemplateFieldProps>;
+  TimeField?: CustomTemplateComponentType<CustomTemplateFieldProps>;
+  TextField?: CustomTemplateComponentType<CustomTemplateFieldProps>;
+  RadioButton?: CustomTemplateComponentType<CustomTemplateFieldProps>;
+  DateTimeField?: CustomTemplateComponentType<CustomTemplateFieldProps>;
+
+  FileUploadField?: CustomTemplateComponentType<CustomTemplateFileProps>;
+  MultiFileUploadField?: CustomTemplateComponentType<CustomTemplateFileProps>;
 }
+
 
 export interface CustomTemplateFieldProps {
   data: SchemaType;
