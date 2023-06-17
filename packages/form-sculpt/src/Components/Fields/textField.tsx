@@ -2,12 +2,20 @@ import { Grid, InputLabel, TextField } from '@mui/material';
 import { Controller } from 'react-hook-form';
 
 import { InputFieldProps } from './type';
-import { useProps } from '../Context/PropContext/hook';
+import { useProps } from '../../Context/PropContext/hook';
 
-const FormTextArea = (props: InputFieldProps) => {
-  const { control, data, error, onChange } = props;
+const FormTextField = (props: InputFieldProps) => {
+  const { control, data, error, onChange,  } = props;
 
-  const { inputFieldSize, templates } = useProps();
+  const { inputFieldSize, inputFieldStyle, templates } = useProps();
+
+  const isPassword = ():boolean => {
+    if (data.validation) {
+      return data.validation.validation === 'password';
+    }
+
+    return false;
+  };
 
   return (
     <Grid item xs={data.fieldWidth * 12}>
@@ -16,11 +24,11 @@ const FormTextArea = (props: InputFieldProps) => {
         control={control}
         defaultValue=''
         render={({ field }) => {
-          if (templates?.TextArea) {
-            const { TextArea } = templates;
+          if (templates?.TextField) {
+            const { TextField } = templates;
 
             return (
-              <TextArea
+              <TextField
                 data={data}
                 value={field.value}
                 error={error[data.key] || {}}
@@ -31,18 +39,18 @@ const FormTextArea = (props: InputFieldProps) => {
 
           return (
             <>
-              <InputLabel>
+              <InputLabel sx={inputFieldStyle?.textField?.labelStyle || {}}>
                 {data.fieldLabel.label}
                 {data.isRequired && <span style={{ color: 'red' }}>*</span>}
               </InputLabel>
               <TextField
                 {...field}
+                sx={inputFieldStyle?.textField?.fieldStyle || {}}
+                size={inputFieldSize}
                 onChange={(e: any) => onChange(e, data, field.onChange)}
                 fullWidth
-                multiline
                 disabled={Boolean(data.disable)}
-                minRows={3}
-                size={inputFieldSize}
+                type={isPassword()?'password':'text'}
                 placeholder={data.fieldLabel.placeholderText}
                 error={error[data.key] || '' ? true : false}
                 helperText={
@@ -59,4 +67,4 @@ const FormTextArea = (props: InputFieldProps) => {
   );
 };
 
-export default FormTextArea;
+export default FormTextField;

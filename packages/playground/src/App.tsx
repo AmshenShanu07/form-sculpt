@@ -77,7 +77,7 @@ function App() {
       </div>
       <div className='form_container'>
         <Form
-          onSubmit={(data) => console.log(data)}
+          onSubmit={(data:any) => console.log(data)}
           schema={parseSchema()}
         />
       </div>

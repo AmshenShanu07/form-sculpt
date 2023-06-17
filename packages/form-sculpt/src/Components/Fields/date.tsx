@@ -2,11 +2,12 @@ import { Grid, InputLabel } from '@mui/material';
 import { Controller } from 'react-hook-form';
 
 import { InputFieldProps } from './type';
-import { DateTimePicker } from '@mui/x-date-pickers';
-import { useProps } from '../Context/PropContext/hook';
-import { useValueHolder } from '../Context/DataHolderContext/hook';
+// import moment from "moment";
+import { useProps } from '../../Context/PropContext/hook';
+import { DatePicker } from '@mui/x-date-pickers';
+import { useValueHolder } from '../../Context/DataHolderContext/hook';
 
-const FormDateTime = (props: InputFieldProps) => {
+const FormDate = (props: InputFieldProps) => {
   const { control, data, error, onChange } = props;
 
   const { inputFieldSize, inputFieldStyle, templates } = useProps();
@@ -18,11 +19,11 @@ const FormDateTime = (props: InputFieldProps) => {
         name={data.key}
         control={control}
         render={({ field }) => {
-          if (templates?.DateTimeField) {
-            const { DateTimeField } = templates;
+          if (templates?.DateField) {
+            const { DateField } = templates;
 
             return (
-              <DateTimeField
+              <DateField
                 data={data}
                 value={field.value}
                 error={error[data.key] || {}}
@@ -37,7 +38,7 @@ const FormDateTime = (props: InputFieldProps) => {
                 {data.fieldLabel.label}
                 {data.isRequired && <span style={{ color: 'red' }}>*</span>}
               </InputLabel>
-              <DateTimePicker
+              <DatePicker
                 value={new Date(values[data.key])}
                 disabled={Boolean(data.disable)}
                 sx={inputFieldStyle?.textField?.fieldStyle || {}}
@@ -62,4 +63,4 @@ const FormDateTime = (props: InputFieldProps) => {
   );
 };
 
-export default FormDateTime;
+export default FormDate;

@@ -2,9 +2,9 @@ import { useEffect, useRef, useState } from 'react';
 
 import { Grid, Button, Typography, InputLabel } from '@mui/material';
 
-import { useProps } from '../Context/PropContext/hook';
+import { useProps } from '../../Context/PropContext/hook';
 import { InputFieldProps } from './type';
-import { useValueHolder } from '../Context/DataHolderContext/hook';
+import { useValueHolder } from '../../Context/DataHolderContext/hook';
 
 const FormFileUpload = (props: InputFieldProps) => {
   const {

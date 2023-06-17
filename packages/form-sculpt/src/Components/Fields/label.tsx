@@ -1,6 +1,6 @@
 import { Grid, InputLabel } from '@mui/material';
 import { InputFieldProps } from './type';
-import { useProps } from '../Context/PropContext/hook';
+import { useProps } from '../../Context/PropContext/hook';
 
 const Label = (props: InputFieldProps) => {
   const { data } = props;

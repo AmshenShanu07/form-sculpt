@@ -2,8 +2,8 @@ import { Checkbox, FormControlLabel, Grid, Typography } from '@mui/material';
 import { Controller } from 'react-hook-form';
 
 import { InputFieldProps } from './type';
-import { useValueHolder } from '../Context/DataHolderContext/hook';
-import { useProps } from '../Context/PropContext/hook';
+import { useValueHolder } from '../../Context/DataHolderContext/hook';
+import { useProps } from '../../Context/PropContext/hook';
 
 const FormCheckbox = (props: InputFieldProps) => {
   const { control, data, error, onChange } = props;

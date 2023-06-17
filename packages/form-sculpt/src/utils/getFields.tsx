@@ -1,20 +1,20 @@
 import { Control, FieldErrors } from 'react-hook-form';
 
-import FormDate from '../Fields/date';
-import FormTime from '../Fields/time';
-import FormTitle from '../Fields/title';
-import FormRadio from '../Fields/radio';
-import SubTitle from '../Fields/subTitle';
-import FormSelect from '../Fields/select';
-import FormFileUpload from '../Fields/file';
-import FormCheckbox from '../Fields/checkbox';
-import FormDateTime from '../Fields/datetime';
-import FormTextArea from '../Fields/textArea';
-import FormTextField from '../Fields/textField';
-import FormDescription from '../Fields/description';
-import FormMultiFileUpload from '../Fields/multiFile';
-import FormCheckboxes from '../Fields/checkboxes';
-import Label from '../Fields/label';
+import FormDate from '../Components/Fields/date';
+import FormTime from '../Components/Fields/time';
+import FormTitle from '../Components/Fields/title';
+import FormRadio from '../Components/Fields/radio';
+import SubTitle from '../Components/Fields/subTitle';
+import FormSelect from '../Components/Fields/select';
+import FormFileUpload from '../Components/Fields/file';
+import FormCheckbox from '../Components/Fields/checkbox';
+import FormDateTime from '../Components/Fields/datetime';
+import FormTextArea from '../Components/Fields/textArea';
+import FormTextField from '../Components/Fields/textField';
+import FormDescription from '../Components/Fields/description';
+import FormMultiFileUpload from '../Components/Fields/multiFile';
+import FormCheckboxes from '../Components/Fields/checkboxes';
+import Label from '../Components/Fields/label';
 
 const getField = (
   data: any,

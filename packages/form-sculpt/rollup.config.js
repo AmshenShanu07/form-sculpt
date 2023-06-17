@@ -9,7 +9,7 @@ const packageJson = require('./package.json');
 
 const config = [
   {
-    input: 'src/Form.tsx',
+    input: 'src/index.ts',
     output: [
       {
         file: packageJson.main,
@@ -23,13 +23,19 @@ const config = [
         sourcemap: true,
       },
     ],
-    plugins: [external(), resolve(), commonjs(), typescript({ tsconfig: './tsconfig.json' }), terser()],
+    plugins: [
+      external(),
+      resolve(),
+      commonjs(),
+      typescript({ tsconfig: './tsconfig.json', declaration: true, declarationDir: 'dist/types' }),
+      terser(),
+    ],
     external: {
-      React: 'react',
+      React: 'react', 
     },
   },
   {
-    input: 'src/Form.tsx', // Change this to the appropriate path of your main TypeScript file
+    input: 'src/index.ts', // Change this to the appropriate path of your main TypeScript file
     output: [{ file: 'dist/index.d.ts', format: 'esm' }],
     plugins: [dts()],
   },

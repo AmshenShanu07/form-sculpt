@@ -1,15 +1,16 @@
 // import { CustomTemplateFieldProps } from './Context/PropContext/type';
-import Form from './Form';
-import { portalData } from './sampleData';
+import React from 'react';
+import Form from './Components/Form';
+import { sampleJsonField } from './sampleData';
+import { ButtonTemplateProps } from './Context/PropContext/type';
 
-const ButtonTemplate = (props: { errors: any; values: any }) => {
-  const { errors, values } = props;
+const ButtonTemplate:React.FC<ButtonTemplateProps> = ({ errors, values }) => {
   return (
-    <>
+    <React.Fragment>
       <button type='submit'>Submit</button>
       <button onClick={() => console.log(errors)}>Errors</button>
       <button onClick={() => console.log(values)}>Values</button>
-    </>
+    </React.Fragment>
   );
 };
 
@@ -23,11 +24,11 @@ const App = () => {
   return (
     <div>
       <Form
-        schema={portalData}
+        schema={sampleJsonField}
         onSubmit={(d) => console.log(d)}
         onFileUpload={uploadFile}
         templates={{
-          ButtonTemplates: (props: any) => <ButtonTemplate {...props} />,
+          ButtonTemplates: ButtonTemplate,
         }}
       />
     </div>

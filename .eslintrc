@@ -19,7 +19,9 @@
       }
     ],
     "curly": [
-      2
+      2,
+      "multi-line",
+      "consistent"
     ],
     "linebreak-style": [
       2,

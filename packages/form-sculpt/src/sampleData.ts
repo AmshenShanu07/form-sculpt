@@ -1,6 +1,6 @@
-import { DynamicFormCardType } from './Context/PropContext/type';
+import { SchemaType } from './Context/PropContext/type';
 
-export const sampleJsonField: DynamicFormCardType[] = [
+export const sampleJsonField: SchemaType[] = [
   {
     fieldWidth: 1 / 3,
     key: 'GeneralDetails',
@@ -33,6 +33,22 @@ export const sampleJsonField: DynamicFormCardType[] = [
     },
     fieldType: 'textArea',
     isRequired: false,
+  },
+  {
+    fieldWidth: 1,
+    key: 'CheckBoxGroupCheck',
+    fieldLabel: {
+      label: 'Days',
+      placeholderText: 'Select Days',
+      description: 'some description about the field',
+    },
+    fieldType: 'checkboxes',
+    options:['monday','tuesday','webnesday','thrusday','friday','saturday','sunday'],
+    isRequired: true,
+    // validation: {
+    //   min:2,
+    //   max:5
+    // }
   },
   {
     fieldWidth: 1 / 2,
@@ -329,7 +345,7 @@ export const sampleJsonField: DynamicFormCardType[] = [
       description: '',
       placeholderText: '',
     },
-    fieldType: 'checkboxes',
+    fieldType: 'radio',
     isRequired: true,
     options: ['Yes', 'No'],
   },
@@ -370,8 +386,13 @@ export const sampleJsonField: DynamicFormCardType[] = [
       description: '',
       placeholderText: '',
     },
-    fieldType: 'dateTime',
+    fieldType: 'textField',
     isRequired: true,
+    validation:{
+      validation:'number',
+      max:10,
+      min:5
+    }
   },
   {
     fieldWidth: 1 / 2,
@@ -391,7 +412,7 @@ export const sampleJsonField: DynamicFormCardType[] = [
   },
 ];
 
-export const portalData: DynamicFormCardType[] = [
+export const portalData: SchemaType[] = [
   {
     fieldWidth: 0.3333333333333333,
     key: 'TreatmentAuthorization',
@@ -444,6 +465,7 @@ export const portalData: DynamicFormCardType[] = [
     fieldType: 'select',
     fieldWidth: 0.5,
     isRequired: true,
+    defaultValue:'Diabetic',
     options: [
       'Asthma',
       'Diabetic',
@@ -481,6 +503,9 @@ export const portalData: DynamicFormCardType[] = [
     fieldWidth: 0.5,
     isRequired: false,
     key: 'TreatmentDescription',
+    validation:{
+      validation:'email'
+    }
   },
   {
     fieldLabel: { label: 'RX label ', placeholderText: 'RX label ', description: 'RX label ' },
@@ -1311,5 +1336,20 @@ export const portalData: DynamicFormCardType[] = [
     fieldWidth: 0.5,
     isRequired: false,
     key: 'Friday',
+  },
+];
+
+export const testData: SchemaType[] = [
+  {
+    fieldWidth: 0.3333333333333333,
+    key: 'TreatmentAuthorization',
+    fieldLabel: {
+      label: 'Treatment Authorization',
+      placeholderText: 'Treatment Authorization',
+      description: 'Treatment Authorization',
+    },
+    fieldType: 'radio',
+    isRequired: true,
+    options: ['yes','no']
   },
 ];
