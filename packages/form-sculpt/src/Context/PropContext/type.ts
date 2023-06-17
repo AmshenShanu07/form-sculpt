@@ -42,7 +42,7 @@ export type FieldLabelType = {
 };
 
 export type ValidationType = {
-  validation?: 'limit' | 'number' | 'email' | 'url' | 'password';
+  validation?: 'limit' | 'number' | 'email' | 'url' | 'password' | 'fileType';
   min?: number;
   max?: number;
   fileType?: string[];

@@ -35,6 +35,22 @@ export const sampleJsonField: SchemaType[] = [
     isRequired: false,
   },
   {
+    fieldWidth: 1,
+    key: 'CheckBoxGroupCheck',
+    fieldLabel: {
+      label: 'Days',
+      placeholderText: 'Select Days',
+      description: 'some description about the field',
+    },
+    fieldType: 'checkboxes',
+    options:['monday','tuesday','webnesday','thrusday','friday','saturday','sunday'],
+    isRequired: true,
+    // validation: {
+    //   min:2,
+    //   max:5
+    // }
+  },
+  {
     fieldWidth: 1 / 2,
     key: 'VisionDetails',
     fieldLabel: {
@@ -329,7 +345,7 @@ export const sampleJsonField: SchemaType[] = [
       description: '',
       placeholderText: '',
     },
-    fieldType: 'checkboxes',
+    fieldType: 'radio',
     isRequired: true,
     options: ['Yes', 'No'],
   },
@@ -370,8 +386,13 @@ export const sampleJsonField: SchemaType[] = [
       description: '',
       placeholderText: '',
     },
-    fieldType: 'dateTime',
+    fieldType: 'textField',
     isRequired: true,
+    validation:{
+      validation:'number',
+      max:10,
+      min:5
+    }
   },
   {
     fieldWidth: 1 / 2,
@@ -1320,69 +1341,15 @@ export const portalData: SchemaType[] = [
 
 export const testData: SchemaType[] = [
   {
+    fieldWidth: 0.3333333333333333,
+    key: 'TreatmentAuthorization',
     fieldLabel: {
-      label: 'Left Near ',
-      placeholderText: 'Left Near ',
-      description: 'Left Near ',
-    },
-    fieldType: 'select',
-    fieldWidth: 1,
-    isRequired: false,
-    options: ['Saturday', 'Friday'],
-    key: 'LeftNear',
-  },
-  {
-    fieldLabel: {
-      label: 'Left Far ',
-      placeholderText: 'Left Far ',
-      description: 'Left Far ',
+      label: 'Treatment Authorization',
+      placeholderText: 'Treatment Authorization',
+      description: 'Treatment Authorization',
     },
     fieldType: 'radio',
-    fieldWidth: 1,
-    isRequired: false,
-    ifValueIs: 'Saturday',
-    options: ['Hearing Aid/ FM System Prescribed', 'Hearing Report Received'],
-    key: 'LeftNearIfValueOfLeftFarIsSaturday',
-    dependentParentLabel: 'LeftNear',
-  },
-  {
-    fieldLabel: {
-      label: 'Completed Date ',
-      placeholderText: 'Completed Date ',
-      description: 'Completed Date ',
-    },
-    fieldType: 'checkboxes',
-    fieldWidth: 1,
-    isRequired: false,
-    ifValueIs: 'Hearing Report Received',
-    options: ['Specialist Seen', 'Vision Report Received', 'Treatment Prescribed', 'Hearing Specialist Seen'],
-    key: 'LeftFarIfValueOfCompletedDateIsHearingReportReceived',
-    dependentParentLabel: 'LeftNearIfValueOfLeftFarIsSaturday',
-  },
-  {
-    fieldLabel: {
-      label: 'asdf',
-      placeholderText: '',
-      description: '',
-    },
-    fieldType: 'textField',
-    fieldWidth: 1,
-    isRequired: false,
-    ifValueIs: 'Vision Report Received',
-    key: 'CompletedDateIfValueOfIsVisionReportReceived',
-    dependentParentLabel: 'LeftFarIfValueOfCompletedDateIsHearingReportReceived',
-  },
-  {
-    fieldLabel: {
-      label: 'asdf',
-      placeholderText: '',
-      description: '',
-    },
-    fieldType: 'textField',
-    fieldWidth: 1,
-    isRequired: false,
-    ifValueIs: 'Hearing Specialist Seen',
-    key: 'CompletedDateIfValueOfIsHearingSpecialistSeen',
-    dependentParentLabel: 'LeftFarIfValueOfCompletedDateIsHearingReportReceived',
+    isRequired: true,
+    options: ['yes','no']
   },
 ];

@@ -10,6 +10,7 @@ import { useValueHolder } from '../../Context/DataHolderContext/hook';
 import getButtonTemplate from '../../Utils/getButtonTemplate';
 import { LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+import getValidationCriteria from '../../Utils/getValidationCriteria';
 
 const FormComponent = () => {
   const { onSubmit, schema, defaultValue } = useProps();
@@ -53,8 +54,7 @@ const FormComponent = () => {
       fieldType === 'title' ||
       fieldType === 'description' ||
       fieldType === 'subTitle' ||
-      fieldType === 'checkbox' ||
-      fieldType === 'checkboxes'
+      fieldType === 'label'
     ) {
       return false;
     }
@@ -73,31 +73,31 @@ const FormComponent = () => {
         continue;
       }
 
-      const { key, fieldType, isRequired } = data;
-      let validation: any = yup;
+      // const { key, fieldType, isRequired } = data;
+      // let validation: any = yup;
 
-      if (fieldType === 'checkbox') {
-        validation = validation['boolean']();
-      } else if ( 
-        fieldType === 'date' || 
-        fieldType === 'dateTime' || 
-        fieldType === 'time' 
-      ){
-          validation = validation['date']();
-      } else if (
-          fieldType === 'checkboxes' ||
-          fieldType === 'multiFile'
-      ) {
-          validation = validation['array']()['of'](yup.string());
-      } else {
-          validation = validation['string']();
-      }
+      // if (fieldType === 'checkbox') {
+      //   validation = validation['boolean']();
+      // } else if ( 
+      //   fieldType === 'date' || 
+      //   fieldType === 'dateTime' || 
+      //   fieldType === 'time' 
+      // ){
+      //     validation = validation['date']();
+      // } else if (
+      //     fieldType === 'checkboxes' ||
+      //     fieldType === 'multiFile'
+      // ) {
+      //     validation = validation['array']()['of'](yup.string());
+      // } else {
+      //     validation = validation['string']();
+      // }
 
-      if (isRequired) {
-        validation = validation['required']();
-      }
+      // if (isRequired) {
+      //   validation = validation['required']();
+      // }
 
-      validationSchema[key] = validation;
+      validationSchema[data.key] = getValidationCriteria(data);
     }
 
     return yup.object(validationSchema);
