@@ -403,7 +403,23 @@ export const sampleJsonField: SchemaType[] = [
       placeholderText: '',
     },
     fieldType: 'multiFile',
-    isRequired: false,
+    isRequired: true,
+    validation: {
+      min: 2,
+      fileSize: 300,
+      fileType: ['jpeg', 'jpg', 'png'],
+    },
+  },
+  {
+    fieldWidth: 1 / 2,
+    key: 'singleFile',
+    fieldLabel: {
+      label: 'Completed Referrals Report',
+      description: '',
+      placeholderText: '',
+    },
+    fieldType: 'file',
+    isRequired: true,
     validation: {
       min: 2,
       fileSize: 300,

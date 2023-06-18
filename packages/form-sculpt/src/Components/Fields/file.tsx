@@ -48,12 +48,22 @@ const FormFileUpload = (props: InputFieldProps) => {
     setError('');
     setFile(e.target.files[0]);
 
+    let url:string;
+
     if (onFileUpload) {
-      const url = await onFileUpload(e.target.files[0]);
-      setValues({ ...values, [key]: url });
+      url = await onFileUpload(e.target.files[0]);
     } else {
-      setValues({ ...values, [key]: URL.createObjectURL(e.target.files[0]) });
+      url = URL.createObjectURL(e.target.files[0]);
     }
+
+    setValues({ 
+      ...values,
+      [key]: {
+        fileName: e.target.files[0].name || '',
+        fileUrl: url,
+      }
+    });
+
   };
 
   if (templates?.FileUploadField) {
