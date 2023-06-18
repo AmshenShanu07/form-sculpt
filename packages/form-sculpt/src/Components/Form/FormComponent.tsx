@@ -73,37 +73,13 @@ const FormComponent = () => {
         continue;
       }
 
-      // const { key, fieldType, isRequired } = data;
-      // let validation: any = yup;
-
-      // if (fieldType === 'checkbox') {
-      //   validation = validation['boolean']();
-      // } else if ( 
-      //   fieldType === 'date' || 
-      //   fieldType === 'dateTime' || 
-      //   fieldType === 'time' 
-      // ){
-      //     validation = validation['date']();
-      // } else if (
-      //     fieldType === 'checkboxes' ||
-      //     fieldType === 'multiFile'
-      // ) {
-      //     validation = validation['array']()['of'](yup.string());
-      // } else {
-      //     validation = validation['string']();
-      // }
-
-      // if (isRequired) {
-      //   validation = validation['required']();
-      // }
-
       validationSchema[data.key] = getValidationCriteria(data);
     }
 
     return yup.object(validationSchema);
   };
 
-  const { control, formState, handleSubmit, reset, setValue } = useForm({ resolver: yupResolver(getYupResolver()) });
+  const { control, formState, handleSubmit, reset, setValue, getValues } = useForm({ resolver: yupResolver(getYupResolver()) });
 
   const onChangeHandler = (e: any, data: any, callback: (e: any) => any) => {
     const { fieldType, key } = data;
@@ -197,6 +173,7 @@ const FormComponent = () => {
           {renderFields(schema)}
           <Grid item xs={12}>
             {getButtonTemplate({ errors: formState.errors, values })}
+            <button onClick={()=>console.log(getValues())} >form values</button>
           </Grid>
         </Grid>
       </form>

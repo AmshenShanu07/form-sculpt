@@ -2,6 +2,11 @@ import * as yup from 'yup';
 
 import { SchemaType } from '../Context/PropContext/type';
 
+const fileTypeSchema = yup.object({
+  fileName: yup.string().required(),
+  fileUrl: yup.string().required()
+});
+
 const getValidationCriteria = (data:SchemaType):yup.AnyObject => {
   const { fieldType, validation, isRequired, fieldLabel: { label } } = data;
   let yupObj: any = yup;
@@ -10,7 +15,7 @@ const getValidationCriteria = (data:SchemaType):yup.AnyObject => {
     yupObj = yupObj['boolean']();
   }
 
-  if ( fieldType === 'checkboxes' || fieldType === 'multiFile' ) {
+  if ( fieldType === 'checkboxes' ) {
     yupObj = yupObj['array']()['of'](yup.string());
 
     if (validation?.min) {
@@ -36,10 +41,30 @@ const getValidationCriteria = (data:SchemaType):yup.AnyObject => {
 
   if (
     fieldType === 'select' ||
-    fieldType === 'radio' ||
-    fieldType === 'file'
+    fieldType === 'radio' 
   ) {
     yupObj = yupObj['string']();
+  }
+
+  if ( fieldType === 'file' ) {
+    yupObj = fileTypeSchema;
+  }
+
+  if ( fieldType === 'multiFile' ) {
+    
+    yupObj = yupObj['array']()['of'](fileTypeSchema);
+
+    if (validation?.min) {
+      yupObj = yupObj['min'](validation.min);
+    }
+
+    if (validation?.max) {
+      yupObj = yupObj['max'](validation.max);
+    }
+
+    if (!validation?.min && isRequired) {
+      yupObj = yupObj['min'](1,`${label} is a required field`);
+    }
   }
 
   if (

@@ -1,3 +1,4 @@
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import React from 'react';
 import clsx from 'clsx';
 import Link from '@docusaurus/Link';
@@ -17,8 +18,8 @@ function HomepageHeader() {
         <div className={styles.buttons}>
           <Link
             className="button button--secondary button--lg"
-            to="/Introduction/overview">
-            Docusaurus Tutorial - 5min ⏱️
+            to="/Intoduction/overview">
+            Form Sculpt Tutorial 📖
           </Link>
         </div>
       </div>

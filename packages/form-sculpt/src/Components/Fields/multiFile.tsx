@@ -64,18 +64,23 @@ const FormMultiFileUpload = (props: InputFieldProps) => {
       setError('');
     }
 
-    const tempFileUrls: string[] = [];
+    const tempFileUrls: { fileName: string, fileUrl: string }[] = [];
 
     for (const file of tempFiles) {
-      if (onFileUpload) {
-        const url = await onFileUpload(file);
-        tempFileUrls.push(url);
-      } else {
-        tempFileUrls.push(URL.createObjectURL(file));
-      }
-    }
+      let url:string;
 
-    setValues({ ...values, [key]: tempFileUrls });
+      if (onFileUpload) {
+        url = await onFileUpload(file);
+      } else {
+        url = URL.createObjectURL(file);
+      }
+
+      tempFileUrls.push({ fileName: file.name, fileUrl: url });
+
+    }
+    console.log(tempFileUrls);
+    
+    setValues({ ...values, [key]: [...tempFileUrls] });
   };
 
   const clearFiles = () => {

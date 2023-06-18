@@ -16,7 +16,6 @@ const ButtonTemplate:React.FC<ButtonTemplateProps> = ({ errors, values }) => {
 
 const App = () => {
   const uploadFile = async (file: File) => {
-    console.log(file);
     const url = await URL.createObjectURL(file);
     return url;
   };
