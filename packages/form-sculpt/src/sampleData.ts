@@ -403,7 +403,7 @@ export const sampleJsonField: SchemaType[] = [
       placeholderText: '',
     },
     fieldType: 'multiFile',
-    isRequired: true,
+    isRequired: false,
     validation: {
       min: 2,
       fileSize: 300,
@@ -419,7 +419,7 @@ export const sampleJsonField: SchemaType[] = [
       placeholderText: '',
     },
     fieldType: 'file',
-    isRequired: true,
+    isRequired: false,
     validation: {
       min: 2,
       fileSize: 300,

@@ -26,12 +26,7 @@ const FormComponent = () => {
       if (fieldType === 'checkboxes') {
         tempValue = { ...tempValue, [key]: [] };
       }
-
-      if (defaultValue && defaultValue[key]) {
-        tempValue = { ...tempValue, [key]: defaultValue[key] };
-        setValue(key, defaultValue[key]);
-      }
-
+      
       if (fieldType === 'select' && isRequired && data.options) {
         const { dependentParentLabel, ifValueIs } = data;
 
@@ -40,6 +35,12 @@ const FormComponent = () => {
           setValue(key, data?.options[0]);
         }
       }
+
+      if (defaultValue && defaultValue[key]) {
+        tempValue = { ...tempValue, [key]: defaultValue[key] };
+        setValue(key, defaultValue[key]);
+      }
+
     }
 
     setValues(tempValue);

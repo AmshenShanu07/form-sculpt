@@ -4,6 +4,26 @@ import Form from './Components/Form';
 import { sampleJsonField } from './sampleData';
 import { ButtonTemplateProps } from './Context/PropContext/type';
 
+const defaultValue = {
+  "CheckBoxGroupCheck": [
+      "sunday",
+      "thrusday",
+      "monday"
+  ],
+  "LeftFar": false,
+  "LeftNear": false,
+  "RightFar": false,
+  "RightNear": true,
+  "VisionRightNear": "20/20",
+  "Ishihara": "Failed",
+  "singleFile": {
+      "fileName": "abc",
+      "fileUrl": "bla"
+  },
+  "RightEyeDetails": "asdf",
+  "LeftEyeDetails": "asdf"
+};
+
 const ButtonTemplate:React.FC<ButtonTemplateProps> = ({ errors, values }) => {
   return (
     <React.Fragment>
@@ -24,7 +44,7 @@ const App = () => {
     <div>
       <Form
         schema={sampleJsonField}
-        defaultValue={{ singleFile:{ fileName:"abc", fileUrl:"bla" } }}
+        defaultValue={defaultValue}
         onSubmit={(d) => console.log(d)}
         onFileUpload={uploadFile}
         templates={{
