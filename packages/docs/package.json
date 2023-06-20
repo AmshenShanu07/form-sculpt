@@ -7,7 +7,7 @@
     "dev": "docusaurus start",
     "build": "docusaurus build",
     "swizzle": "docusaurus swizzle",
-    "release": "GIT_USER=AmshenShanu07 USE_SSH=true docusaurus deploy",
+    "release": "npm run build",
     "clear": "docusaurus clear",
     "serve": "docusaurus serve",
     "write-translations": "docusaurus write-translations",

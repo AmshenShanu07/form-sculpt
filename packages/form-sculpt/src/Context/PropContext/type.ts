@@ -31,10 +31,15 @@ export interface ButtonTemplateProps {
   values?: any;
 }
 
+type UploadFileType = {
+  fileName: string;
+  fileUrl: string;
+}
+
 export interface CustomTemplateFileProps {
   data: SchemaType;
   onUpload: (e: any) => void;
-  value: string | string[];
+  value: UploadFileType | UploadFileType[];
   error: any;
 }
 

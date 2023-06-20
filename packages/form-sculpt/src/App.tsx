@@ -24,6 +24,7 @@ const App = () => {
     <div>
       <Form
         schema={sampleJsonField}
+        defaultValue={{ singleFile:{ fileName:"abc", fileUrl:"bla" } }}
         onSubmit={(d) => console.log(d)}
         onFileUpload={uploadFile}
         templates={{
