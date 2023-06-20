@@ -79,7 +79,7 @@ const FormComponent = () => {
     return yup.object(validationSchema);
   };
 
-  const { control, formState, handleSubmit, reset, setValue, getValues } = useForm({ resolver: yupResolver(getYupResolver()) });
+  const { control, formState, handleSubmit, reset, setValue } = useForm({ resolver: yupResolver(getYupResolver()) });
 
   const onChangeHandler = (e: any, data: any, callback: (e: any) => any) => {
     const { fieldType, key } = data;
@@ -173,7 +173,6 @@ const FormComponent = () => {
           {renderFields(schema)}
           <Grid item xs={12}>
             {getButtonTemplate({ errors: formState.errors, values })}
-            <button onClick={()=>console.log(getValues())} >form values</button>
           </Grid>
         </Grid>
       </form>

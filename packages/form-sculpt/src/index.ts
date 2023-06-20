@@ -19,8 +19,8 @@ import {
 export default Form;
 
 export {
-  ButtonTemplateProps,
   CustomTemplateFieldProps,
+  ButtonTemplateProps,
   CustomTemplateFileProps,
   CustomTemplatesType,
   SchemaType,

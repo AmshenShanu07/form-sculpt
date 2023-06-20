@@ -17,6 +17,7 @@
     "cs-check":"lerna run cs-check",
     "cs-format":"lerna run cs-format",
     "build": "lerna run build --stream",
+    "prepublish": "npm run build",
     "publish": "lerna run release --stream",
     "publish:package":"lerna run release --scope=form-sculpt --stream",
     "publish:docs":"lerna run release --scope=docs --stream",
