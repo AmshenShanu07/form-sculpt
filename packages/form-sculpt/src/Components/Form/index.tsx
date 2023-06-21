@@ -5,6 +5,7 @@ import { PropProvider } from '../../Context/PropContext';
 import { DataHolderProvider } from '../../Context/DataHolderContext';
 import { useEffect } from 'react';
 import { FormPropType } from '../../Context/PropContext/type';
+import checkIfNonInputField from '../../Utils/checkNonInputField';
 
 const Form = (props: FormPropType) => {
   // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -15,10 +16,15 @@ const Form = (props: FormPropType) => {
     const keys = new Set();
     for (let i = 0; i < schema.length; i++) {
       const key = schema[i].key;
+      
+      
       if (keys.has(key)) {
         throw new Error(`Duplicate key found, key:${key} already exist`);
       }
-      keys.add(key);
+      
+      if (!checkIfNonInputField(schema[i].fieldType)) {
+        keys.add(key);
+      }
     }
   };
 

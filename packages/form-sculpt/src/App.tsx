@@ -5,17 +5,7 @@ import { sampleJsonField } from './sampleData';
 import { ButtonTemplateProps, CustomFieldProps } from './Context/PropContext/type';
 import { Button } from '@mui/material';
 
-const defaultValue = {
-  CheckBoxGroupCheck: ['sunday', 'thrusday', 'monday'],
-  LeftFar: false,
-  LeftNear: false,
-  RightFar: false,
-  RightNear: true,
-  VisionRightNear: '20/20',
-  Ishihara: 'Failed',
-  RightEyeDetails: 'asdf',
-  LeftEyeDetails: 'asdf',
-};
+
 
 const ButtonTemplate: React.FC<ButtonTemplateProps> = ({ errors, values }) => {
   return (
@@ -41,7 +31,6 @@ const App = () => {
     <div>
       <Form
         schema={sampleJsonField}
-        defaultValue={defaultValue}
         onSubmit={(d) => console.log(d)}
         onFileUpload={uploadFile}
         templates={{
