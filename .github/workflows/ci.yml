@@ -24,9 +24,10 @@ jobs:
           cache: 'npm'
           cache-dependency-path: 'packages/**/package-lock.json'
       - run: npm i -g lerna@6.6.2
+      - run: npm install --legacy-peer-deps
       - run: npm run bootstrap
-      - run: npm run lint
-      # - run: npm run cs-check
+      - run: npm run cs-format
+      - run: npm run cs-check
 
       - name: Build with Netlify badge
         if: github.ref != 'refs/heads/master' && matrix.node-version != '14.x'
