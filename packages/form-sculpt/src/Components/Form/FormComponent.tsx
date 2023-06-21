@@ -13,7 +13,7 @@ import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import getValidationCriteria from '../../Utils/getValidationCriteria';
 
 const FormComponent = () => {
-  const { onSubmit, schema, defaultValue } = useProps();
+  const { onSubmit, schema, defaultValue, customFields } = useProps();
   const { values, setValues, isError } = useValueHolder();
 
   useEffect(() => {
@@ -147,7 +147,7 @@ const FormComponent = () => {
         return (
           <Fragment key={i}>
             {checkIfValueIsEqual(values[d.dependentParentLabel], d.ifValueIs) ? (
-              getField(d, control, formState.errors, onChangeHandler)
+              getField(d, control, formState.errors, values, onChangeHandler, customFields)
             ) : (
               <></>
             )}
@@ -155,7 +155,7 @@ const FormComponent = () => {
         );
       }
 
-      return getField(d, control, formState.errors, onChangeHandler);
+      return getField(d, control, formState.errors, values, onChangeHandler, customFields);
     });
   };
 

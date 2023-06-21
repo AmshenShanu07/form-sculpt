@@ -419,12 +419,23 @@ export const sampleJsonField: SchemaType[] = [
       placeholderText: '',
     },
     fieldType: 'file',
-    isRequired: false,
+    isRequired: true,
     validation: {
       min: 2,
       fileSize: 300,
       fileType: ['jpeg', 'jpg', 'png'],
     },
+  },
+  {
+    fieldWidth: 1 / 3,
+    key: 'customField',
+    fieldLabel: {
+      label: 'General Details',
+      placeholderText: 'Enter Date Screening Provided',
+      description: 'some description about the field',
+    },
+    fieldType: 'title',
+    isRequired: true,
   },
 ];
 

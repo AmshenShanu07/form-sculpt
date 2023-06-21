@@ -3,8 +3,8 @@ import * as yup from 'yup';
 import { SchemaType } from '../Context/PropContext/type';
 
 const fileTypeSchema = yup.object({
-  fileName: yup.string().required(),
-  fileUrl: yup.string().required()
+  fileName: yup.string(),
+  fileUrl: yup.string()
 });
 
 const getValidationCriteria = (data:SchemaType):yup.AnyObject => {

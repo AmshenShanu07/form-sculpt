@@ -72,7 +72,8 @@ export type FieldType =
   | 'time'
   | 'dateTime'
   | 'file'
-  | 'multiFile';
+  | 'multiFile'
+  | 'custom';
 
 export type SchemaType = {
   key: string;
@@ -108,7 +109,20 @@ export interface SessionStylingI {
   label?: SxProps<any>;
 }
 
+export interface CustomFieldProps {
+  onChange:(e:any) => void;
+  value:any;
+  error:any;
+  data:SchemaType,
+  context:{
+    values:any,
+    errors:any
+  }
+}
 
+export interface CustomFieldI {
+  [key: string]: CustomTemplateComponentType<CustomFieldProps> 
+}
 
 export interface FormPropType {
   schema: SchemaType[];
@@ -117,9 +131,10 @@ export interface FormPropType {
 
   onFileUpload?: (data: File) => string | Promise<string>;
 
-  //Custom Styling
+  //Customization Props
   templates?: CustomTemplatesType;
   inputFieldStyle?: InputFieldStyleI;
   sessionStyling?: SessionStylingI;
   inputFieldSize?: 'small' | 'medium';
+  customFields?: CustomFieldI
 }
