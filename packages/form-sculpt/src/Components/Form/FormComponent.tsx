@@ -26,7 +26,7 @@ const FormComponent = () => {
       if (fieldType === 'checkboxes') {
         tempValue = { ...tempValue, [key]: [] };
       }
-      
+
       if (fieldType === 'select' && isRequired && data.options) {
         const { dependentParentLabel, ifValueIs } = data;
 
@@ -40,7 +40,6 @@ const FormComponent = () => {
         tempValue = { ...tempValue, [key]: defaultValue[key] };
         setValue(key, defaultValue[key]);
       }
-
     }
 
     setValues(tempValue);
@@ -51,12 +50,7 @@ const FormComponent = () => {
   const checkIfValidationNeeded = (data: any): boolean => {
     const { fieldType, dependentParentLabel, ifValueIs } = data;
 
-    if (
-      fieldType === 'title' ||
-      fieldType === 'description' ||
-      fieldType === 'subTitle' ||
-      fieldType === 'label'
-    ) {
+    if (fieldType === 'title' || fieldType === 'description' || fieldType === 'subTitle' || fieldType === 'label') {
       return false;
     }
 
@@ -93,7 +87,7 @@ const FormComponent = () => {
     }
 
     if (fieldType === 'checkboxes') {
-      const vals = prvVal?[...prvVal]:[];
+      const vals = prvVal ? [...prvVal] : [];
 
       const index = vals.findIndex((d) => d === e.target.name);
 
@@ -134,7 +128,6 @@ const FormComponent = () => {
 
   const checkIfValueIsEqual = (value: any, ifValue: any) => {
     if (value instanceof Array) {
-      
       return value.includes(ifValue);
     }
 

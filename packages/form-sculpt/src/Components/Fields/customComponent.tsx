@@ -6,7 +6,7 @@ import { useProps } from '../../Context/PropContext/hook';
 import { useValueHolder } from '../../Context/DataHolderContext/hook';
 
 const FormCustomElement = (props: InputFieldProps) => {
-  const { control, data, error, onChange,  } = props;
+  const { control, data, error, onChange } = props;
   const { values } = useValueHolder();
   const { customFields } = useProps();
 

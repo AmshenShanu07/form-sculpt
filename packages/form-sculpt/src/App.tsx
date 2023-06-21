@@ -6,22 +6,18 @@ import { ButtonTemplateProps, CustomFieldProps } from './Context/PropContext/typ
 import { Button } from '@mui/material';
 
 const defaultValue = {
-  "CheckBoxGroupCheck": [
-      "sunday",
-      "thrusday",
-      "monday"
-  ],
-  "LeftFar": false,
-  "LeftNear": false,
-  "RightFar": false,
-  "RightNear": true,
-  "VisionRightNear": "20/20",
-  "Ishihara": "Failed",
-  "RightEyeDetails": "asdf",
-  "LeftEyeDetails": "asdf"
+  CheckBoxGroupCheck: ['sunday', 'thrusday', 'monday'],
+  LeftFar: false,
+  LeftNear: false,
+  RightFar: false,
+  RightNear: true,
+  VisionRightNear: '20/20',
+  Ishihara: 'Failed',
+  RightEyeDetails: 'asdf',
+  LeftEyeDetails: 'asdf',
 };
 
-const ButtonTemplate:React.FC<ButtonTemplateProps> = ({ errors, values }) => {
+const ButtonTemplate: React.FC<ButtonTemplateProps> = ({ errors, values }) => {
   return (
     <React.Fragment>
       <button type='submit'>Submit</button>
@@ -31,10 +27,8 @@ const ButtonTemplate:React.FC<ButtonTemplateProps> = ({ errors, values }) => {
   );
 };
 
-const CalculateButton:React.FC<CustomFieldProps> = ({ context }) => {
-  return (
-    <Button onClick={()=>console.log(context.values)} >Test Button</Button>
-  );
+const CalculateButton: React.FC<CustomFieldProps> = ({ context }) => {
+  return <Button onClick={() => console.log(context.values)}>Test Button</Button>;
 };
 
 const App = () => {
@@ -54,7 +48,7 @@ const App = () => {
           ButtonTemplates: ButtonTemplate,
         }}
         customFields={{
-          'customField': CalculateButton
+          customField: CalculateButton,
         }}
       />
     </div>

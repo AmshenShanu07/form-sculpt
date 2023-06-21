@@ -43,7 +43,7 @@ export const sampleJsonField: SchemaType[] = [
       description: 'some description about the field',
     },
     fieldType: 'checkboxes',
-    options:['monday','tuesday','webnesday','thrusday','friday','saturday','sunday'],
+    options: ['monday', 'tuesday', 'webnesday', 'thrusday', 'friday', 'saturday', 'sunday'],
     isRequired: true,
     // validation: {
     //   min:2,
@@ -388,11 +388,11 @@ export const sampleJsonField: SchemaType[] = [
     },
     fieldType: 'textField',
     isRequired: true,
-    validation:{
-      validation:'number',
-      max:10,
-      min:5
-    }
+    validation: {
+      validation: 'number',
+      max: 10,
+      min: 5,
+    },
   },
   {
     fieldWidth: 1 / 2,
@@ -492,7 +492,7 @@ export const portalData: SchemaType[] = [
     fieldType: 'select',
     fieldWidth: 0.5,
     isRequired: true,
-    defaultValue:'Diabetic',
+    defaultValue: 'Diabetic',
     options: [
       'Asthma',
       'Diabetic',
@@ -530,9 +530,9 @@ export const portalData: SchemaType[] = [
     fieldWidth: 0.5,
     isRequired: false,
     key: 'TreatmentDescription',
-    validation:{
-      validation:'email'
-    }
+    validation: {
+      validation: 'email',
+    },
   },
   {
     fieldLabel: { label: 'RX label ', placeholderText: 'RX label ', description: 'RX label ' },

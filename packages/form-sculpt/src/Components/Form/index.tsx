@@ -31,5 +31,4 @@ const Form = (props: FormPropType) => {
   );
 };
 
-
 export default Form;

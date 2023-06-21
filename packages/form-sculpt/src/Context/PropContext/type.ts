@@ -18,7 +18,6 @@ export interface CustomTemplatesType {
   MultiFileUploadField?: CustomTemplateComponentType<CustomTemplateFileProps>;
 }
 
-
 export interface CustomTemplateFieldProps {
   data: SchemaType;
   onChange: (e: any) => void;
@@ -34,7 +33,7 @@ export interface ButtonTemplateProps {
 type UploadFileType = {
   fileName: string;
   fileUrl: string;
-}
+};
 
 export interface CustomTemplateFileProps {
   data: SchemaType;
@@ -110,18 +109,18 @@ export interface SessionStylingI {
 }
 
 export interface CustomFieldProps {
-  onChange:(e:any) => void;
-  value:any;
-  error:any;
-  data:SchemaType,
-  context:{
-    values:any,
-    errors:any
-  }
+  onChange: (e: any) => void;
+  value: any;
+  error: any;
+  data: SchemaType;
+  context: {
+    values: any;
+    errors: any;
+  };
 }
 
 export interface CustomFieldI {
-  [key: string]: CustomTemplateComponentType<CustomFieldProps> 
+  [key: string]: CustomTemplateComponentType<CustomFieldProps>;
 }
 
 export interface FormPropType {
@@ -136,5 +135,5 @@ export interface FormPropType {
   inputFieldStyle?: InputFieldStyleI;
   sessionStyling?: SessionStylingI;
   inputFieldSize?: 'small' | 'medium';
-  customFields?: CustomFieldI
+  customFields?: CustomFieldI;
 }

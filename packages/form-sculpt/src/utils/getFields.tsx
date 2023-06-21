@@ -19,18 +19,16 @@ import FormCustomElement from '../Components/Fields/customComponent';
 
 import { CustomFieldI } from '../Context/PropContext/type';
 
-
 const getField = (
   data: any,
   control: Control,
   error: FieldErrors,
-  values:any,
+  values: any,
   onChange: (e: any, data: any, callback: (e: any) => void) => void,
-  customField?:CustomFieldI
+  customField?: CustomFieldI,
 ) => {
-
   const props = { data, control, error, key: data.key, onChange, values };
-  
+
   if (customField && customField[data.key]) {
     return <FormCustomElement {...props} />;
   }

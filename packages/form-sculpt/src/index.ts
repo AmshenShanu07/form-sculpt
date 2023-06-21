@@ -15,7 +15,6 @@ import {
   ValidationType,
 } from './Context/PropContext/type';
 
-
 export default Form;
 
 export {
