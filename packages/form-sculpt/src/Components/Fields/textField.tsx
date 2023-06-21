@@ -5,11 +5,11 @@ import { InputFieldProps } from './type';
 import { useProps } from '../../Context/PropContext/hook';
 
 const FormTextField = (props: InputFieldProps) => {
-  const { control, data, error, onChange,  } = props;
+  const { control, data, error, onChange } = props;
 
   const { inputFieldSize, inputFieldStyle, templates } = useProps();
 
-  const isPassword = ():boolean => {
+  const isPassword = (): boolean => {
     if (data.validation) {
       return data.validation.validation === 'password';
     }
@@ -50,7 +50,7 @@ const FormTextField = (props: InputFieldProps) => {
                 onChange={(e: any) => onChange(e, data, field.onChange)}
                 fullWidth
                 disabled={Boolean(data.disable)}
-                type={isPassword()?'password':'text'}
+                type={isPassword() ? 'password' : 'text'}
                 placeholder={data.fieldLabel.placeholderText}
                 error={error[data.key] || '' ? true : false}
                 helperText={

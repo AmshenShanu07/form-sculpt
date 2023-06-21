@@ -1,21 +1,26 @@
-import * as yup from 'yup'; 
+import * as yup from 'yup';
 
 import { SchemaType } from '../Context/PropContext/type';
 
 const fileTypeSchema = yup.object({
-  fileName: yup.string().required(),
-  fileUrl: yup.string().required()
+  fileName: yup.string(),
+  fileUrl: yup.string(),
 });
 
-const getValidationCriteria = (data:SchemaType):yup.AnyObject => {
-  const { fieldType, validation, isRequired, fieldLabel: { label } } = data;
+const getValidationCriteria = (data: SchemaType): yup.AnyObject => {
+  const {
+    fieldType,
+    validation,
+    isRequired,
+    fieldLabel: { label },
+  } = data;
   let yupObj: any = yup;
 
-  if (fieldType === 'checkbox' ) {
+  if (fieldType === 'checkbox') {
     yupObj = yupObj['boolean']();
   }
 
-  if ( fieldType === 'checkboxes' ) {
+  if (fieldType === 'checkboxes') {
     yupObj = yupObj['array']()['of'](yup.string());
 
     if (validation?.min) {
@@ -26,32 +31,23 @@ const getValidationCriteria = (data:SchemaType):yup.AnyObject => {
     }
 
     if (!validation?.min && isRequired) {
-      yupObj = yupObj['min'](1,`${label} is a required field`);
+      yupObj = yupObj['min'](1, `${label} is a required field`);
     }
-
   }
 
-  if (
-      fieldType === 'date' ||
-      fieldType === 'time' ||
-      fieldType === 'dateTime'
-    ) {
-      yupObj = yupObj['date']();
+  if (fieldType === 'date' || fieldType === 'time' || fieldType === 'dateTime') {
+    yupObj = yupObj['date']();
   }
 
-  if (
-    fieldType === 'select' ||
-    fieldType === 'radio' 
-  ) {
+  if (fieldType === 'select' || fieldType === 'radio') {
     yupObj = yupObj['string']();
   }
 
-  if ( fieldType === 'file' ) {
+  if (fieldType === 'file') {
     yupObj = fileTypeSchema;
   }
 
-  if ( fieldType === 'multiFile' ) {
-    
+  if (fieldType === 'multiFile') {
     yupObj = yupObj['array']()['of'](fileTypeSchema);
 
     if (validation?.min) {
@@ -63,42 +59,34 @@ const getValidationCriteria = (data:SchemaType):yup.AnyObject => {
     }
 
     if (!validation?.min && isRequired) {
-      yupObj = yupObj['min'](1,`${label} is a required field`);
+      yupObj = yupObj['min'](1, `${label} is a required field`);
     }
   }
 
-  if (
-      fieldType === 'textField' ||
-      fieldType === 'textArea'
-    ) {
+  if (fieldType === 'textField' || fieldType === 'textArea') {
+    if (validation?.validation && validation.validation === 'number') {
+      const { min, max } = validation;
+      yupObj = yupObj['number']();
 
-      if (validation?.validation && validation.validation === 'number') {
-        const { min, max } = validation;
-        yupObj = yupObj['number']();
+      if (min) yupObj = yupObj['min'](min);
 
-        if (min) yupObj = yupObj['min'](min);
-        
-
-        if (max) {
-          yupObj = yupObj['max'](max);
-        }
-
-      } else if (validation?.validation && validation.validation === 'limit') {
-        const { min, max } = validation;
-        yupObj = yupObj['string']();
-        
-        if (min) yupObj = yupObj['min'](min);
-        
-        if (max) yupObj = yupObj['max'](max);
-        
-      } else if (validation?.validation && validation.validation === 'email') {
-        yupObj = yupObj['string']()['email']();
-      } else if ( validation?.validation && validation.validation === 'url' ) {
-        yupObj = yupObj['string']()['url']();
-      } else {
-        yupObj = yupObj['string']();
+      if (max) {
+        yupObj = yupObj['max'](max);
       }
+    } else if (validation?.validation && validation.validation === 'limit') {
+      const { min, max } = validation;
+      yupObj = yupObj['string']();
 
+      if (min) yupObj = yupObj['min'](min);
+
+      if (max) yupObj = yupObj['max'](max);
+    } else if (validation?.validation && validation.validation === 'email') {
+      yupObj = yupObj['string']()['email']();
+    } else if (validation?.validation && validation.validation === 'url') {
+      yupObj = yupObj['string']()['url']();
+    } else {
+      yupObj = yupObj['string']();
+    }
   }
 
   if (isRequired) {
@@ -106,7 +94,6 @@ const getValidationCriteria = (data:SchemaType):yup.AnyObject => {
   }
 
   return yupObj;
-
 };
 
 export default getValidationCriteria;

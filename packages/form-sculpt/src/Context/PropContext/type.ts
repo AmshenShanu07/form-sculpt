@@ -18,7 +18,6 @@ export interface CustomTemplatesType {
   MultiFileUploadField?: CustomTemplateComponentType<CustomTemplateFileProps>;
 }
 
-
 export interface CustomTemplateFieldProps {
   data: SchemaType;
   onChange: (e: any) => void;
@@ -31,10 +30,15 @@ export interface ButtonTemplateProps {
   values?: any;
 }
 
+type UploadFileType = {
+  fileName: string;
+  fileUrl: string;
+};
+
 export interface CustomTemplateFileProps {
   data: SchemaType;
   onUpload: (e: any) => void;
-  value: string | string[];
+  value: UploadFileType | UploadFileType[];
   error: any;
 }
 
@@ -67,7 +71,8 @@ export type FieldType =
   | 'time'
   | 'dateTime'
   | 'file'
-  | 'multiFile';
+  | 'multiFile'
+  | 'custom';
 
 export type SchemaType = {
   key: string;
@@ -103,7 +108,20 @@ export interface SessionStylingI {
   label?: SxProps<any>;
 }
 
+export interface CustomFieldProps {
+  onChange: (e: any) => void;
+  value: any;
+  error: any;
+  data: SchemaType;
+  context: {
+    values: any;
+    errors: any;
+  };
+}
 
+export interface CustomFieldI {
+  [key: string]: CustomTemplateComponentType<CustomFieldProps>;
+}
 
 export interface FormPropType {
   schema: SchemaType[];
@@ -112,9 +130,10 @@ export interface FormPropType {
 
   onFileUpload?: (data: File) => string | Promise<string>;
 
-  //Custom Styling
+  //Customization Props
   templates?: CustomTemplatesType;
   inputFieldStyle?: InputFieldStyleI;
   sessionStyling?: SessionStylingI;
   inputFieldSize?: 'small' | 'medium';
+  customFields?: CustomFieldI;
 }

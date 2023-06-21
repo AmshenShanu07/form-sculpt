@@ -12,26 +12,26 @@ const FormCheckboxes = (props: InputFieldProps) => {
   const { inputFieldStyle, templates } = useProps();
 
   return (
-    <Grid item xs={data.fieldWidth * 12} >
-      <Grid container >
-        <Grid item xs={12} >
+    <Grid item xs={data.fieldWidth * 12}>
+      <Grid container>
+        <Grid item xs={12}>
           <InputLabel sx={inputFieldStyle?.textField?.labelStyle || {}}>
             {data.fieldLabel.label}
             {data.isRequired && <span style={{ color: 'red' }}>*</span>}
           </InputLabel>
         </Grid>
 
-      {data.options &&
-        data.options.map((d:string, i:number) => {
-          return (
-            <Grid key={i} item xs={4} >
+        {data.options &&
+          data.options.map((d: string, i: number) => {
+            return (
+              <Grid key={i} item xs={4}>
                 <Controller
                   name={d}
                   control={control}
                   render={({ field }) => {
                     if (templates?.CheckBox) {
                       const { CheckBox } = templates;
-    
+
                       return (
                         <CheckBox
                           data={data}
@@ -55,10 +55,10 @@ const FormCheckboxes = (props: InputFieldProps) => {
                     );
                   }}
                 />
-            </Grid>
-          );
-        })}
-        <Grid item xs={12} >
+              </Grid>
+            );
+          })}
+        <Grid item xs={12}>
           <Typography variant='subtitle2' color='error'>
             {error[data.key]! ? error[data.key]?.message?.toString().replace(data.key, data.fieldLabel.label) : ''}
           </Typography>

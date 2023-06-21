@@ -8,6 +8,7 @@ const defaultData: FormPropType = {
   onSubmit: (d: any) => console.log(d),
   onFileUpload: (file: File) => URL.createObjectURL(file),
   inputFieldStyle: {},
+  customFields: {},
 };
 
 const PropContext = createContext(defaultData);
@@ -27,6 +28,7 @@ const PropProvider = (props: Props) => {
     defaultValue,
     onSubmit,
     onFileUpload,
+    customFields,
   } = props;
 
   const values = {
@@ -38,6 +40,7 @@ const PropProvider = (props: Props) => {
     inputFieldStyle,
     sessionStyling,
     onFileUpload,
+    customFields,
   };
 
   return <PropContext.Provider value={values}>{children}</PropContext.Provider>;

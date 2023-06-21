@@ -1,5 +1,6 @@
 import { Control, FieldErrors } from 'react-hook-form';
 
+import Label from '../Components/Fields/label';
 import FormDate from '../Components/Fields/date';
 import FormTime from '../Components/Fields/time';
 import FormTitle from '../Components/Fields/title';
@@ -11,18 +12,26 @@ import FormCheckbox from '../Components/Fields/checkbox';
 import FormDateTime from '../Components/Fields/datetime';
 import FormTextArea from '../Components/Fields/textArea';
 import FormTextField from '../Components/Fields/textField';
+import FormCheckboxes from '../Components/Fields/checkboxes';
 import FormDescription from '../Components/Fields/description';
 import FormMultiFileUpload from '../Components/Fields/multiFile';
-import FormCheckboxes from '../Components/Fields/checkboxes';
-import Label from '../Components/Fields/label';
+import FormCustomElement from '../Components/Fields/customComponent';
+
+import { CustomFieldI } from '../Context/PropContext/type';
 
 const getField = (
   data: any,
   control: Control,
   error: FieldErrors,
+  values: any,
   onChange: (e: any, data: any, callback: (e: any) => void) => void,
+  customField?: CustomFieldI,
 ) => {
-  const props = { data, control, error, key: data.key, onChange };
+  const props = { data, control, error, key: data.key, onChange, values };
+
+  if (customField && customField[data.key]) {
+    return <FormCustomElement {...props} />;
+  }
 
   switch (data.fieldType) {
     case 'title':

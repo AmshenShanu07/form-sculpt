@@ -13,7 +13,7 @@ import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import getValidationCriteria from '../../Utils/getValidationCriteria';
 
 const FormComponent = () => {
-  const { onSubmit, schema, defaultValue } = useProps();
+  const { onSubmit, schema, defaultValue, customFields } = useProps();
   const { values, setValues, isError } = useValueHolder();
 
   useEffect(() => {
@@ -27,11 +27,6 @@ const FormComponent = () => {
         tempValue = { ...tempValue, [key]: [] };
       }
 
-      if (defaultValue && defaultValue[key]) {
-        tempValue = { ...tempValue, [key]: defaultValue[key] };
-        setValue(key, defaultValue[key]);
-      }
-
       if (fieldType === 'select' && isRequired && data.options) {
         const { dependentParentLabel, ifValueIs } = data;
 
@@ -39,6 +34,11 @@ const FormComponent = () => {
           tempValue = { ...tempValue, [key]: data?.options[0] };
           setValue(key, data?.options[0]);
         }
+      }
+
+      if (defaultValue && defaultValue[key]) {
+        tempValue = { ...tempValue, [key]: defaultValue[key] };
+        setValue(key, defaultValue[key]);
       }
     }
 
@@ -50,12 +50,7 @@ const FormComponent = () => {
   const checkIfValidationNeeded = (data: any): boolean => {
     const { fieldType, dependentParentLabel, ifValueIs } = data;
 
-    if (
-      fieldType === 'title' ||
-      fieldType === 'description' ||
-      fieldType === 'subTitle' ||
-      fieldType === 'label'
-    ) {
+    if (fieldType === 'title' || fieldType === 'description' || fieldType === 'subTitle' || fieldType === 'label') {
       return false;
     }
 
@@ -92,7 +87,7 @@ const FormComponent = () => {
     }
 
     if (fieldType === 'checkboxes') {
-      const vals = prvVal?[...prvVal]:[];
+      const vals = prvVal ? [...prvVal] : [];
 
       const index = vals.findIndex((d) => d === e.target.name);
 
@@ -133,7 +128,6 @@ const FormComponent = () => {
 
   const checkIfValueIsEqual = (value: any, ifValue: any) => {
     if (value instanceof Array) {
-      
       return value.includes(ifValue);
     }
 
@@ -146,7 +140,7 @@ const FormComponent = () => {
         return (
           <Fragment key={i}>
             {checkIfValueIsEqual(values[d.dependentParentLabel], d.ifValueIs) ? (
-              getField(d, control, formState.errors, onChangeHandler)
+              getField(d, control, formState.errors, values, onChangeHandler, customFields)
             ) : (
               <></>
             )}
@@ -154,7 +148,7 @@ const FormComponent = () => {
         );
       }
 
-      return getField(d, control, formState.errors, onChangeHandler);
+      return getField(d, control, formState.errors, values, onChangeHandler, customFields);
     });
   };
 
