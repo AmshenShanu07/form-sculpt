@@ -13,6 +13,9 @@ import {
   InputFieldStyleI,
   SessionStylingI,
   ValidationType,
+  CustomFieldI,
+  CustomFieldProps,
+  CustomTemplateComponentType
 } from './Context/PropContext/type';
 
 export default Form;
@@ -30,4 +33,7 @@ export {
   InputFieldStyleI,
   SessionStylingI,
   ValidationType,
+  CustomFieldI,
+  CustomFieldProps,
+  CustomTemplateComponentType
 };
