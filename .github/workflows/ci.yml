@@ -25,6 +25,7 @@ jobs:
           cache-dependency-path: 'packages/**/package-lock.json'
       - run: npm i -g lerna@6.6.2
       - run: npm install --legacy-peer-deps
+      - run: npm run clean
       - run: npm run bootstrap
       - run: npm run cs-format
       - run: npm run cs-check
@@ -39,18 +40,6 @@ jobs:
       - name: Build
         if: github.ref == 'refs/heads/master' && matrix.node-version != '14.x'
         run: npm run build:web
-        env:
-          NODE_OPTIONS: --max_old_space_size=4096
-
-      - name: Build with Netlify badge (no docs)
-        if: github.ref != 'refs/heads/master' && matrix.node-version == '14.x'
-        run: npx nx run-many --target=build --exclude=docs
-        env:
-          VITE_SHOW_NETLIFY_BADGE: true
-          NODE_OPTIONS: --max_old_space_size=4096
-      - name: Build (no docs)
-        if: github.ref == 'refs/heads/master' && matrix.node-version == '14.x'
-        run: npx nx run-many --target=build --exclude=docs
         env:
           NODE_OPTIONS: --max_old_space_size=4096
 
