@@ -79,32 +79,36 @@ const FormComponent = () => {
   const onChangeHandler = (e: any, data: any, callback: (e: any) => any) => {
     const { fieldType, key } = data;
     const prvVal = values[key] || null;
-
-    let tempVal = { ...values, [key]: e?.target?.value || '' };
-
+    
+    
+    let tempVal = { ...values };
+    tempVal[key] = e?.target?.value || '';    
+    
     if (fieldType === 'checkbox') {
       tempVal = { ...tempVal, [key]: !values[key] };
     }
-
+    
     if (fieldType === 'checkboxes') {
       const vals = prvVal ? [...prvVal] : [];
-
+      
       const index = vals.findIndex((d) => d === e.target.name);
-
+      
       if (index === -1) {
         e.target.name && vals.push(e.target.name);
       } else {
         vals.splice(index, 1);
       }
-
+      
       tempVal = { ...tempVal, [key]: vals };
     }
-
+    
     if (fieldType === 'date' || fieldType === 'time' || fieldType === 'dateTime') {
       tempVal = { ...tempVal, [key]: new Date(e) };
     }
-
+    
+    
     reset({ resolver: yupResolver(getYupResolver()) });
+    
 
     for (const field of schema) {
       const { key, dependentParentLabel, ifValueIs, ...data } = field;
@@ -113,15 +117,16 @@ const FormComponent = () => {
         tempVal = { ...tempVal, [key]: data?.options[0] };
       }
 
-      if (dependentParentLabel && tempVal[dependentParentLabel] !== ifValueIs) {
+      if (dependentParentLabel && !checkIfValueIsEqual(tempVal[dependentParentLabel], ifValueIs)) {
         delete tempVal[key];
       }
 
       if (tempVal[key]) {
         setValue(key, tempVal[key]);
       }
-    }
 
+    }
+    
     setValues(tempVal);
     callback(e);
   };

@@ -46,10 +46,15 @@ const FormCheckboxes = (props: InputFieldProps) => {
                         <FormControlLabel
                           label={d}
                           {...field}
+                          disabled={Boolean(data.disable)}
                           sx={inputFieldStyle?.checkbox?.labelStyle || {}}
                           onClick={(e: any) => onChange(e, data, field.onChange)}
                           checked={(values[data.key] && values[data.key].includes(d)) || false}
-                          control={<Checkbox sx={inputFieldStyle?.checkbox?.fieldStyle || {}} />}
+                          control={
+                          <Checkbox 
+                            sx={inputFieldStyle?.checkbox?.fieldStyle || {}}
+                            disabled={Boolean(data.disable)}
+                          />}
                         />
                       </>
                     );
