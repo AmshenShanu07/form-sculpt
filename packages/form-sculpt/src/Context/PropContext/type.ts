@@ -54,6 +54,8 @@ export type ValidationType = {
   max?: number;
   fileType?: string[];
   fileSize?: number;
+  preventFuture?: boolean;
+  preventPast?: boolean;
 };
 
 export type FieldType =
