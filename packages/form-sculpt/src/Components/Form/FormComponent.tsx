@@ -36,7 +36,7 @@ const FormComponent = () => {
         }
       }
 
-      if (defaultValue && defaultValue[key]) {
+      if (defaultValue && defaultValue[key] !== undefined) {
         tempValue = { ...tempValue, [key]: defaultValue[key] };
         setValue(key, defaultValue[key]);
       }
@@ -46,6 +46,17 @@ const FormComponent = () => {
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  useEffect(() => {
+    let tempValue = { ...values };
+    for (const { key } of schema) {
+      if (defaultValue && defaultValue[key] !== undefined ) {
+        tempValue = { ...tempValue, [key]: defaultValue[key] };
+        setValue(key, defaultValue[key]);
+      }
+    }
+    setValues(tempValue);
+  },[defaultValue]);
 
   const checkIfValidationNeeded = (data: any): boolean => {
     const { fieldType, dependentParentLabel, ifValueIs } = data;
@@ -82,7 +93,7 @@ const FormComponent = () => {
     
     
     let tempVal = { ...values };
-    tempVal[key] = e?.target?.value || '';    
+    tempVal[key] = e?.target?.value || '';
     
     if (fieldType === 'checkbox') {
       tempVal = { ...tempVal, [key]: !values[key] };
@@ -121,9 +132,14 @@ const FormComponent = () => {
         delete tempVal[key];
       }
 
+      if (defaultValue[key] !== undefined && dependentParentLabel && checkIfValueIsEqual(tempVal[dependentParentLabel],ifValueIs)) {
+        tempVal[key] = defaultValue[key];
+      }
+
       if (tempVal[key]) {
         setValue(key, tempVal[key]);
       }
+
 
     }
     

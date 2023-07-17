@@ -40,12 +40,12 @@ const getValidationCriteria = (data: SchemaType): yup.AnyObject => {
     yupObj = yupObj['date']();
 
     if (validation?.preventPast) {
-      const crntDate = moment(new Date()).add(1,'day').format('YYYY-MM-DD');
+      const crntDate = moment(new Date()).format('YYYY-MM-DD');
       yupObj = yupObj['min'](new Date(crntDate));
     }
 
     if (validation?.preventFuture) {
-      const crntDate = moment(new Date()).subtract(1,'day').format('YYYY-MM-DD');
+      const crntDate = moment(new Date()).format('YYYY-MM-DD');
       yupObj = yupObj['max'](new Date(crntDate));
     }
 

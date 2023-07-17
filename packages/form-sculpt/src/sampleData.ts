@@ -36,6 +36,18 @@ export const sampleJsonField: SchemaType[] = [
   },
   {
     fieldWidth: 1 / 2,
+    key: 'testCheckboxes',
+    fieldLabel: {
+      label: 'Date Screening Provided',
+      placeholderText: 'Enter Date Screening Provided',
+      description: 'some description about the field',
+    },
+    fieldType: 'checkboxes',
+    options: [ "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+    isRequired: false,
+  },
+  {
+    fieldWidth: 1 / 2,
     key: 'VisionDetails',
     fieldLabel: {
       label: 'Vision Details',

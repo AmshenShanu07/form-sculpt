@@ -53,8 +53,7 @@ const FormCheckbox = (props: InputFieldProps) => {
           );
         }}
       />
-      <Typography variant='subtitle2' color='error'>
-        {}
+      <Typography sx={inputFieldStyle?.checkbox?.errorStyle || {}} variant='subtitle2' color='error'>
         {error[data.key]! ? error[data.key]?.message?.toString().replace(data.key, data.fieldLabel.label) : ''}
       </Typography>
     </Grid>

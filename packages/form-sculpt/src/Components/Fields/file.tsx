@@ -11,7 +11,7 @@ const FormFileUpload = (props: InputFieldProps) => {
     data: { key, fieldLabel, validation, fieldWidth, disable },
   } = props;
 
-  const { onFileUpload, inputFieldSize, templates } = useProps();
+  const { onFileUpload, inputFieldSize, templates, inputFieldStyle } = useProps();
   const { setValues, values, setIsError } = useValueHolder();
 
   const inputRef = useRef<HTMLInputElement>(null);
@@ -80,7 +80,9 @@ const FormFileUpload = (props: InputFieldProps) => {
       <input type='file' hidden name={key} ref={inputRef} onChange={onUpload} accept={getInputFileAccept()} />
       <Grid container>
         <Grid item xs={12}>
-          <InputLabel>{fieldLabel.label}</InputLabel>
+          <InputLabel sx={inputFieldStyle?.file?.labelStyle || {}} >
+            {fieldLabel.label}
+          </InputLabel>
         </Grid>
         <Grid item xs={12} sx={{ mt: 2 }}>
           <Typography variant='subtitle2' color='grey'>
@@ -98,7 +100,7 @@ const FormFileUpload = (props: InputFieldProps) => {
           )}
         </Grid>
       </Grid>
-      <Typography variant='subtitle2' color='#d32f2f'>
+      <Typography sx={inputFieldStyle?.file?.errorStyle} variant='subtitle2' color='#d32f2f'>
         {error}
       </Typography>
     </Grid>

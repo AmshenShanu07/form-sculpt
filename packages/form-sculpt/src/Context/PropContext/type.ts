@@ -93,15 +93,12 @@ export type SchemaType = {
 export interface InputCustomStylingI {
   labelStyle?: SxProps<any>;
   fieldStyle?: SxProps<any>;
+  errorStyle?: SxProps<any>;
 }
 
-export interface InputFieldStyleI {
-  textField?: InputCustomStylingI;
-  textArea?: InputCustomStylingI;
-  select?: InputCustomStylingI;
-  radio?: InputCustomStylingI;
-  checkbox?: InputCustomStylingI;
-}
+export type InputFieldStyleI = {
+  [key in FieldType]?: InputCustomStylingI;
+};
 
 export interface SessionStylingI {
   title?: SxProps<any>;

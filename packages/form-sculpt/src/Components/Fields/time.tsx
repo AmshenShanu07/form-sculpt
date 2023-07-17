@@ -34,7 +34,7 @@ const FormTime = (props: InputFieldProps) => {
 
           return (
             <>
-              <InputLabel sx={inputFieldStyle?.textField?.labelStyle || {}}>
+              <InputLabel sx={inputFieldStyle?.time?.labelStyle || {}}>
                 {data.fieldLabel.label}
                 {data.isRequired && <span style={{ color: 'red' }}>*</span>}
               </InputLabel>
@@ -48,6 +48,9 @@ const FormTime = (props: InputFieldProps) => {
                     fullWidth: true,
                     size: inputFieldSize,
                     error: error[data.key] || '' ? true : false,
+                    FormHelperTextProps:{
+                      sx:inputFieldStyle?.time?.errorStyle || {}
+                    },
                     helperText:
                       error[data.key] || ''
                         ? (error[data.key]?.message as string).replace(data.key, data.fieldLabel.label)
