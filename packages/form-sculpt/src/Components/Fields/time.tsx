@@ -6,6 +6,7 @@ import { InputFieldProps } from './type';
 import { useProps } from '../../Context/PropContext/hook';
 import { TimePicker } from '@mui/x-date-pickers';
 import { useValueHolder } from '../../Context/DataHolderContext/hook';
+import dayjs from 'dayjs';
 
 const FormTime = (props: InputFieldProps) => {
   const { control, data, error, onChange } = props;
@@ -39,7 +40,7 @@ const FormTime = (props: InputFieldProps) => {
                 {data.isRequired && <span style={{ color: 'red' }}>*</span>}
               </InputLabel>
               <TimePicker
-                value={new Date(values[data.key])}
+                value={dayjs(values[data.key])}
                 disabled={Boolean(data.disable)}
                 sx={inputFieldStyle?.textField?.fieldStyle || {}}
                 onChange={(e: any) => onChange(e, data, field.onChange)}

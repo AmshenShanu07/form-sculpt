@@ -114,7 +114,14 @@ const FormComponent = () => {
     }
     
     if (fieldType === 'date' || fieldType === 'time' || fieldType === 'dateTime') {
-      tempVal = { ...tempVal, [key]: new Date(e) };
+      delete tempVal[key];
+      console.log(key);
+      
+      tempVal[key] = new Date(e);
+      
+      console.log(tempVal[key]);
+      console.log(tempVal);
+      
     }
     
     
@@ -124,22 +131,29 @@ const FormComponent = () => {
     for (const field of schema) {
       const { key, dependentParentLabel, ifValueIs, ...data } = field;
 
+      
       if (!tempVal[key] && data.fieldType === 'select' && data.isRequired && data.options) {
         tempVal = { ...tempVal, [key]: data?.options[0] };
       }
-
+      
       if (dependentParentLabel && !checkIfValueIsEqual(tempVal[dependentParentLabel], ifValueIs)) {
         delete tempVal[key];
       }
-
-      if (defaultValue[key] !== undefined && dependentParentLabel && checkIfValueIsEqual(tempVal[dependentParentLabel],ifValueIs)) {
+      
+      
+      if (
+          !tempVal[key] && 
+          defaultValue &&
+          dependentParentLabel &&
+          defaultValue[key] !== undefined &&
+          checkIfValueIsEqual(tempVal[dependentParentLabel],ifValueIs)
+        ) {
         tempVal[key] = defaultValue[key];
-      }
+      }      
 
       if (tempVal[key]) {
         setValue(key, tempVal[key]);
       }
-
 
     }
     

@@ -15,7 +15,7 @@
     "build": "tsc && vite build",
     "release": "npm run build",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build",
+    "deploy": "gh-pages -d dist",
     "lint": "eslint src --ext ts,tsx --report-unused-disable-directives --max-warnings 0 --fix",
     "preview": "vite preview",
     "cs-check": "prettier -l \"src/**/*.{tsx,ts}\"",
@@ -23,7 +23,7 @@
   },
   "dependencies": {
     "@monaco-editor/react": "^4.5.1",
-    "form-sculpt": "^0.3.11",
+    "form-sculpt": "^0.3.13",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
