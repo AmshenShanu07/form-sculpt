@@ -53,6 +53,9 @@ const FormTextField = (props: InputFieldProps) => {
                 type={isPassword() ? 'password' : 'text'}
                 placeholder={data.fieldLabel.placeholderText}
                 error={error[data.key] || '' ? true : false}
+                FormHelperTextProps={{
+                  sx:inputFieldStyle?.textField?.errorStyle || {}
+                }}
                 helperText={
                   error[data.key] || ''
                     ? (error[data.key]?.message as string).replace(data.key, data.fieldLabel.label)

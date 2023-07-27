@@ -5,9 +5,9 @@ import { InputFieldProps } from './type';
 import { useProps } from '../../Context/PropContext/hook';
 
 const FormTextArea = (props: InputFieldProps) => {
-  const { control, data, error, onChange } = props;
+  const { control, data, error, onChange, } = props;
 
-  const { inputFieldSize, templates } = useProps();
+  const { inputFieldSize, templates, inputFieldStyle } = useProps();
 
   return (
     <Grid item xs={data.fieldWidth * 12}>
@@ -31,17 +31,21 @@ const FormTextArea = (props: InputFieldProps) => {
 
           return (
             <>
-              <InputLabel>
+              <InputLabel sx={inputFieldStyle?.textArea?.labelStyle || {}}  >
                 {data.fieldLabel.label}
                 {data.isRequired && <span style={{ color: 'red' }}>*</span>}
               </InputLabel>
               <TextField
                 {...field}
                 onChange={(e: any) => onChange(e, data, field.onChange)}
+                sx={inputFieldStyle?.textArea?.fieldStyle || {}}
                 fullWidth
                 multiline
                 disabled={Boolean(data.disable)}
                 minRows={3}
+                FormHelperTextProps={{
+                  sx:inputFieldStyle?.textArea?.errorStyle || {}
+                }}
                 size={inputFieldSize}
                 placeholder={data.fieldLabel.placeholderText}
                 error={error[data.key] || '' ? true : false}

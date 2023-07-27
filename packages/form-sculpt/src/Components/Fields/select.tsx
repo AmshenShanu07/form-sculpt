@@ -48,6 +48,9 @@ const FormSelect = (props: InputFieldProps) => {
                     : ''
                 }
                 select
+                FormHelperTextProps={{
+                  sx:inputFieldStyle?.select?.errorStyle || {}
+                }}
                 size={inputFieldSize}
               >
                 {!data.isRequired && <MenuItem value='none'>None</MenuItem>}

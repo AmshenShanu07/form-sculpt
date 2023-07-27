@@ -6,6 +6,7 @@ import { InputFieldProps } from './type';
 import { useProps } from '../../Context/PropContext/hook';
 import { TimePicker } from '@mui/x-date-pickers';
 import { useValueHolder } from '../../Context/DataHolderContext/hook';
+import dayjs from 'dayjs';
 
 const FormTime = (props: InputFieldProps) => {
   const { control, data, error, onChange } = props;
@@ -34,12 +35,12 @@ const FormTime = (props: InputFieldProps) => {
 
           return (
             <>
-              <InputLabel sx={inputFieldStyle?.textField?.labelStyle || {}}>
+              <InputLabel sx={inputFieldStyle?.time?.labelStyle || {}}>
                 {data.fieldLabel.label}
                 {data.isRequired && <span style={{ color: 'red' }}>*</span>}
               </InputLabel>
               <TimePicker
-                value={new Date(values[data.key])}
+                value={dayjs(values[data.key])}
                 disabled={Boolean(data.disable)}
                 sx={inputFieldStyle?.textField?.fieldStyle || {}}
                 onChange={(e: any) => onChange(e, data, field.onChange)}
@@ -48,6 +49,9 @@ const FormTime = (props: InputFieldProps) => {
                     fullWidth: true,
                     size: inputFieldSize,
                     error: error[data.key] || '' ? true : false,
+                    FormHelperTextProps:{
+                      sx:inputFieldStyle?.time?.errorStyle || {}
+                    },
                     helperText:
                       error[data.key] || ''
                         ? (error[data.key]?.message as string).replace(data.key, data.fieldLabel.label)

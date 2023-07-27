@@ -1,4 +1,4 @@
-import { Checkbox, FormControlLabel, Grid, InputLabel, Typography } from '@mui/material';
+import { Box, Checkbox, FormControlLabel, Grid, InputLabel, Typography } from '@mui/material';
 import { Controller } from 'react-hook-form';
 
 import { InputFieldProps } from './type';
@@ -24,7 +24,7 @@ const FormCheckboxes = (props: InputFieldProps) => {
         {data.options &&
           data.options.map((d: string, i: number) => {
             return (
-              <Grid key={i} item xs={4}>
+              <Box key={i} sx={{ display:'flex', flexWrap:'wrap' }} >
                 <Controller
                   name={d}
                   control={control}
@@ -47,12 +47,12 @@ const FormCheckboxes = (props: InputFieldProps) => {
                           label={d}
                           {...field}
                           disabled={Boolean(data.disable)}
-                          sx={inputFieldStyle?.checkbox?.labelStyle || {}}
+                          sx={inputFieldStyle?.checkboxes?.labelStyle || {}}
                           onClick={(e: any) => onChange(e, data, field.onChange)}
                           checked={(values[data.key] && values[data.key].includes(d)) || false}
                           control={
                           <Checkbox 
-                            sx={inputFieldStyle?.checkbox?.fieldStyle || {}}
+                            sx={inputFieldStyle?.checkboxes?.fieldStyle || {}}
                             disabled={Boolean(data.disable)}
                           />}
                         />
@@ -60,11 +60,11 @@ const FormCheckboxes = (props: InputFieldProps) => {
                     );
                   }}
                 />
-              </Grid>
+              </Box>
             );
           })}
         <Grid item xs={12}>
-          <Typography variant='subtitle2' color='error'>
+          <Typography sx={inputFieldStyle?.checkboxes?.errorStyle || {}} variant='subtitle2' color='error'>
             {error[data.key]! ? error[data.key]?.message?.toString().replace(data.key, data.fieldLabel.label) : ''}
           </Typography>
         </Grid>

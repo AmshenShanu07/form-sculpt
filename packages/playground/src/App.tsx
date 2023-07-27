@@ -1,8 +1,8 @@
 import './App.css';
 
 import MonacoEditor from '@monaco-editor/react';
-import Form from 'form-sculpt';
-import { useState } from 'react';
+import Form, { SchemaType } from 'form-sculpt';
+import { useEffect, useState } from 'react';
 
 const monacoEditorOptions = {
   minimap: {
@@ -12,6 +12,9 @@ const monacoEditorOptions = {
 };
 
 function App() {
+
+  const [values, setValues] = useState<string>('');
+  const [formData, setFormData] = useState<string>('');
   const [schema, setSchema] = useState<string>(`[
     {
       "fieldWidth": 0.33333333333,
@@ -52,12 +55,38 @@ function App() {
   ]
 `);
 
+  useEffect(() => {
+    try {
+      const currentData:any = {};
+      const jsonSchema:SchemaType[] = JSON.parse(schema);
+
+      for ( const field of jsonSchema ) {
+
+        if (field.fieldType === 'title' || field.fieldType === 'subTitle' || field.fieldType === 'label') {
+          continue;
+        }
+
+        currentData[field.key] =  "";
+      }
+      
+      const code = JSON.stringify(currentData, null, 2);
+
+      setValues(code);
+
+    } catch (_) { /* empty */ }
+  },[schema]);
+
   const parseSchema = () => {
     try {
       return JSON.parse(schema);
     } catch (_) {
       return [];
     }
+  };
+
+  const onSubmitForm = async (data:any) => {
+    const beautifiedJsonString = JSON.stringify(data, null, 2);
+    setFormData(beautifiedJsonString);
   };
 
   return (
@@ -71,13 +100,48 @@ function App() {
           value={schema}
           onChange={(e) => setSchema(e || '')}
           theme='vs-light'
+          height={'90vh'}
           className='editor'
           options={monacoEditorOptions}
         />
       </div>
       <div className='form_container'>
-        <Form onSubmit={(data: any) => console.log(data)} schema={parseSchema()} />
+        <Form 
+          onSubmit={onSubmitForm}
+          defaultValue={JSON.parse(values||'{}')}
+          schema={parseSchema()}
+        />
       </div>
+
+      <div className='default_value_container'>
+        <div className='title_container'>
+          <h2>Default Form Values</h2>
+        </div>
+        <MonacoEditor
+          language='json'
+          value={values}
+          onChange={(val) => setValues(val || '')}
+          theme='vs-light'
+          height={'50vh'}
+          className='editor'
+          options={monacoEditorOptions}
+        />
+      </div>
+
+      <div className='form_data_container'>
+        <div className='title_container'>
+          <h2>Form Submit Values</h2>
+        </div>
+        <MonacoEditor
+          language='json'
+          value={formData}
+          theme='vs-light'
+          height={'50vh'}
+          className='editor'
+          options={monacoEditorOptions}
+        />
+      </div>
+
     </div>
   );
 }

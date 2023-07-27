@@ -1,10 +1,7 @@
-// import { CustomTemplateFieldProps } from './Context/PropContext/type';
 import React from 'react';
 import Form from './Components/Form';
-import { sampleJsonField } from './sampleData';
-import { ButtonTemplateProps, CustomFieldProps } from './Context/PropContext/type';
-import { Button } from '@mui/material';
-
+import { medAuth } from './sampleData';
+import { ButtonTemplateProps } from './Context/PropContext/type';
 
 
 const ButtonTemplate: React.FC<ButtonTemplateProps> = ({ errors, values }) => {
@@ -17,11 +14,10 @@ const ButtonTemplate: React.FC<ButtonTemplateProps> = ({ errors, values }) => {
   );
 };
 
-const CalculateButton: React.FC<CustomFieldProps> = ({ context }) => {
-  return <Button onClick={() => console.log(context.values)}>Test Button</Button>;
-};
+
 
 const App = () => {
+  // const [val, setVal] = useState<string>("Paracitamol");
   const uploadFile = async (file: File) => {
     const url = await URL.createObjectURL(file);
     return url;
@@ -30,16 +26,19 @@ const App = () => {
   return (
     <div>
       <Form
-        schema={sampleJsonField}
+        schema={medAuth}
         onSubmit={(d) => console.log(d)}
         onFileUpload={uploadFile}
+        defaultValue={{
+          TimesPerDay:'2',
+          RXNumber:"Paracitamol",
+          TimesPerDayIfValueOfTimeofMedicine1Is2:new Date(),
+          TimesPerDayIfValueOfTimeofMedicine2Is2: new Date(),
+        }}
         templates={{
           ButtonTemplates: ButtonTemplate,
         }}
-        customFields={{
-          customField: CalculateButton,
-        }}
-      />
+     />
     </div>
   );
 };

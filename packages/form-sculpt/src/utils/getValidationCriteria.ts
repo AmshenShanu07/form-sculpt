@@ -1,6 +1,7 @@
 import * as yup from 'yup';
 
 import { SchemaType } from '../Context/PropContext/type';
+import moment from 'moment';
 
 const fileTypeSchema = yup.object({
   fileName: yup.string(),
@@ -37,6 +38,17 @@ const getValidationCriteria = (data: SchemaType): yup.AnyObject => {
 
   if (fieldType === 'date' || fieldType === 'time' || fieldType === 'dateTime') {
     yupObj = yupObj['date']();
+
+    if (validation?.preventPast) {
+      const crntDate = moment(new Date()).format('YYYY-MM-DD');
+      yupObj = yupObj['min'](new Date(crntDate));
+    }
+
+    if (validation?.preventFuture) {
+      const crntDate = moment(new Date()).format('YYYY-MM-DD');
+      yupObj = yupObj['max'](new Date(crntDate));
+    }
+
   }
 
   if (fieldType === 'select' || fieldType === 'radio') {
