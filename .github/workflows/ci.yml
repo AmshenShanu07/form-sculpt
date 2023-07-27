@@ -31,16 +31,9 @@ jobs:
       - run: npm run cs-check
 
       - name: Build with Netlify badge
-        if: github.ref != 'refs/heads/master' && matrix.node-version != '14.x'
         run: npm run build:web
         env:
           VITE_SHOW_NETLIFY_BADGE: true
-          NODE_OPTIONS: --max_old_space_size=4096
-
-      - name: Build
-        if: github.ref == 'refs/heads/master' && matrix.node-version != '14.x'
-        run: npm run build:web
-        env:
           NODE_OPTIONS: --max_old_space_size=4096
 
       - if: matrix.node-version == '18.x'
@@ -48,11 +41,13 @@ jobs:
         with:
           name: playground
           path: packages/playground/dist
+          
       - if: matrix.node-version == '18.x'
         uses: actions/upload-artifact@v3
         with:
           name: docs
           path: packages/docs/build
+
   deploy_playground_and_docs:
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/master'
