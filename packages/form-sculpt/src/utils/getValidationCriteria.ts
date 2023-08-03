@@ -48,7 +48,6 @@ const getValidationCriteria = (data: SchemaType): yup.AnyObject => {
       const crntDate = moment(new Date()).format('YYYY-MM-DD');
       yupObj = yupObj['max'](new Date(crntDate));
     }
-
   }
 
   if (fieldType === 'select' || fieldType === 'radio') {

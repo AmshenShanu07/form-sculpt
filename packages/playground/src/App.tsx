@@ -12,7 +12,6 @@ const monacoEditorOptions = {
 };
 
 function App() {
-
   const [values, setValues] = useState<string>('');
   const [formData, setFormData] = useState<string>('');
   const [schema, setSchema] = useState<string>(`[
@@ -57,24 +56,24 @@ function App() {
 
   useEffect(() => {
     try {
-      const currentData:any = {};
-      const jsonSchema:SchemaType[] = JSON.parse(schema);
+      const currentData: any = {};
+      const jsonSchema: SchemaType[] = JSON.parse(schema);
 
-      for ( const field of jsonSchema ) {
-
+      for (const field of jsonSchema) {
         if (field.fieldType === 'title' || field.fieldType === 'subTitle' || field.fieldType === 'label') {
           continue;
         }
 
-        currentData[field.key] =  "";
+        currentData[field.key] = '';
       }
-      
+
       const code = JSON.stringify(currentData, null, 2);
 
       setValues(code);
-
-    } catch (_) { /* empty */ }
-  },[schema]);
+    } catch (_) {
+      /* empty */
+    }
+  }, [schema]);
 
   const parseSchema = () => {
     try {
@@ -84,7 +83,7 @@ function App() {
     }
   };
 
-  const onSubmitForm = async (data:any) => {
+  const onSubmitForm = async (data: any) => {
     const beautifiedJsonString = JSON.stringify(data, null, 2);
     setFormData(beautifiedJsonString);
   };
@@ -106,11 +105,7 @@ function App() {
         />
       </div>
       <div className='form_container'>
-        <Form 
-          onSubmit={onSubmitForm}
-          defaultValue={JSON.parse(values||'{}')}
-          schema={parseSchema()}
-        />
+        <Form onSubmit={onSubmitForm} defaultValue={JSON.parse(values || '{}')} schema={parseSchema()} />
       </div>
 
       <div className='default_value_container'>
@@ -141,7 +136,6 @@ function App() {
           options={monacoEditorOptions}
         />
       </div>
-
     </div>
   );
 }

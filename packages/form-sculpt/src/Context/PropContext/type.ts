@@ -115,6 +115,7 @@ export interface CustomFieldProps {
   context: {
     values: any;
     errors: any;
+    schema: SchemaType[];
   };
 }
 

@@ -5,7 +5,7 @@ import { InputFieldProps } from './type';
 import { useProps } from '../../Context/PropContext/hook';
 
 const FormTextArea = (props: InputFieldProps) => {
-  const { control, data, error, onChange, } = props;
+  const { control, data, error, onChange } = props;
 
   const { inputFieldSize, templates, inputFieldStyle } = useProps();
 
@@ -31,7 +31,7 @@ const FormTextArea = (props: InputFieldProps) => {
 
           return (
             <>
-              <InputLabel sx={inputFieldStyle?.textArea?.labelStyle || {}}  >
+              <InputLabel sx={inputFieldStyle?.textArea?.labelStyle || {}}>
                 {data.fieldLabel.label}
                 {data.isRequired && <span style={{ color: 'red' }}>*</span>}
               </InputLabel>
@@ -44,7 +44,7 @@ const FormTextArea = (props: InputFieldProps) => {
                 disabled={Boolean(data.disable)}
                 minRows={3}
                 FormHelperTextProps={{
-                  sx:inputFieldStyle?.textArea?.errorStyle || {}
+                  sx: inputFieldStyle?.textArea?.errorStyle || {},
                 }}
                 size={inputFieldSize}
                 placeholder={data.fieldLabel.placeholderText}

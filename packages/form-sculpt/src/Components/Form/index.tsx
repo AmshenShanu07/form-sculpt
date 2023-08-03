@@ -16,12 +16,11 @@ const Form = (props: FormPropType) => {
     const keys = new Set();
     for (let i = 0; i < schema.length; i++) {
       const key = schema[i].key;
-      
-      
+
       if (keys.has(key)) {
         throw new Error(`Duplicate key found, key:${key} already exist`);
       }
-      
+
       if (!checkIfNonInputField(schema[i].fieldType)) {
         keys.add(key);
       }

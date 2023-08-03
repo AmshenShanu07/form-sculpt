@@ -24,7 +24,7 @@ const FormCheckboxes = (props: InputFieldProps) => {
         {data.options &&
           data.options.map((d: string, i: number) => {
             return (
-              <Box key={i} sx={{ display:'flex', flexWrap:'wrap' }} >
+              <Box key={i} sx={{ display: 'flex', flexWrap: 'wrap' }}>
                 <Controller
                   name={d}
                   control={control}
@@ -51,10 +51,11 @@ const FormCheckboxes = (props: InputFieldProps) => {
                           onClick={(e: any) => onChange(e, data, field.onChange)}
                           checked={(values[data.key] && values[data.key].includes(d)) || false}
                           control={
-                          <Checkbox 
-                            sx={inputFieldStyle?.checkboxes?.fieldStyle || {}}
-                            disabled={Boolean(data.disable)}
-                          />}
+                            <Checkbox
+                              sx={inputFieldStyle?.checkboxes?.fieldStyle || {}}
+                              disabled={Boolean(data.disable)}
+                            />
+                          }
                         />
                       </>
                     );

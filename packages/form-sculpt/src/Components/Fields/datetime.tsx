@@ -46,8 +46,8 @@ const FormDateTime = (props: InputFieldProps) => {
                   textField: {
                     fullWidth: true,
                     size: inputFieldSize,
-                    FormHelperTextProps:{
-                      sx:inputFieldStyle?.dateTime?.errorStyle || {}
+                    FormHelperTextProps: {
+                      sx: inputFieldStyle?.dateTime?.errorStyle || {},
                     },
                     error: error[data.key] || '' ? true : false,
                     helperText:

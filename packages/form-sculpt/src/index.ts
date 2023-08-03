@@ -15,7 +15,7 @@ import {
   ValidationType,
   CustomFieldI,
   CustomFieldProps,
-  CustomTemplateComponentType
+  CustomTemplateComponentType,
 } from './Context/PropContext/type';
 
 export default Form;
@@ -35,5 +35,5 @@ export {
   ValidationType,
   CustomFieldI,
   CustomFieldProps,
-  CustomTemplateComponentType
+  CustomTemplateComponentType,
 };

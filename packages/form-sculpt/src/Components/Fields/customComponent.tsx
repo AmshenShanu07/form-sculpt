@@ -8,7 +8,7 @@ import { useValueHolder } from '../../Context/DataHolderContext/hook';
 const FormCustomElement = (props: InputFieldProps) => {
   const { control, data, error, onChange } = props;
   const { values } = useValueHolder();
-  const { customFields } = useProps();
+  const { customFields, schema } = useProps();
 
   return (
     <Grid item xs={data.fieldWidth * 12}>
@@ -26,7 +26,7 @@ const FormCustomElement = (props: InputFieldProps) => {
                 value={field.value}
                 error={error[data.key] || {}}
                 onChange={(e: any) => onChange(e, data, field.onChange)}
-                context={{ values, errors: error }}
+                context={{ values, schema, errors: error }}
               />
             );
           }

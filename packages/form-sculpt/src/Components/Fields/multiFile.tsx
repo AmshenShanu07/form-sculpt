@@ -102,9 +102,7 @@ const FormMultiFileUpload = (props: InputFieldProps) => {
       <input multiple hidden accept={getInputFileAccept()} name={key} type='file' ref={inputRef} onChange={onUpload} />
       <Grid container>
         <Grid item xs={12}>
-          <InputLabel sx={inputFieldStyle?.multiFile?.labelStyle || {}} >
-            {fieldLabel.label}
-          </InputLabel>
+          <InputLabel sx={inputFieldStyle?.multiFile?.labelStyle || {}}>{fieldLabel.label}</InputLabel>
         </Grid>
         {files.map((file, i) => (
           <Grid item xs={12} sx={{ mt: i == 0 ? 2 : 0.5 }} key={i}>
