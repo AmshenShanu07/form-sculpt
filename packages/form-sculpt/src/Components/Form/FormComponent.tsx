@@ -1,4 +1,4 @@
-import { useEffect, Fragment } from 'react';
+import { useEffect, Fragment, useState } from 'react';
 
 import * as yup from 'yup';
 import getField from '../../Utils/getFields';
@@ -11,12 +11,16 @@ import getButtonTemplate from '../../Utils/getButtonTemplate';
 import { LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import getValidationCriteria from '../../Utils/getValidationCriteria';
+import { SchemaType } from '../../Context/PropContext/type';
 
 const FormComponent = () => {
+  const [init, setInit] = useState<boolean>(false);
+
   const { onSubmit, schema, defaultValue, customFields } = useProps();
   const { values, setValues, isError } = useValueHolder();
 
   useEffect(() => {
+    setInit(false);
     let tempValue: any = {};
     for (const { key, fieldType, isRequired, ...data } of schema) {
       if (fieldType === 'checkbox') {
@@ -41,21 +45,30 @@ const FormComponent = () => {
         setValue(key, defaultValue[key]);
       }
     }
-
+    
     setValues(tempValue);
+    setInit(true);
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  useEffect(() => console.log('values useEffect',values),[values]);
+
   useEffect(() => {
+
+    if (!init) return;
+
     let tempValue = { ...values };
+    
     for (const { key } of schema) {
       if (defaultValue && defaultValue[key] !== undefined) {
         tempValue = { ...tempValue, [key]: defaultValue[key] };
         setValue(key, defaultValue[key]);
       }
     }
-    setValues(tempValue);
+    console.log(tempValue);
+    
+    // setValues(tempValue);
   }, [defaultValue]);
 
   const checkIfValidationNeeded = (data: any): boolean => {
@@ -118,8 +131,6 @@ const FormComponent = () => {
 
       tempVal[key] = new Date(e);
 
-      console.log(tempVal[key]);
-      console.log(tempVal);
     }
 
     reset({ resolver: yupResolver(getYupResolver()) });
@@ -162,8 +173,8 @@ const FormComponent = () => {
     return value === ifValue;
   };
 
-  const renderFields = (fields: any[]): any => {
-    return fields.map((d: any, i: number) => {
+  const renderFields = (fields: SchemaType[]): any => {
+    return fields.map((d: SchemaType, i: number) => {
       if (d.dependentParentLabel) {
         return (
           <Fragment key={i}>
