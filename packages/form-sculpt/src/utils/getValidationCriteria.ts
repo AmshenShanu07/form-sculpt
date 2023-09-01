@@ -1,7 +1,7 @@
 import * as yup from 'yup';
 
 import { SchemaType } from '../Context/PropContext/type';
-import moment from 'moment';
+import moment, { Moment } from 'moment';
 
 const fileTypeSchema = yup.object({
   fileName: yup.string(),
@@ -18,35 +18,53 @@ const getValidationCriteria = (data: SchemaType): yup.AnyObject => {
   let yupObj: any = yup;
 
   if (fieldType === 'checkbox') {
-    yupObj = yupObj['boolean']();
+    yupObj = yupObj['boolean']().typeError(`This field must a boolean value`);
   }
 
   if (fieldType === 'checkboxes') {
     yupObj = yupObj['array']()['of'](yup.string());
 
     if (validation?.min) {
-      yupObj = yupObj['min'](validation.min);
+      yupObj = yupObj['min'](validation.min,`At least ${validation.min} option must be selected`);
     }
     if (validation?.max) {
-      yupObj = yupObj['max'](validation.max);
+      yupObj = yupObj['max'](validation.max,`At most ${validation.max} option can be selected`);
     }
 
     if (!validation?.min && isRequired) {
-      yupObj = yupObj['min'](1, `${label} is a required field`);
+      yupObj = yupObj['min'](1, `${data.key} is a required field`);
     }
   }
 
   if (fieldType === 'date' || fieldType === 'time' || fieldType === 'dateTime') {
     yupObj = yupObj['date']();
+    let crntDate:string | Moment = moment(new Date());
 
     if (validation?.preventPast) {
-      const crntDate = moment(new Date()).format('YYYY-MM-DD');
-      yupObj = yupObj['min'](new Date(crntDate));
-    }
 
-    if (validation?.preventFuture) {
-      const crntDate = moment(new Date()).format('YYYY-MM-DD');
-      yupObj = yupObj['max'](new Date(crntDate));
+      if (fieldType === 'date') {
+        crntDate = crntDate.subtract(1,'day').format('YYYY-MM-DD');
+      } else if (fieldType === 'dateTime'){
+        crntDate = crntDate.format(`MMMM Do YYYY, h:mm:ss a`);
+      } else {
+        crntDate = crntDate.format();
+      }
+
+      const validationMsg = `${data.key} must be later than ${fieldType==='time'?moment(crntDate).format('h:mm a'):crntDate}`;
+
+      yupObj = yupObj['min'](new Date(crntDate),validationMsg);
+
+    } else if (validation?.preventFuture) {
+
+       if (fieldType === 'date') {
+        crntDate = crntDate.subtract(1,'day').format('YYYY-MM-DD');
+      } else if (fieldType === 'dateTime'){
+        crntDate = crntDate.format(`MMMM Do YYYY, h:mm:ss a`);
+      } else {
+        crntDate = crntDate.format();
+      }
+      const validationMsg = `${data.key} must be later than ${fieldType==='time'?moment(crntDate).format('h:mm a'):crntDate}`;
+      yupObj = yupObj['max'](new Date(crntDate),validationMsg);
     }
   }
 
@@ -62,11 +80,11 @@ const getValidationCriteria = (data: SchemaType): yup.AnyObject => {
     yupObj = yupObj['array']()['of'](fileTypeSchema);
 
     if (validation?.min) {
-      yupObj = yupObj['min'](validation.min);
+      yupObj = yupObj['min'](validation.min,`At least ${validation.min} files must be uploaded`);
     }
 
     if (validation?.max) {
-      yupObj = yupObj['max'](validation.max);
+      yupObj = yupObj['max'](validation.max,`At Most ${validation.max} files can be selected`);
     }
 
     if (!validation?.min && isRequired) {
@@ -77,22 +95,22 @@ const getValidationCriteria = (data: SchemaType): yup.AnyObject => {
   if (fieldType === 'textField' || fieldType === 'textArea') {
     if (validation?.validation && validation.validation === 'number') {
       const { min, max } = validation;
-      yupObj = yupObj['number']();
+      yupObj = yupObj['number']().typeError(`This field field must be valid integer`);
 
-      if (min) yupObj = yupObj['min'](min);
+      if (min) yupObj = yupObj['min'](min,`This field must be greater than ${min}`);
 
       if (max) {
-        yupObj = yupObj['max'](max);
+        yupObj = yupObj['max'](max, `${data.key} must be less than ${max}`);
       }
     } else if (validation?.validation && validation.validation === 'limit') {
       const { min, max } = validation;
-      yupObj = yupObj['string']();
+      yupObj = yupObj['string']().typeError('This field must be a valid string');
 
-      if (min) yupObj = yupObj['min'](min);
+      if (min) yupObj = yupObj['min'](min,`This field must have more than ${min} characters.`);
 
-      if (max) yupObj = yupObj['max'](max);
+      if (max) yupObj = yupObj['max'](max,`This field must have fewer than ${max} characters.`);
     } else if (validation?.validation && validation.validation === 'email') {
-      yupObj = yupObj['string']()['email']();
+      yupObj = yupObj['string']()['email']('This field should be a valid email');
     } else if (validation?.validation && validation.validation === 'url') {
       yupObj = yupObj['string']()['url']();
     } else {

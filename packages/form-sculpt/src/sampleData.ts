@@ -101,6 +101,9 @@ export const sampleJsonField: SchemaType[] = [
     },
     fieldType: 'textField',
     isRequired: true,
+    validation:{
+      validation: 'number'
+    }
   },
   {
     fieldWidth: 1 / 2,
@@ -552,6 +555,10 @@ export const medAuth: SchemaType[] = [
     options: [],
     disable: false,
     key: 'DateScreening',
+    // validation:{
+    //   validation:'limit',
+    //   preventPast:true,
+    // }
   },
   {
     fieldLabel: {

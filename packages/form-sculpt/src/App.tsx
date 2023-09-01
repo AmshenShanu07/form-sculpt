@@ -28,6 +28,9 @@ const App = () => {
         schema={medAuth}
         onSubmit={(d) => console.log(d)}
         onFileUpload={uploadFile}
+        defaultValue={{
+          DateScreening: new Date()
+        }}
       />
       {/* <input type="text" value={val} onChange={(e) => setVal(e.target.value)} /> */}
     </div>

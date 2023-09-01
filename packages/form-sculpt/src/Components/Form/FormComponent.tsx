@@ -52,7 +52,6 @@ const FormComponent = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  useEffect(() => console.log('values useEffect',values),[values]);
 
   useEffect(() => {
 
@@ -66,9 +65,8 @@ const FormComponent = () => {
         setValue(key, defaultValue[key]);
       }
     }
-    console.log(tempValue);
     
-    // setValues(tempValue);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [defaultValue]);
 
   const checkIfValidationNeeded = (data: any): boolean => {
@@ -127,7 +125,6 @@ const FormComponent = () => {
 
     if (fieldType === 'date' || fieldType === 'time' || fieldType === 'dateTime') {
       delete tempVal[key];
-      console.log(key);
 
       tempVal[key] = new Date(e);
 
