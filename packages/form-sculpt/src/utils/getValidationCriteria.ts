@@ -2,11 +2,23 @@ import * as yup from 'yup';
 
 import { SchemaType } from '../Context/PropContext/type';
 import moment, { Moment } from 'moment';
+import dayjs from 'dayjs';
 
 const fileTypeSchema = yup.object({
   fileName: yup.string(),
   fileUrl: yup.string(),
 });
+
+const getFormatedDate = (fieldType:string, date:string):string => {
+  if (fieldType === 'date'){
+    return moment(date).format('DD-MM-YYYY');
+  } else if ( fieldType === 'dateTime' ) {
+    return moment(date).format('MMMM Do YYYY, h:mm a');
+  } else {
+    return moment(date).format('h:mm a');
+  }
+};
+
 
 const getValidationCriteria = (data: SchemaType): yup.AnyObject => {
   const {
@@ -43,27 +55,23 @@ const getValidationCriteria = (data: SchemaType): yup.AnyObject => {
     if (validation?.preventPast) {
 
       if (fieldType === 'date') {
-        crntDate = crntDate.subtract(1,'day').format('YYYY-MM-DD');
-      } else if (fieldType === 'dateTime'){
-        crntDate = crntDate.format(`MMMM Do YYYY, h:mm:ss a`);
+        crntDate = crntDate.format('YYYY-MM-DD');
       } else {
         crntDate = crntDate.format();
       }
 
-      const validationMsg = `${data.key} must be later than ${fieldType==='time'?moment(crntDate).format('h:mm a'):crntDate}`;
-
-      yupObj = yupObj['min'](new Date(crntDate),validationMsg);
+      const validationMsg = `${data.key} must be later than ${getFormatedDate(fieldType,crntDate)}`;
+      
+      yupObj = yupObj['min'](dayjs(crntDate),validationMsg);
 
     } else if (validation?.preventFuture) {
 
        if (fieldType === 'date') {
-        crntDate = crntDate.subtract(1,'day').format('YYYY-MM-DD');
-      } else if (fieldType === 'dateTime'){
-        crntDate = crntDate.format(`MMMM Do YYYY, h:mm:ss a`);
+        crntDate = crntDate.add(1,'day').format('YYYY-MM-DD');
       } else {
         crntDate = crntDate.format();
       }
-      const validationMsg = `${data.key} must be later than ${fieldType==='time'?moment(crntDate).format('h:mm a'):crntDate}`;
+      const validationMsg = `${data.key} must be ealier than ${getFormatedDate(fieldType,crntDate)}`;
       yupObj = yupObj['max'](new Date(crntDate),validationMsg);
     }
   }

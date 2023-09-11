@@ -5,12 +5,15 @@ import { InputFieldProps } from './type';
 import { DateTimePicker } from '@mui/x-date-pickers';
 import { useProps } from '../../Context/PropContext/hook';
 import { useValueHolder } from '../../Context/DataHolderContext/hook';
+import dayjs from 'dayjs';
 
 const FormDateTime = (props: InputFieldProps) => {
   const { control, data, error, onChange } = props;
 
   const { inputFieldSize, inputFieldStyle, templates } = useProps();
   const { values } = useValueHolder();
+
+    
 
   return (
     <Grid item xs={data.fieldWidth * 12}>
@@ -38,7 +41,7 @@ const FormDateTime = (props: InputFieldProps) => {
                 {data.isRequired && <span style={{ color: 'red' }}>*</span>}
               </InputLabel>
               <DateTimePicker
-                value={new Date(values[data.key])}
+                value={values[data.key]?dayjs(values[data.key]):null}
                 disabled={Boolean(data.disable)}
                 sx={inputFieldStyle?.textField?.fieldStyle || {}}
                 onChange={(e: any) => onChange(e, data, field.onChange)}

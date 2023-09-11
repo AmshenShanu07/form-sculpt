@@ -1,7 +1,7 @@
+// import React from 'react';
+
 import Form from './Components/Form';
 import { medAuth } from './sampleData';
-
-// import React, { useState } from 'react';
 // import { ButtonTemplateProps } from './Context/PropContext/type';
 
 // const ButtonTemplate: React.FC<ButtonTemplateProps> = ({ errors, values }) => {

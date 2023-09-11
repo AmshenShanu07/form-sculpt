@@ -549,16 +549,16 @@ export const medAuth: SchemaType[] = [
       placeholderText: 'gfhh',
       description: 'fh',
     },
-    fieldType: 'dateTime',
+    fieldType: 'time',
     fieldWidth: 1,
     isRequired: true,
     options: [],
     disable: false,
     key: 'DateScreening',
-    // validation:{
-    //   validation:'limit',
-    //   preventPast:true,
-    // }
+    validation:{
+      validation:'limit',
+      preventFuture:true,
+    }
   },
   {
     fieldLabel: {

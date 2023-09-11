@@ -2,7 +2,6 @@ import { Grid, InputLabel } from '@mui/material';
 import { Controller } from 'react-hook-form';
 
 import { InputFieldProps } from './type';
-// import moment from "moment";
 import { useProps } from '../../Context/PropContext/hook';
 import { TimePicker } from '@mui/x-date-pickers';
 import { useValueHolder } from '../../Context/DataHolderContext/hook';
