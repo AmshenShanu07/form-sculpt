@@ -144,13 +144,7 @@ const FormComponent = () => {
         delete tempVal[key];
       }
 
-      if (
-        !tempVal[key] &&
-        defaultValue &&
-        dependentParentLabel &&
-        defaultValue[key] !== undefined &&
-        checkIfValueIsEqual(tempVal[dependentParentLabel], ifValueIs)
-      ) {
+      if (defaultValue[key] !== undefined && dependentParentLabel && checkIfValueIsEqual(tempVal[dependentParentLabel],ifValueIs)) {
         tempVal[key] = defaultValue[key];
       }
 
