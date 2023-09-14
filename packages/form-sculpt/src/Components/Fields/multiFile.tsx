@@ -77,7 +77,6 @@ const FormMultiFileUpload = (props: InputFieldProps) => {
 
       tempFileUrls.push({ fileName: file.name, fileUrl: url });
     }
-    console.log(tempFileUrls);
 
     setValues({ ...values, [key]: [...tempFileUrls] });
   };
