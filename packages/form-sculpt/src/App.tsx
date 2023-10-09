@@ -29,7 +29,7 @@ const App = () => {
         onSubmit={(d) => console.log(d)}
         onFileUpload={uploadFile}
         defaultValue={{
-          Dose: val
+          Dose: 0
         }}
         templates={{
           ButtonTemplates: ButtonTemplate
