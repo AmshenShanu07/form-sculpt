@@ -76,13 +76,18 @@ export type FieldType =
   | 'multiFile'
   | 'custom';
 
+export type OptionsType = {
+  key: string;
+  label: string;
+} 
+
 export type SchemaType = {
   key: string;
   ifValueIs?: any;
   disable?: boolean;
   defaultValue?: any;
   fieldWidth: number;
-  options?: string[];
+  options?: OptionsType[];
   isRequired: boolean;
   fieldType: FieldType;
   fieldLabel: FieldLabelType;

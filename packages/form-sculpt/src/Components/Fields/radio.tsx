@@ -3,6 +3,7 @@ import { Controller } from 'react-hook-form';
 
 import { InputFieldProps } from './type';
 import { useProps } from '../../Context/PropContext/hook';
+import { OptionsType } from '../../Context/PropContext/type';
 
 const FormRadio = (props: InputFieldProps) => {
   const { control, data, error, onChange } = props;
@@ -36,11 +37,11 @@ const FormRadio = (props: InputFieldProps) => {
               </InputLabel>
               <RadioGroup row {...field} onChange={(e: any) => onChange(e, data, field.onChange)}>
                 {data?.options &&
-                  data?.options.map((d: any, i: number) => (
+                  data?.options.map((d: OptionsType, i: number) => (
                     <FormControlLabel
                       key={i}
-                      value={d}
-                      label={d}
+                      value={d.key}
+                      label={d.label}
                       disabled={Boolean(data.disable)}
                       sx={inputFieldStyle?.radio?.labelStyle || {}}
                       control={<Radio size={inputFieldSize} sx={inputFieldStyle?.radio?.fieldStyle || {}} />}

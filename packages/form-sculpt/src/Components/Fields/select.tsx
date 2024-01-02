@@ -3,6 +3,7 @@ import { Controller } from 'react-hook-form';
 
 import { InputFieldProps } from './type';
 import { useProps } from '../../Context/PropContext/hook';
+import { OptionsType } from '../../Context/PropContext/type';
 
 const FormSelect = (props: InputFieldProps) => {
   const { control, data, error, onChange } = props;
@@ -54,9 +55,9 @@ const FormSelect = (props: InputFieldProps) => {
                 size={inputFieldSize}
               >
                 {!data.isRequired && <MenuItem value='none'>None</MenuItem>}
-                {data.options?.map((d: string, i: number) => (
-                  <MenuItem value={d} key={i}>
-                    {d}
+                {data.options?.map((d: OptionsType, i: number) => (
+                  <MenuItem value={d.key} key={i}>
+                    {d.label}
                   </MenuItem>
                 ))}
               </TextField>

@@ -1,22 +1,19 @@
-import React, { useState } from 'react';
-
 import Form from './Components/Form';
-import { chartMar } from './sampleData';
-import { ButtonTemplateProps } from './Context/PropContext/type';
+import { sampleJsonField } from './sampleData';
+// import { ButtonTemplateProps } from './Context/PropContext/type';
 
-const ButtonTemplate: React.FC<ButtonTemplateProps> = ({ errors, values }) => {
+// const ButtonTemplate: React.FC<ButtonTemplateProps> = ({ errors, values }) => {
   
-  return (
-    <React.Fragment>
-      <button type='submit'>Submit</button>
-      <button onClick={() => console.log(errors)}>Errors</button>
-      <button onClick={() => console.log(values)}>Values</button>
-    </React.Fragment>
-  );
-};
+//   return (
+//     <React.Fragment>
+//       <button type='submit'>Submit</button>
+//       <button onClick={() => console.log(errors)}>Errors</button>
+//       <button onClick={() => console.log(values)}>Values</button>
+//     </React.Fragment>
+//   );
+// };
 
 const App = () => {
-  const [val, setVal] = useState<string>("12");
   const uploadFile = async (file: File) => {
     const url = await URL.createObjectURL(file);
     return url;
@@ -25,17 +22,10 @@ const App = () => {
   return (
     <div>
       <Form
-        schema={chartMar}
+        schema={sampleJsonField}
         onSubmit={(d) => console.log(d)}
         onFileUpload={uploadFile}
-        defaultValue={{
-          Dose: 0
-        }}
-        templates={{
-          ButtonTemplates: ButtonTemplate
-        }}
       />
-      <input type="text" value={val} onChange={(e) => setVal(e.target.value)} />
     </div>
   );
 };
