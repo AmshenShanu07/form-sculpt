@@ -49,7 +49,7 @@ const FormSelect = (props: InputFieldProps) => {
                 }
                 select
                 FormHelperTextProps={{
-                  sx:inputFieldStyle?.select?.errorStyle || {}
+                  sx: inputFieldStyle?.select?.errorStyle || {},
                 }}
                 size={inputFieldSize}
               >

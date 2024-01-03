@@ -54,7 +54,7 @@ const FormTextField = (props: InputFieldProps) => {
                 placeholder={data.fieldLabel.placeholderText}
                 error={error[data.key] || '' ? true : false}
                 FormHelperTextProps={{
-                  sx:inputFieldStyle?.textField?.errorStyle || {}
+                  sx: inputFieldStyle?.textField?.errorStyle || {},
                 }}
                 helperText={
                   error[data.key] || ''

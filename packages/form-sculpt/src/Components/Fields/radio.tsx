@@ -47,7 +47,7 @@ const FormRadio = (props: InputFieldProps) => {
                     />
                   ))}
               </RadioGroup>
-              <Typography  sx={inputFieldStyle?.radio?.errorStyle || {}} variant='subtitle2' color='#d32f2f'>
+              <Typography sx={inputFieldStyle?.radio?.errorStyle || {}} variant='subtitle2' color='#d32f2f'>
                 {error[data.key] || ''
                   ? (error[data.key]?.message as string).replace(data.key, data.fieldLabel.label)
                   : ''}

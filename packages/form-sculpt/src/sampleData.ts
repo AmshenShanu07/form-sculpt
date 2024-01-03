@@ -43,7 +43,7 @@ export const sampleJsonField: SchemaType[] = [
       description: 'some description about the field',
     },
     fieldType: 'checkboxes',
-    options: [ "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+    options: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
     isRequired: false,
   },
   {
@@ -87,7 +87,7 @@ export const sampleJsonField: SchemaType[] = [
       description: '',
       placeholderText: '',
     },
-    disable: true,
+    disable: false,
     fieldType: 'checkbox',
     isRequired: false,
   },
@@ -101,6 +101,9 @@ export const sampleJsonField: SchemaType[] = [
     },
     fieldType: 'textField',
     isRequired: true,
+    validation: {
+      validation: 'number',
+    },
   },
   {
     fieldWidth: 1 / 2,
@@ -442,1761 +445,213 @@ export const sampleJsonField: SchemaType[] = [
   },
 ];
 
-export const medAuth: SchemaType[] = [
-  {
-    "fieldLabel": {
-      "label": "General Details",
-      "placeholderText": "General Details",
-      "description": "General Details"
-    },
-    "fieldType": "subTitle",
-    "fieldWidth": 1,
-    "isRequired": false,
-    "options": [],
-    "key": "GeneralDetails"
-  },
-  {
-    "fieldLabel": {
-      "label": "School Year",
-      "placeholderText": "School Year",
-      "description": "School Year"
-    },
-    "fieldType": "select",
-    "fieldWidth": 1,
-    "isRequired": true,
-    "options": ["2022-2023", "2021-2022"],
-    "key": "SchoolYear"
-  },
-  {
-    "fieldLabel": {
-      "label": "Time of 1st Meds",
-      "placeholderText": "Time of 1st Meds",
-      "description": "Time of 1st Meds"
-    },
-    "fieldType": "time",
-    "fieldWidth": 1,
-    "isRequired": true,
-    "options": [],
-    "key": "Timeof1stMeds"
-  },
-  {
-    "fieldLabel": {
-      "label": "Medication Details",
-      "placeholderText": "Medication Details",
-      "description": "Medication Details"
-    },
-    "fieldType": "subTitle",
-    "fieldWidth": 1,
-    "isRequired": false,
-    "options": [],
-    "key": "MedicationDetails"
-  },
-  {
-    "fieldLabel": {
-      "label": "Medication Name",
-      "placeholderText": "Medication Name",
-      "description": "Medication Name"
-    },
-    "fieldType": "textField",
-    "fieldWidth": 0.5,
-    "isRequired": true,
-    "disable": true,
-    "key": "MedicationName"
-  },
-  {
-    "fieldLabel": {
-      "label": "Dose",
-      "placeholderText": "Dose",
-      "description": "Dose"
-    },
-    "fieldType": "textField",
-    "fieldWidth": 0.5,
-    "isRequired": true,
-    "disable": false,
-    "key": "Dose"
-  },
-  {
-    "fieldLabel": {
-      "label": "Medication Form",
-      "placeholderText": "Medication Form",
-      "description": "Medication Form"
-    },
-    "fieldType": "select",
-    "fieldWidth": 0.5,
-    "isRequired": true,
-    "options": ["Capsules", "Tablets", "Liquid"],
-    "disable": true,
-    "key": "MedicationForm"
-  },
-  {
-    "fieldLabel": {
-      "label": "Expiry Date",
-      "placeholderText": "Expiry Date",
-      "description": "Expiry Date"
-    },
-    "fieldType": "date",
-    "fieldWidth": 0.5,
-    "isRequired": true,
-    "options": [],
-    "key": "ExpiryDate"
-  },
-  {
-    "fieldLabel": {
-      "label": "Medication Status",
-      "placeholderText": "Medication Status",
-      "description": "Medication Status"
-    },
-    "fieldType": "radio",
-    "fieldWidth": 0.5,
-    "isRequired": true,
-    "options": ["Discontinued", "Active"],
-    "key": "MedicationStatus"
-  },
-  {
-    "fieldLabel": {
-      "label": "Prescription Details",
-      "placeholderText": "Prescription Details",
-      "description": "Prescription Details"
-    },
-    "fieldType": "subTitle",
-    "fieldWidth": 1,
-    "isRequired": false,
-    "options": [],
-    "key": "PrescriptionDetails"
-  },
-  {
-    "fieldLabel": {
-      "label": "RX Number",
-      "placeholderText": "RX Number",
-      "description": "RX Number"
-    },
-    "fieldType": "textField",
-    "fieldWidth": 0.5,
-    "isRequired": false,
-    "key": "RXNumber"
-  },
-  {
-    "fieldLabel": {
-      "label": "RX Provider Name",
-      "placeholderText": "RX Provider Name",
-      "description": "RX Provider Name"
-    },
-    "fieldType": "textField",
-    "fieldWidth": 0.5,
-    "isRequired": false,
-    "key": "RXProviderName"
-  },
-  {
-    "fieldLabel": {
-      "label": "Available Quantity",
-      "placeholderText": "Available Quantity",
-      "description": "Available Quantity"
-    },
-    "fieldType": "textField",
-    "fieldWidth": 0.5,
-    "isRequired": true,
-    "key": "AvailableQuantity"
-  },
-  {
-    "fieldLabel": {
-      "label": "Quantity Received",
-      "placeholderText": "Quantity Received",
-      "description": "Quantity Received"
-    },
-    "fieldType": "textField",
-    "fieldWidth": 0.5,
-    "isRequired": true,
-    "key": "QuantityReceived"
-  },
-  {
-    "fieldLabel": {
-      "label": "Reorder Quantity",
-      "placeholderText": "Reorder Quantity",
-      "description": "Reorder Quantity"
-    },
-    "fieldType": "textField",
-    "fieldWidth": 0.5,
-    "isRequired": true,
-    "key": "ReorderQuantity",
-    "validation": { "validation": "number" }
-  },
-  {
-    "fieldLabel": {
-      "label": "RX label ",
-      "placeholderText": "RX label ",
-      "description": "RX label "
-    },
-    "fieldType": "file",
-    "fieldWidth": 0.5,
-    "isRequired": false,
-    "options": [],
-    "key": "RXlabel"
-  },
-  {
-    "fieldLabel": {
-      "label": "Timing Details",
-      "placeholderText": "Timing Details",
-      "description": "Timing Details"
-    },
-    "fieldType": "subTitle",
-    "fieldWidth": 1,
-    "isRequired": false,
-    "options": [],
-    "key": "TimingDetails"
-  },
-  {
-    "fieldLabel": {
-      "label": "As Needed",
-      "placeholderText": "As Needed",
-      "description": "As Needed"
-    },
-    "fieldType": "checkbox",
-    "fieldWidth": 0.5,
-    "isRequired": false,
-    "options": [],
-    "key": "AsNeeded"
-  },
-  {
-    "fieldLabel": {
-      "label": "Dosage Unit",
-      "placeholderText": "Dosage Unit",
-      "description": "Dosage Unit"
-    },
-    "fieldType": "textField",
-    "fieldWidth": 1,
-    "isRequired": true,
-    "ifValueIs": true,
-    "key": "AsNeededIfValueOfDosageUnitIstrue",
-    "dependentParentLabel": "AsNeeded"
-  },
-  {
-    "fieldLabel": {
-      "label": "Times Per Day",
-      "placeholderText": "Times Per Day",
-      "description": "Times Per Day"
-    },
-    "fieldType": "select",
-    "fieldWidth": 1,
-    "isRequired": false,
-    "options": ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"],
-    "key": "TimesPerDay"
-  },
-  {
-    "fieldLabel": {
-      "label": "Time of Medicine 1",
-      "placeholderText": "Time of Medicine 1",
-      "description": "Time of Medicine 1"
-    },
-    "fieldType": "time",
-    "fieldWidth": 0.5,
-    "isRequired": false,
-    "ifValueIs": "1",
-    "options": [],
-    "key": "TimesPerDayIfValueOfTimeofMedicine1Is1",
-    "dependentParentLabel": "TimesPerDay"
-  },
-  {
-    "fieldLabel": {
-      "label": "Dosage of Medicine 1",
-      "placeholderText": "Dosage of Medicine 1",
-      "description": "Dosage of Medicine 1"
-    },
-    "fieldType": "textField",
-    "fieldWidth": 0.5,
-    "isRequired": false,
-    "ifValueIs": "1",
-    "key": "TimesPerDayIfValueOfDosageofMedicine1Is1",
-    "dependentParentLabel": "TimesPerDay"
-  },
-  {
-    "fieldLabel": {
-      "label": "Time of Medicine 1",
-      "placeholderText": "Time of Medicine 1",
-      "description": "Time of Medicine 1"
-    },
-    "fieldType": "time",
-    "fieldWidth": 0.5,
-    "isRequired": false,
-    "ifValueIs": "2",
-    "options": [],
-    "key": "TimesPerDayIfValueOfTimeofMedicine1Is2",
-    "dependentParentLabel": "TimesPerDay"
-  },
-  {
-    "fieldLabel": {
-      "label": "Dosage of Medicine 1",
-      "placeholderText": "Dosage of Medicine 1",
-      "description": "Dosage of Medicine 1"
-    },
-    "fieldType": "textField",
-    "fieldWidth": 0.5,
-    "isRequired": false,
-    "ifValueIs": "2",
-    "key": "TimesPerDayIfValueOfDosageofMedicine1Is2",
-    "dependentParentLabel": "TimesPerDay"
-  },
-  {
-    "fieldLabel": {
-      "label": "Time of Medicine 1",
-      "placeholderText": "Time of Medicine 1",
-      "description": "Time of Medicine 1"
-    },
-    "fieldType": "time",
-    "fieldWidth": 0.5,
-    "isRequired": false,
-    "ifValueIs": "3",
-    "options": [],
-    "key": "TimesPerDayIfValueOfTimeofMedicine1Is3",
-    "dependentParentLabel": "TimesPerDay"
-  },
-  {
-    "fieldLabel": {
-      "label": "Dosage of Medicine 1",
-      "placeholderText": "Dosage of Medicine 1",
-      "description": "Dosage of Medicine 1"
-    },
-    "fieldType": "textField",
-    "fieldWidth": 0.5,
-    "isRequired": false,
-    "ifValueIs": "3",
-    "key": "TimesPerDayIfValueOfDosageofMedicine1Is3",
-    "dependentParentLabel": "TimesPerDay"
-  },
-  {
-    "fieldLabel": {
-      "label": "Time of Medicine 2",
-      "placeholderText": "Time of Medicine 2",
-      "description": "Time of Medicine 2"
-    },
-    "fieldType": "time",
-    "fieldWidth": 0.5,
-    "isRequired": false,
-    "ifValueIs": "3",
-    "options": [],
-    "key": "TimesPerDayIfValueOfTimeofMedicine2Is3",
-    "dependentParentLabel": "TimesPerDay"
-  },
-  {
-    "fieldLabel": {
-      "label": "Time of Medicine 1",
-      "placeholderText": "Time of Medicine 1",
-      "description": "Time of Medicine 1"
-    },
-    "fieldType": "time",
-    "fieldWidth": 0.5,
-    "isRequired": false,
-    "ifValueIs": "4",
-    "options": [],
-    "key": "TimesPerDayIfValueOfTimeofMedicine1Is4",
-    "dependentParentLabel": "TimesPerDay"
-  },
-  {
-    "fieldLabel": {
-      "label": "Dosage of Medicine 1",
-      "placeholderText": "Dosage of Medicine 1",
-      "description": "Dosage of Medicine 1"
-    },
-    "fieldType": "textField",
-    "fieldWidth": 0.5,
-    "isRequired": false,
-    "ifValueIs": "4",
-    "key": "TimesPerDayIfValueOfDosageofMedicine1Is4",
-    "dependentParentLabel": "TimesPerDay"
-  },
-  {
-    "fieldLabel": {
-      "label": "Time of Medicine 2",
-      "placeholderText": "Time of Medicine 2",
-      "description": "Time of Medicine 2"
-    },
-    "fieldType": "time",
-    "fieldWidth": 0.5,
-    "isRequired": false,
-    "ifValueIs": "4",
-    "options": [],
-    "key": "TimesPerDayIfValueOfTimeofMedicine2Is4",
-    "dependentParentLabel": "TimesPerDay"
-  },
-  {
-    "fieldLabel": {
-      "label": "Dosage of Medicine 2",
-      "placeholderText": "Dosage of Medicine 2",
-      "description": "Dosage of Medicine 2"
-    },
-    "fieldType": "textField",
-    "fieldWidth": 0.5,
-    "isRequired": false,
-    "ifValueIs": "4",
-    "key": "TimesPerDayIfValueOfDosageofMedicine2Is4",
-    "dependentParentLabel": "TimesPerDay"
-  },
-  {
-    "fieldLabel": {
-      "label": "Time of Medicine 1",
-      "placeholderText": "Time of Medicine 1",
-      "description": "Time of Medicine 1"
-    },
-    "fieldType": "time",
-    "fieldWidth": 0.5,
-    "isRequired": false,
-    "ifValueIs": "5",
-    "options": [],
-    "key": "TimesPerDayIfValueOfTimeofMedicine1Is5",
-    "dependentParentLabel": "TimesPerDay"
-  },
-  {
-    "fieldLabel": {
-      "label": "Dosage of Medicine 1",
-      "placeholderText": "Dosage of Medicine 1",
-      "description": "Dosage of Medicine 1"
-    },
-    "fieldType": "textField",
-    "fieldWidth": 0.5,
-    "isRequired": false,
-    "ifValueIs": "5",
-    "key": "TimesPerDayIfValueOfDosageofMedicine1Is5",
-    "dependentParentLabel": "TimesPerDay"
-  },
-  {
-    "fieldLabel": {
-      "label": "Time of Medicine 2",
-      "placeholderText": "Time of Medicine 2",
-      "description": "Time of Medicine 2"
-    },
-    "fieldType": "time",
-    "fieldWidth": 0.5,
-    "isRequired": false,
-    "ifValueIs": "5",
-    "options": [],
-    "key": "TimesPerDayIfValueOfTimeofMedicine2Is5",
-    "dependentParentLabel": "TimesPerDay"
-  },
-  {
-    "fieldLabel": {
-      "label": "Dosage of Medicine 2",
-      "placeholderText": "Dosage of Medicine 2",
-      "description": "Dosage of Medicine 2"
-    },
-    "fieldType": "textField",
-    "fieldWidth": 0.5,
-    "isRequired": false,
-    "ifValueIs": "5",
-    "key": "TimesPerDayIfValueOfDosageofMedicine2Is5",
-    "dependentParentLabel": "TimesPerDay"
-  },
-  {
-    "fieldLabel": {
-      "label": "Time of Medicine 3",
-      "placeholderText": "Time of Medicine 3",
-      "description": "Time of Medicine 3"
-    },
-    "fieldType": "time",
-    "fieldWidth": 0.5,
-    "isRequired": false,
-    "ifValueIs": "5",
-    "options": [],
-    "key": "TimesPerDayIfValueOfTimeofMedicine3Is5",
-    "dependentParentLabel": "TimesPerDay"
-  },
-  {
-    "fieldLabel": {
-      "label": "Time of Medicine 1",
-      "placeholderText": "Time of Medicine 1",
-      "description": "Time of Medicine 1"
-    },
-    "fieldType": "time",
-    "fieldWidth": 0.5,
-    "isRequired": false,
-    "ifValueIs": "6",
-    "options": [],
-    "key": "TimesPerDayIfValueOfTimeofMedicine1Is6",
-    "dependentParentLabel": "TimesPerDay"
-  },
-  {
-    "fieldLabel": {
-      "label": "Dosage of Medicine 1",
-      "placeholderText": "Dosage of Medicine 1",
-      "description": "Dosage of Medicine 1"
-    },
-    "fieldType": "textField",
-    "fieldWidth": 0.5,
-    "isRequired": false,
-    "ifValueIs": "6",
-    "key": "TimesPerDayIfValueOfDosageofMedicine1Is6",
-    "dependentParentLabel": "TimesPerDay"
-  },
-  {
-    "fieldLabel": {
-      "label": "Time of Medicine 2",
-      "placeholderText": "Time of Medicine 2",
-      "description": "Time of Medicine 2"
-    },
-    "fieldType": "time",
-    "fieldWidth": 0.5,
-    "isRequired": false,
-    "ifValueIs": "6",
-    "options": [],
-    "key": "TimesPerDayIfValueOfTimeofMedicine2Is6",
-    "dependentParentLabel": "TimesPerDay"
-  },
-  {
-    "fieldLabel": {
-      "label": "Dosage of Medicine 2",
-      "placeholderText": "Dosage of Medicine 2",
-      "description": "Dosage of Medicine 2"
-    },
-    "fieldType": "textField",
-    "fieldWidth": 0.5,
-    "isRequired": false,
-    "ifValueIs": "6",
-    "key": "TimesPerDayIfValueOfDosageofMedicine2Is6",
-    "dependentParentLabel": "TimesPerDay"
-  },
-  {
-    "fieldLabel": {
-      "label": "Time of Medicine 3",
-      "placeholderText": "Time of Medicine 3",
-      "description": "Time of Medicine 3"
-    },
-    "fieldType": "time",
-    "fieldWidth": 0.5,
-    "isRequired": false,
-    "ifValueIs": "6",
-    "options": [],
-    "key": "TimesPerDayIfValueOfTimeofMedicine3Is6",
-    "dependentParentLabel": "TimesPerDay"
-  },
-  {
-    "fieldLabel": {
-      "label": "Dosage of Medicine 3",
-      "placeholderText": "Dosage of Medicine 3",
-      "description": "Dosage of Medicine 3"
-    },
-    "fieldType": "textField",
-    "fieldWidth": 0.5,
-    "isRequired": false,
-    "ifValueIs": "6",
-    "key": "TimesPerDayIfValueOfDosageofMedicine3Is6",
-    "dependentParentLabel": "TimesPerDay"
-  },
-  {
-    "fieldLabel": {
-      "label": "Time of Medicine 1",
-      "placeholderText": "Time of Medicine 1",
-      "description": "Time of Medicine 1"
-    },
-    "fieldType": "time",
-    "fieldWidth": 0.5,
-    "isRequired": false,
-    "ifValueIs": "7",
-    "options": [],
-    "key": "TimesPerDayIfValueOfTimeofMedicine1Is7",
-    "dependentParentLabel": "TimesPerDay"
-  },
-  {
-    "fieldLabel": {
-      "label": "Dosage of Medicine 1",
-      "placeholderText": "Dosage of Medicine 1",
-      "description": "Dosage of Medicine 1"
-    },
-    "fieldType": "textField",
-    "fieldWidth": 0.5,
-    "isRequired": false,
-    "ifValueIs": "7",
-    "key": "TimesPerDayIfValueOfDosageofMedicine1Is7",
-    "dependentParentLabel": "TimesPerDay"
-  },
-  {
-    "fieldLabel": {
-      "label": "Time of Medicine 2",
-      "placeholderText": "Time of Medicine 2",
-      "description": "Time of Medicine 2"
-    },
-    "fieldType": "time",
-    "fieldWidth": 0.5,
-    "isRequired": false,
-    "ifValueIs": "7",
-    "options": [],
-    "key": "TimesPerDayIfValueOfTimeofMedicine2Is7",
-    "dependentParentLabel": "TimesPerDay"
-  },
-  {
-    "fieldLabel": {
-      "label": "Dosage of Medicine 2",
-      "placeholderText": "Dosage of Medicine 2",
-      "description": "Dosage of Medicine 2"
-    },
-    "fieldType": "textField",
-    "fieldWidth": 0.5,
-    "isRequired": false,
-    "ifValueIs": "7",
-    "key": "TimesPerDayIfValueOfDosageofMedicine2Is7",
-    "dependentParentLabel": "TimesPerDay"
-  },
-  {
-    "fieldLabel": {
-      "label": "Time of Medicine 3",
-      "placeholderText": "Time of Medicine 3",
-      "description": "Time of Medicine 3"
-    },
-    "fieldType": "time",
-    "fieldWidth": 0.5,
-    "isRequired": false,
-    "ifValueIs": "7",
-    "options": [],
-    "key": "TimesPerDayIfValueOfTimeofMedicine3Is7",
-    "dependentParentLabel": "TimesPerDay"
-  },
-  {
-    "fieldLabel": {
-      "label": "Dosage of Medicine 3",
-      "placeholderText": "Dosage of Medicine 3",
-      "description": "Dosage of Medicine 3"
-    },
-    "fieldType": "textField",
-    "fieldWidth": 0.5,
-    "isRequired": false,
-    "ifValueIs": "7",
-    "key": "TimesPerDayIfValueOfDosageofMedicine3Is7",
-    "dependentParentLabel": "TimesPerDay"
-  },
-  {
-    "fieldLabel": {
-      "label": "Time of Medicine 4",
-      "placeholderText": "Time of Medicine 4",
-      "description": "Time of Medicine 4"
-    },
-    "fieldType": "time",
-    "fieldWidth": 0.5,
-    "isRequired": false,
-    "ifValueIs": "7",
-    "options": [],
-    "key": "TimesPerDayIfValueOfTimeofMedicine4Is7",
-    "dependentParentLabel": "TimesPerDay"
-  },
-  {
-    "fieldLabel": {
-      "label": "Time of Medicine 1",
-      "placeholderText": "Time of Medicine 1",
-      "description": "Time of Medicine 1"
-    },
-    "fieldType": "textField",
-    "fieldWidth": 0.5,
-    "isRequired": false,
-    "ifValueIs": "8",
-    "key": "TimesPerDayIfValueOfTimeofMedicine1Is8",
-    "dependentParentLabel": "TimesPerDay"
-  },
-  {
-    "fieldLabel": {
-      "label": "Dosage of Medicine 1",
-      "placeholderText": "Dosage of Medicine 1",
-      "description": "Dosage of Medicine 1"
-    },
-    "fieldType": "textField",
-    "fieldWidth": 0.5,
-    "isRequired": false,
-    "ifValueIs": "8",
-    "key": "TimesPerDayIfValueOfDosageofMedicine1Is8",
-    "dependentParentLabel": "TimesPerDay"
-  },
-  {
-    "fieldLabel": {
-      "label": "Time of Medicine 2",
-      "placeholderText": "Time of Medicine 2",
-      "description": "Time of Medicine 2"
-    },
-    "fieldType": "time",
-    "fieldWidth": 0.5,
-    "isRequired": false,
-    "ifValueIs": "8",
-    "options": [],
-    "key": "TimesPerDayIfValueOfTimeofMedicine2Is8",
-    "dependentParentLabel": "TimesPerDay"
-  },
-  {
-    "fieldLabel": {
-      "label": "Dosage of Medicine 2",
-      "placeholderText": "Dosage of Medicine 2",
-      "description": "Dosage of Medicine 2"
-    },
-    "fieldType": "textField",
-    "fieldWidth": 0.5,
-    "isRequired": false,
-    "ifValueIs": "8",
-    "key": "TimesPerDayIfValueOfDosageofMedicine2Is8",
-    "dependentParentLabel": "TimesPerDay"
-  },
-  {
-    "fieldLabel": {
-      "label": "Time of Medicine 3",
-      "placeholderText": "Time of Medicine 3",
-      "description": "Time of Medicine 3"
-    },
-    "fieldType": "time",
-    "fieldWidth": 0.5,
-    "isRequired": false,
-    "ifValueIs": "8",
-    "options": [],
-    "key": "TimesPerDayIfValueOfTimeofMedicine3Is8",
-    "dependentParentLabel": "TimesPerDay"
-  },
-  {
-    "fieldLabel": {
-      "label": "Dosage of Medicine 3",
-      "placeholderText": "Dosage of Medicine 3",
-      "description": "Dosage of Medicine 3"
-    },
-    "fieldType": "textField",
-    "fieldWidth": 0.5,
-    "isRequired": false,
-    "ifValueIs": "8",
-    "key": "TimesPerDayIfValueOfDosageofMedicine3Is8",
-    "dependentParentLabel": "TimesPerDay"
-  },
-  {
-    "fieldLabel": {
-      "label": "Time of Medicine 4",
-      "placeholderText": "Time of Medicine 4",
-      "description": "Time of Medicine 4"
-    },
-    "fieldType": "time",
-    "fieldWidth": 0.5,
-    "isRequired": false,
-    "ifValueIs": "8",
-    "options": [],
-    "key": "TimesPerDayIfValueOfTimeofMedicine4Is8",
-    "dependentParentLabel": "TimesPerDay"
-  },
-  {
-    "fieldLabel": {
-      "label": "Dosage of Medicine 4",
-      "placeholderText": "Dosage of Medicine 4",
-      "description": "Dosage of Medicine 4"
-    },
-    "fieldType": "textField",
-    "fieldWidth": 0.5,
-    "isRequired": false,
-    "ifValueIs": "8",
-    "key": "TimesPerDayIfValueOfDosageofMedicine4Is8",
-    "dependentParentLabel": "TimesPerDay"
-  },
-  {
-    "fieldLabel": {
-      "label": "Time of Medicine 1",
-      "placeholderText": "Time of Medicine 1",
-      "description": "Time of Medicine 1"
-    },
-    "fieldType": "time",
-    "fieldWidth": 0.5,
-    "isRequired": false,
-    "ifValueIs": "9",
-    "options": [],
-    "key": "TimesPerDayIfValueOfTimeofMedicine1Is9",
-    "dependentParentLabel": "TimesPerDay"
-  },
-  {
-    "fieldLabel": {
-      "label": "Dosage of Medicine 1",
-      "placeholderText": "Dosage of Medicine 1",
-      "description": "Dosage of Medicine 1"
-    },
-    "fieldType": "textField",
-    "fieldWidth": 0.5,
-    "isRequired": false,
-    "ifValueIs": "9",
-    "key": "TimesPerDayIfValueOfDosageofMedicine1Is9",
-    "dependentParentLabel": "TimesPerDay"
-  },
-  {
-    "fieldLabel": {
-      "label": "Time of Medicine 2",
-      "placeholderText": "Time of Medicine 2",
-      "description": "Time of Medicine 2"
-    },
-    "fieldType": "time",
-    "fieldWidth": 0.5,
-    "isRequired": false,
-    "ifValueIs": "9",
-    "options": [],
-    "key": "TimesPerDayIfValueOfTimeofMedicine2Is9",
-    "dependentParentLabel": "TimesPerDay"
-  },
-  {
-    "fieldLabel": {
-      "label": "Dosage of Medicine 2",
-      "placeholderText": "Dosage of Medicine 2",
-      "description": "Dosage of Medicine 2"
-    },
-    "fieldType": "textField",
-    "fieldWidth": 0.5,
-    "isRequired": false,
-    "ifValueIs": "9",
-    "key": "TimesPerDayIfValueOfDosageofMedicine2Is9",
-    "dependentParentLabel": "TimesPerDay"
-  },
-  {
-    "fieldLabel": {
-      "label": "Time of Medicine 3",
-      "placeholderText": "Time of Medicine 3",
-      "description": "Time of Medicine 3"
-    },
-    "fieldType": "time",
-    "fieldWidth": 0.5,
-    "isRequired": false,
-    "ifValueIs": "9",
-    "options": [],
-    "key": "TimesPerDayIfValueOfTimeofMedicine3Is9",
-    "dependentParentLabel": "TimesPerDay"
-  },
-  {
-    "fieldLabel": {
-      "label": "Dosage of Medicine 3",
-      "placeholderText": "Dosage of Medicine 3",
-      "description": "Dosage of Medicine 3"
-    },
-    "fieldType": "textField",
-    "fieldWidth": 0.5,
-    "isRequired": false,
-    "ifValueIs": "9",
-    "key": "TimesPerDayIfValueOfDosageofMedicine3Is9",
-    "dependentParentLabel": "TimesPerDay"
-  },
-  {
-    "fieldLabel": {
-      "label": "Time of Medicine 4",
-      "placeholderText": "Time of Medicine 4",
-      "description": "Time of Medicine 4"
-    },
-    "fieldType": "time",
-    "fieldWidth": 0.5,
-    "isRequired": false,
-    "ifValueIs": "9",
-    "options": [],
-    "key": "TimesPerDayIfValueOfTimeofMedicine4Is9",
-    "dependentParentLabel": "TimesPerDay"
-  },
-  {
-    "fieldLabel": {
-      "label": "Dosage of Medicine 4",
-      "placeholderText": "Dosage of Medicine 4",
-      "description": "Dosage of Medicine 4"
-    },
-    "fieldType": "textField",
-    "fieldWidth": 0.5,
-    "isRequired": false,
-    "ifValueIs": "9",
-    "key": "TimesPerDayIfValueOfDosageofMedicine4Is9",
-    "dependentParentLabel": "TimesPerDay"
-  },
-  {
-    "fieldLabel": {
-      "label": "Time of Medicine 5",
-      "placeholderText": "Time of Medicine 5",
-      "description": "Time of Medicine 5"
-    },
-    "fieldType": "time",
-    "fieldWidth": 0.5,
-    "isRequired": false,
-    "ifValueIs": "9",
-    "options": [],
-    "key": "TimesPerDayIfValueOfTimeofMedicine5Is9",
-    "dependentParentLabel": "TimesPerDay"
-  },
-  {
-    "fieldLabel": {
-      "label": "Time of Medicine 1",
-      "placeholderText": "Time of Medicine 1",
-      "description": "Time of Medicine 1"
-    },
-    "fieldType": "time",
-    "fieldWidth": 0.5,
-    "isRequired": false,
-    "ifValueIs": "10",
-    "options": [],
-    "key": "TimesPerDayIfValueOfTimeofMedicine1Is10",
-    "dependentParentLabel": "TimesPerDay"
-  },
-  {
-    "fieldLabel": {
-      "label": "Dosage of Medicine 1",
-      "placeholderText": "Dosage of Medicine 1",
-      "description": "Dosage of Medicine 1"
-    },
-    "fieldType": "textField",
-    "fieldWidth": 0.5,
-    "isRequired": false,
-    "ifValueIs": "10",
-    "options": [],
-    "key": "TimesPerDayIfValueOfDosageofMedicine1Is10",
-    "dependentParentLabel": "TimesPerDay"
-  },
-  {
-    "fieldLabel": {
-      "label": "Time of Medicine 2",
-      "placeholderText": "Time of Medicine 2",
-      "description": "Time of Medicine 2"
-    },
-    "fieldType": "time",
-    "fieldWidth": 0.5,
-    "isRequired": false,
-    "ifValueIs": "10",
-    "options": [],
-    "key": "TimesPerDayIfValueOfTimeofMedicine2Is10",
-    "dependentParentLabel": "TimesPerDay"
-  },
-  {
-    "fieldLabel": {
-      "label": "Dosage of Medicine 2",
-      "placeholderText": "Dosage of Medicine 2",
-      "description": "Dosage of Medicine 2"
-    },
-    "fieldType": "textField",
-    "fieldWidth": 0.5,
-    "isRequired": false,
-    "ifValueIs": "10",
-    "options": [],
-    "key": "TimesPerDayIfValueOfDosageofMedicine2Is10",
-    "dependentParentLabel": "TimesPerDay"
-  },
-  {
-    "fieldLabel": {
-      "label": "Time of Medicine 3",
-      "placeholderText": "Time of Medicine 3",
-      "description": "Time of Medicine 3"
-    },
-    "fieldType": "time",
-    "fieldWidth": 0.5,
-    "isRequired": false,
-    "ifValueIs": "10",
-    "options": [],
-    "key": "TimesPerDayIfValueOfTimeofMedicine3Is10",
-    "dependentParentLabel": "TimesPerDay"
-  },
-  {
-    "fieldLabel": {
-      "label": "Dosage of Medicine 3",
-      "placeholderText": "Dosage of Medicine 3",
-      "description": "Dosage of Medicine 3"
-    },
-    "fieldType": "textField",
-    "fieldWidth": 0.5,
-    "isRequired": false,
-    "ifValueIs": "10",
-    "key": "TimesPerDayIfValueOfDosageofMedicine3Is10",
-    "dependentParentLabel": "TimesPerDay"
-  },
-  {
-    "fieldLabel": {
-      "label": "Time of Medicine 4",
-      "placeholderText": "Time of Medicine 4",
-      "description": "Time of Medicine 4"
-    },
-    "fieldType": "time",
-    "fieldWidth": 0.5,
-    "isRequired": false,
-    "ifValueIs": "10",
-    "options": [],
-    "key": "TimesPerDayIfValueOfTimeofMedicine4Is10",
-    "dependentParentLabel": "TimesPerDay"
-  },
-  {
-    "fieldLabel": {
-      "label": "Dosage of Medicine 4",
-      "placeholderText": "Dosage of Medicine 4",
-      "description": "Dosage of Medicine 4"
-    },
-    "fieldType": "textField",
-    "fieldWidth": 0.5,
-    "isRequired": false,
-    "ifValueIs": "10",
-    "key": "TimesPerDayIfValueOfDosageofMedicine4Is10",
-    "dependentParentLabel": "TimesPerDay"
-  },
-  {
-    "fieldLabel": {
-      "label": "Time of Medicine 5",
-      "placeholderText": "Time of Medicine 5",
-      "description": "Time of Medicine 5"
-    },
-    "fieldType": "time",
-    "fieldWidth": 0.5,
-    "isRequired": false,
-    "ifValueIs": "10",
-    "options": [],
-    "key": "TimesPerDayIfValueOfTimeofMedicine5Is10",
-    "dependentParentLabel": "TimesPerDay"
-  },
-  {
-    "fieldLabel": {
-      "label": "Dosage of Medicine 5",
-      "placeholderText": "Dosage of Medicine 5",
-      "description": "Dosage of Medicine 5"
-    },
-    "fieldType": "textField",
-    "fieldWidth": 0.5,
-    "isRequired": false,
-    "ifValueIs": "10",
-    "key": "TimesPerDayIfValueOfDosageofMedicine5Is10",
-    "dependentParentLabel": "TimesPerDay"
-  },
-  {
-    "fieldLabel": {
-      "label": "Time of Medicine 6",
-      "placeholderText": "Time of Medicine 6",
-      "description": "Time of Medicine 6"
-    },
-    "fieldType": "time",
-    "fieldWidth": 0.5,
-    "isRequired": false,
-    "ifValueIs": "10",
-    "options": [],
-    "key": "TimesPerDayIfValueOfTimeofMedicine6Is10",
-    "dependentParentLabel": "TimesPerDay"
-  },
-  {
-    "fieldLabel": {
-      "label": "Dosage of Medicine 6",
-      "placeholderText": "Dosage of Medicine 6",
-      "description": "Dosage of Medicine 6"
-    },
-    "fieldType": "textField",
-    "fieldWidth": 0.5,
-    "isRequired": false,
-    "ifValueIs": "10",
-    "key": "TimesPerDayIfValueOfDosageofMedicine6Is10",
-    "dependentParentLabel": "TimesPerDay"
-  },
-  {
-    "fieldLabel": {
-      "label": "Time of Medicine 7",
-      "placeholderText": "Time of Medicine 7",
-      "description": "Time of Medicine 7"
-    },
-    "fieldType": "time",
-    "fieldWidth": 0.5,
-    "isRequired": false,
-    "ifValueIs": "10",
-    "options": [],
-    "key": "TimesPerDayIfValueOfTimeofMedicine7Is10",
-    "dependentParentLabel": "TimesPerDay"
-  },
-  {
-    "fieldLabel": {
-      "label": "Dosage of Medicine 7",
-      "placeholderText": "Dosage of Medicine 7",
-      "description": "Dosage of Medicine 7"
-    },
-    "fieldType": "textField",
-    "fieldWidth": 0.5,
-    "isRequired": false,
-    "ifValueIs": "10",
-    "key": "TimesPerDayIfValueOfDosageofMedicine7Is10",
-    "dependentParentLabel": "TimesPerDay"
-  },
-  {
-    "fieldLabel": {
-      "label": "Time of Medicine 8",
-      "placeholderText": "Time of Medicine 8",
-      "description": "Time of Medicine 8"
-    },
-    "fieldType": "time",
-    "fieldWidth": 0.5,
-    "isRequired": false,
-    "ifValueIs": "10",
-    "options": [],
-    "key": "TimesPerDayIfValueOfTimeofMedicine8Is10",
-    "dependentParentLabel": "TimesPerDay"
-  },
-  {
-    "fieldLabel": {
-      "label": "Dosage of Medicine 8",
-      "placeholderText": "Dosage of Medicine 8",
-      "description": "Dosage of Medicine 8"
-    },
-    "fieldType": "textField",
-    "fieldWidth": 0.5,
-    "isRequired": false,
-    "ifValueIs": "10",
-    "key": "TimesPerDayIfValueOfDosageofMedicine8Is10",
-    "dependentParentLabel": "TimesPerDay"
-  },
-  {
-    "fieldLabel": {
-      "label": "Time of Medicine 9",
-      "placeholderText": "Time of Medicine 9",
-      "description": "Time of Medicine 9"
-    },
-    "fieldType": "time",
-    "fieldWidth": 0.5,
-    "isRequired": false,
-    "ifValueIs": "10",
-    "options": [],
-    "key": "TimesPerDayIfValueOfTimeofMedicine9Is10",
-    "dependentParentLabel": "TimesPerDay"
-  },
-  {
-    "fieldLabel": {
-      "label": "Dosage of Medicine 9",
-      "placeholderText": "Dosage of Medicine 9",
-      "description": "Dosage of Medicine 9"
-    },
-    "fieldType": "textField",
-    "fieldWidth": 0.5,
-    "isRequired": false,
-    "ifValueIs": "10",
-    "key": "TimesPerDayIfValueOfDosageofMedicine9Is10",
-    "dependentParentLabel": "TimesPerDay"
-  },
-  {
-    "fieldLabel": {
-      "label": "Time of Medicine 10",
-      "placeholderText": "Time of Medicine 10",
-      "description": "Time of Medicine 10"
-    },
-    "fieldType": "time",
-    "fieldWidth": 0.5,
-    "isRequired": false,
-    "ifValueIs": "10",
-    "options": [],
-    "key": "TimesPerDayIfValueOfTimeofMedicine10Is10",
-    "dependentParentLabel": "TimesPerDay"
-  },
-  {
-    "fieldLabel": {
-      "label": "Dosage of Medicine 10",
-      "placeholderText": "Dosage of Medicine 10",
-      "description": "Dosage of Medicine 10"
-    },
-    "fieldType": "textField",
-    "fieldWidth": 0.5,
-    "isRequired": false,
-    "ifValueIs": "10",
-    "key": "TimesPerDayIfValueOfDosageofMedicine10Is10",
-    "dependentParentLabel": "TimesPerDay"
-  },
-  {
-    "fieldLabel": {
-      "label": "Dosage of Medicine 5",
-      "placeholderText": "Dosage of Medicine 5",
-      "description": "Dosage of Medicine 5"
-    },
-    "fieldType": "textField",
-    "fieldWidth": 0.5,
-    "isRequired": false,
-    "ifValueIs": "9",
-    "key": "TimesPerDayIfValueOfDosageofMedicine5Is9",
-    "dependentParentLabel": "TimesPerDay"
-  },
-  {
-    "fieldLabel": {
-      "label": "Time of Medicine 6",
-      "placeholderText": "Time of Medicine 6",
-      "description": "Time of Medicine 6"
-    },
-    "fieldType": "time",
-    "fieldWidth": 0.5,
-    "isRequired": false,
-    "ifValueIs": "9",
-    "options": [],
-    "key": "TimesPerDayIfValueOfTimeofMedicine6Is9",
-    "dependentParentLabel": "TimesPerDay"
-  },
-  {
-    "fieldLabel": {
-      "label": "Dosage of Medicine 6",
-      "placeholderText": "Dosage of Medicine 6",
-      "description": "Dosage of Medicine 6"
-    },
-    "fieldType": "textField",
-    "fieldWidth": 0.5,
-    "isRequired": false,
-    "ifValueIs": "9",
-    "key": "TimesPerDayIfValueOfDosageofMedicine6Is9",
-    "dependentParentLabel": "TimesPerDay"
-  },
-  {
-    "fieldLabel": {
-      "label": "Time of Medicine 7",
-      "placeholderText": "Time of Medicine 7",
-      "description": "Time of Medicine 7"
-    },
-    "fieldType": "time",
-    "fieldWidth": 0.5,
-    "isRequired": false,
-    "ifValueIs": "9",
-    "options": [],
-    "key": "TimesPerDayIfValueOfTimeofMedicine7Is9",
-    "dependentParentLabel": "TimesPerDay"
-  },
-  {
-    "fieldLabel": {
-      "label": "Dosage of Medicine 7",
-      "placeholderText": "Dosage of Medicine 7",
-      "description": "Dosage of Medicine 7"
-    },
-    "fieldType": "textField",
-    "fieldWidth": 0.5,
-    "isRequired": false,
-    "ifValueIs": "9",
-    "key": "TimesPerDayIfValueOfDosageofMedicine7Is9",
-    "dependentParentLabel": "TimesPerDay"
-  },
-  {
-    "fieldLabel": {
-      "label": "Time of Medicine 8",
-      "placeholderText": "Time of Medicine 8",
-      "description": "Time of Medicine 8"
-    },
-    "fieldType": "time",
-    "fieldWidth": 0.5,
-    "isRequired": false,
-    "ifValueIs": "9",
-    "options": [],
-    "key": "TimesPerDayIfValueOfTimeofMedicine8Is9",
-    "dependentParentLabel": "TimesPerDay"
-  },
-  {
-    "fieldLabel": {
-      "label": "Dosage of Medicine 8",
-      "placeholderText": "Dosage of Medicine 8",
-      "description": "Dosage of Medicine 8"
-    },
-    "fieldType": "textField",
-    "fieldWidth": 0.5,
-    "isRequired": false,
-    "ifValueIs": "9",
-    "key": "TimesPerDayIfValueOfDosageofMedicine8Is9",
-    "dependentParentLabel": "TimesPerDay"
-  },
-  {
-    "fieldLabel": {
-      "label": "Time of Medicine 9",
-      "placeholderText": "Time of Medicine 9",
-      "description": "Time of Medicine 9"
-    },
-    "fieldType": "time",
-    "fieldWidth": 0.5,
-    "isRequired": false,
-    "ifValueIs": "9",
-    "options": [],
-    "key": "TimesPerDayIfValueOfTimeofMedicine9Is9",
-    "dependentParentLabel": "TimesPerDay"
-  },
-  {
-    "fieldLabel": {
-      "label": "Dosage of Medicine 9",
-      "placeholderText": "Dosage of Medicine 9",
-      "description": "Dosage of Medicine 9"
-    },
-    "fieldType": "textField",
-    "fieldWidth": 0.5,
-    "isRequired": false,
-    "ifValueIs": "9",
-    "key": "TimesPerDayIfValueOfDosageofMedicine9Is9",
-    "dependentParentLabel": "TimesPerDay"
-  },
-  {
-    "fieldLabel": {
-      "label": "Time of Medicine 5",
-      "placeholderText": "Time of Medicine 5",
-      "description": "Time of Medicine 5"
-    },
-    "fieldType": "time",
-    "fieldWidth": 0.5,
-    "isRequired": false,
-    "ifValueIs": "8",
-    "options": [],
-    "key": "TimesPerDayIfValueOfTimeofMedicine5Is8",
-    "dependentParentLabel": "TimesPerDay"
-  },
-  {
-    "fieldLabel": {
-      "label": "Dosage of Medicine 5",
-      "placeholderText": "Dosage of Medicine 5",
-      "description": "Dosage of Medicine 5"
-    },
-    "fieldType": "textField",
-    "fieldWidth": 0.5,
-    "isRequired": false,
-    "ifValueIs": "8",
-    "key": "TimesPerDayIfValueOfDosageofMedicine5Is8",
-    "dependentParentLabel": "TimesPerDay"
-  },
-  {
-    "fieldLabel": {
-      "label": "Time of Medicine 6",
-      "placeholderText": "Time of Medicine 6",
-      "description": "Time of Medicine 6"
-    },
-    "fieldType": "time",
-    "fieldWidth": 0.5,
-    "isRequired": false,
-    "ifValueIs": "8",
-    "options": [],
-    "key": "TimesPerDayIfValueOfTimeofMedicine6Is8",
-    "dependentParentLabel": "TimesPerDay"
-  },
-  {
-    "fieldLabel": {
-      "label": "Dosage of Medicine 6",
-      "placeholderText": "Dosage of Medicine 6",
-      "description": "Dosage of Medicine 6"
-    },
-    "fieldType": "textField",
-    "fieldWidth": 0.5,
-    "isRequired": false,
-    "ifValueIs": "8",
-    "key": "TimesPerDayIfValueOfDosageofMedicine6Is8",
-    "dependentParentLabel": "TimesPerDay"
-  },
-  {
-    "fieldLabel": {
-      "label": "Time of Medicine 7",
-      "placeholderText": "Time of Medicine 7",
-      "description": "Time of Medicine 7"
-    },
-    "fieldType": "time",
-    "fieldWidth": 0.5,
-    "isRequired": false,
-    "ifValueIs": "8",
-    "options": [],
-    "key": "TimesPerDayIfValueOfTimeofMedicine7Is8",
-    "dependentParentLabel": "TimesPerDay"
-  },
-  {
-    "fieldLabel": {
-      "label": "Dosage of Medicine 7",
-      "placeholderText": "Dosage of Medicine 7",
-      "description": "Dosage of Medicine 7"
-    },
-    "fieldType": "textField",
-    "fieldWidth": 0.5,
-    "isRequired": false,
-    "ifValueIs": "8",
-    "key": "TimesPerDayIfValueOfDosageofMedicine7Is8",
-    "dependentParentLabel": "TimesPerDay"
-  },
-  {
-    "fieldLabel": {
-      "label": "Time of Medicine 8",
-      "placeholderText": "Time of Medicine 8",
-      "description": "Time of Medicine 8"
-    },
-    "fieldType": "time",
-    "fieldWidth": 0.5,
-    "isRequired": false,
-    "ifValueIs": "8",
-    "options": [],
-    "key": "TimesPerDayIfValueOfTimeofMedicine8Is8",
-    "dependentParentLabel": "TimesPerDay"
-  },
-  {
-    "fieldLabel": {
-      "label": "Dosage of Medicine 8",
-      "placeholderText": "Dosage of Medicine 8",
-      "description": "Dosage of Medicine 8"
-    },
-    "fieldType": "textField",
-    "fieldWidth": 0.5,
-    "isRequired": false,
-    "ifValueIs": "8",
-    "key": "TimesPerDayIfValueOfDosageofMedicine8Is8",
-    "dependentParentLabel": "TimesPerDay"
-  },
-  {
-    "fieldLabel": {
-      "label": "Dosage of Medicine 4",
-      "placeholderText": "Dosage of Medicine 4",
-      "description": "Dosage of Medicine 4"
-    },
-    "fieldType": "textField",
-    "fieldWidth": 0.5,
-    "isRequired": false,
-    "ifValueIs": "7",
-    "key": "TimesPerDayIfValueOfDosageofMedicine4Is7",
-    "dependentParentLabel": "TimesPerDay"
-  },
-  {
-    "fieldLabel": {
-      "label": "Time of Medicine 5",
-      "placeholderText": "Time of Medicine 5",
-      "description": "Time of Medicine 5"
-    },
-    "fieldType": "time",
-    "fieldWidth": 0.5,
-    "isRequired": false,
-    "ifValueIs": "7",
-    "options": [],
-    "key": "TimesPerDayIfValueOfTimeofMedicine5Is7",
-    "dependentParentLabel": "TimesPerDay"
-  },
-  {
-    "fieldLabel": {
-      "label": "Dosage of Medicine 5",
-      "placeholderText": "Dosage of Medicine 5",
-      "description": "Dosage of Medicine 5"
-    },
-    "fieldType": "textField",
-    "fieldWidth": 0.5,
-    "isRequired": false,
-    "ifValueIs": "7",
-    "key": "TimesPerDayIfValueOfDosageofMedicine5Is7",
-    "dependentParentLabel": "TimesPerDay"
-  },
-  {
-    "fieldLabel": {
-      "label": "Time of Medicine 6",
-      "placeholderText": "Time of Medicine 6",
-      "description": "Time of Medicine 6"
-    },
-    "fieldType": "time",
-    "fieldWidth": 0.5,
-    "isRequired": false,
-    "ifValueIs": "7",
-    "options": [],
-    "key": "TimesPerDayIfValueOfTimeofMedicine6Is7",
-    "dependentParentLabel": "TimesPerDay"
-  },
-  {
-    "fieldLabel": {
-      "label": "Dosage of Medicine 6",
-      "placeholderText": "Dosage of Medicine 6",
-      "description": "Dosage of Medicine 6"
-    },
-    "fieldType": "textField",
-    "fieldWidth": 0.5,
-    "isRequired": false,
-    "ifValueIs": "7",
-    "key": "TimesPerDayIfValueOfDosageofMedicine6Is7",
-    "dependentParentLabel": "TimesPerDay"
-  },
-  {
-    "fieldLabel": {
-      "label": "Time of Medicine 7",
-      "placeholderText": "Time of Medicine 7",
-      "description": "Time of Medicine 7"
-    },
-    "fieldType": "time",
-    "fieldWidth": 0.5,
-    "isRequired": false,
-    "ifValueIs": "7",
-    "options": [],
-    "key": "TimesPerDayIfValueOfTimeofMedicine7Is7",
-    "dependentParentLabel": "TimesPerDay"
-  },
-  {
-    "fieldLabel": {
-      "label": "Dosage of Medicine 7",
-      "placeholderText": "Dosage of Medicine 7",
-      "description": "Dosage of Medicine 7"
-    },
-    "fieldType": "textField",
-    "fieldWidth": 0.5,
-    "isRequired": false,
-    "ifValueIs": "7",
-    "key": "TimesPerDayIfValueOfDosageofMedicine7Is7",
-    "dependentParentLabel": "TimesPerDay"
-  },
-  {
-    "fieldLabel": {
-      "label": "Time of Medicine 4",
-      "placeholderText": "Time of Medicine 4",
-      "description": "Time of Medicine 4"
-    },
-    "fieldType": "time",
-    "fieldWidth": 0.5,
-    "isRequired": false,
-    "ifValueIs": "6",
-    "options": [],
-    "key": "TimesPerDayIfValueOfTimeofMedicine4Is6",
-    "dependentParentLabel": "TimesPerDay"
-  },
-  {
-    "fieldLabel": {
-      "label": "Dosage of Medicine 4",
-      "placeholderText": "Dosage of Medicine 4",
-      "description": "Dosage of Medicine 4"
-    },
-    "fieldType": "textField",
-    "fieldWidth": 0.5,
-    "isRequired": false,
-    "ifValueIs": "6",
-    "key": "TimesPerDayIfValueOfDosageofMedicine4Is6",
-    "dependentParentLabel": "TimesPerDay"
-  },
-  {
-    "fieldLabel": {
-      "label": "Time of Medicine 5",
-      "placeholderText": "Time of Medicine 5",
-      "description": "Time of Medicine 5"
-    },
-    "fieldType": "time",
-    "fieldWidth": 0.5,
-    "isRequired": false,
-    "ifValueIs": "6",
-    "options": [],
-    "key": "TimesPerDayIfValueOfTimeofMedicine5Is6",
-    "dependentParentLabel": "TimesPerDay"
-  },
-  {
-    "fieldLabel": {
-      "label": "Dosage of Medicine 5",
-      "placeholderText": "Dosage of Medicine 5",
-      "description": "Dosage of Medicine 5"
-    },
-    "fieldType": "textField",
-    "fieldWidth": 0.5,
-    "isRequired": false,
-    "ifValueIs": "6",
-    "key": "TimesPerDayIfValueOfDosageofMedicine5Is6",
-    "dependentParentLabel": "TimesPerDay"
-  },
-  {
-    "fieldLabel": {
-      "label": "Time of Medicine 6",
-      "placeholderText": "Time of Medicine 6",
-      "description": "Time of Medicine 6"
-    },
-    "fieldType": "time",
-    "fieldWidth": 0.5,
-    "isRequired": false,
-    "ifValueIs": "6",
-    "options": [],
-    "key": "TimesPerDayIfValueOfTimeofMedicine6Is6",
-    "dependentParentLabel": "TimesPerDay"
-  },
-  {
-    "fieldLabel": {
-      "label": "Dosage of Medicine 6",
-      "placeholderText": "Dosage of Medicine 6",
-      "description": "Dosage of Medicine 6"
-    },
-    "fieldType": "textField",
-    "fieldWidth": 0.5,
-    "isRequired": false,
-    "ifValueIs": "6",
-    "key": "TimesPerDayIfValueOfDosageofMedicine6Is6",
-    "dependentParentLabel": "TimesPerDay"
-  },
-  {
-    "fieldLabel": {
-      "label": "Dosage of Medicine 3",
-      "placeholderText": "Dosage of Medicine 3",
-      "description": "Dosage of Medicine 3"
-    },
-    "fieldType": "textField",
-    "fieldWidth": 0.5,
-    "isRequired": false,
-    "ifValueIs": "5",
-    "key": "TimesPerDayIfValueOfDosageofMedicine3Is5",
-    "dependentParentLabel": "TimesPerDay"
-  },
-  {
-    "fieldLabel": {
-      "label": "Time of Medicine 4",
-      "placeholderText": "Time of Medicine 4",
-      "description": "Time of Medicine 4"
-    },
-    "fieldType": "time",
-    "fieldWidth": 0.5,
-    "isRequired": false,
-    "ifValueIs": "5",
-    "options": [],
-    "key": "TimesPerDayIfValueOfTimeofMedicine4Is5",
-    "dependentParentLabel": "TimesPerDay"
-  },
-  {
-    "fieldLabel": {
-      "label": "Dosage of Medicine 4",
-      "placeholderText": "Dosage of Medicine 4",
-      "description": "Dosage of Medicine 4"
-    },
-    "fieldType": "textField",
-    "fieldWidth": 0.5,
-    "isRequired": false,
-    "ifValueIs": "5",
-    "key": "TimesPerDayIfValueOfDosageofMedicine4Is5",
-    "dependentParentLabel": "TimesPerDay"
-  },
-  {
-    "fieldLabel": {
-      "label": "Time of Medicine 5",
-      "placeholderText": "Time of Medicine 5",
-      "description": "Time of Medicine 5"
-    },
-    "fieldType": "time",
-    "fieldWidth": 0.5,
-    "isRequired": false,
-    "ifValueIs": "5",
-    "options": [],
-    "key": "TimesPerDayIfValueOfTimeofMedicine5Is5",
-    "dependentParentLabel": "TimesPerDay"
-  },
-  {
-    "fieldLabel": {
-      "label": "Dosage of Medicine 5",
-      "placeholderText": "Dosage of Medicine 5",
-      "description": "Dosage of Medicine 5"
-    },
-    "fieldType": "textField",
-    "fieldWidth": 0.5,
-    "isRequired": false,
-    "ifValueIs": "5",
-    "key": "TimesPerDayIfValueOfDosageofMedicine5Is5",
-    "dependentParentLabel": "TimesPerDay"
-  },
-  {
-    "fieldLabel": {
-      "label": "Time of Medicine 3",
-      "placeholderText": "Time of Medicine 3",
-      "description": "Time of Medicine 3"
-    },
-    "fieldType": "time",
-    "fieldWidth": 0.5,
-    "isRequired": false,
-    "ifValueIs": "4",
-    "options": [],
-    "key": "TimesPerDayIfValueOfTimeofMedicine3Is4",
-    "dependentParentLabel": "TimesPerDay"
-  },
-  {
-    "fieldLabel": {
-      "label": "Dosage of Medicine 3",
-      "placeholderText": "Dosage of Medicine 3",
-      "description": "Dosage of Medicine 3"
-    },
-    "fieldType": "textField",
-    "fieldWidth": 0.5,
-    "isRequired": false,
-    "ifValueIs": "4",
-    "key": "TimesPerDayIfValueOfDosageofMedicine3Is4",
-    "dependentParentLabel": "TimesPerDay"
-  },
-  {
-    "fieldLabel": {
-      "label": "Time of Medicine 4",
-      "placeholderText": "Time of Medicine 4",
-      "description": "Time of Medicine 4"
-    },
-    "fieldType": "time",
-    "fieldWidth": 0.5,
-    "isRequired": false,
-    "ifValueIs": "4",
-    "options": [],
-    "key": "TimesPerDayIfValueOfTimeofMedicine4Is4",
-    "dependentParentLabel": "TimesPerDay"
-  },
-  {
-    "fieldLabel": {
-      "label": "Dosage of Medicine 4",
-      "placeholderText": "Dosage of Medicine 4",
-      "description": "Dosage of Medicine 4"
-    },
-    "fieldType": "textField",
-    "fieldWidth": 0.5,
-    "isRequired": false,
-    "ifValueIs": "4",
-    "key": "TimesPerDayIfValueOfDosageofMedicine4Is4",
-    "dependentParentLabel": "TimesPerDay"
-  },
-  {
-    "fieldLabel": {
-      "label": "Dosage of Medicine 2",
-      "placeholderText": "Dosage of Medicine 2",
-      "description": "Dosage of Medicine 2"
-    },
-    "fieldType": "textField",
-    "fieldWidth": 0.5,
-    "isRequired": false,
-    "ifValueIs": "3",
-    "key": "TimesPerDayIfValueOfDosageofMedicine2Is3",
-    "dependentParentLabel": "TimesPerDay"
-  },
-  {
-    "fieldLabel": {
-      "label": "Time of Medicine 3",
-      "placeholderText": "Time of Medicine 3",
-      "description": "Time of Medicine 3"
-    },
-    "fieldType": "time",
-    "fieldWidth": 0.5,
-    "isRequired": false,
-    "ifValueIs": "3",
-    "options": [],
-    "key": "TimesPerDayIfValueOfTimeofMedicine3Is3",
-    "dependentParentLabel": "TimesPerDay"
-  },
-  {
-    "fieldLabel": {
-      "label": "Dosage of Medicine 3",
-      "placeholderText": "Dosage of Medicine 3",
-      "description": "Dosage of Medicine 3"
-    },
-    "fieldType": "textField",
-    "fieldWidth": 0.5,
-    "isRequired": false,
-    "ifValueIs": "3",
-    "key": "TimesPerDayIfValueOfDosageofMedicine3Is3",
-    "dependentParentLabel": "TimesPerDay"
-  },
-  {
-    "fieldLabel": {
-      "label": "Time of Medicine 2",
-      "placeholderText": "Time of Medicine 2",
-      "description": "Time of Medicine 2"
-    },
-    "fieldType": "time",
-    "fieldWidth": 0.5,
-    "isRequired": false,
-    "ifValueIs": "2",
-    "options": [],
-    "key": "TimesPerDayIfValueOfTimeofMedicine2Is2",
-    "dependentParentLabel": "TimesPerDay"
-  },
-  {
-    "fieldLabel": {
-      "label": "Dosage of Medicine 2",
-      "placeholderText": "Dosage of Medicine 2",
-      "description": "Dosage of Medicine 2"
-    },
-    "fieldType": "textField",
-    "fieldWidth": 0.5,
-    "isRequired": false,
-    "ifValueIs": "2",
-    "key": "TimesPerDayIfValueOfDosageofMedicine2Is2",
-    "dependentParentLabel": "TimesPerDay"
-  },
-  {
-    "fieldLabel": {
-      "label": "Days",
-      "placeholderText": "Days",
-      "description": "Days"
-    },
-    "fieldType": "checkboxes",
-    "fieldWidth": 1,
-    "isRequired": false,
-    "options": [
-      "Monday",
-      "Tuesday",
-      "Wednesday",
-      "Thursday",
-      "Friday",
-      "Saturday",
-      "Sunday"
+export const chartMar: SchemaType[] = [
+  {
+    fieldLabel: { label: 'General Details', placeholderText: 'General Details', description: 'General Details' },
+    fieldType: 'subTitle',
+    fieldWidth: 1,
+    isRequired: false,
+    options: [],
+    key: 'GeneralDetails',
+  },
+  {
+    fieldLabel: { label: 'Provider Name', placeholderText: 'Provider Name', description: 'Provider Name' },
+    fieldType: 'label',
+    fieldWidth: 0.5,
+    isRequired: false,
+    options: [],
+    key: 'ProviderName',
+  },
+  {
+    fieldLabel: {
+      label: 'Medication Details',
+      placeholderText: 'Medication Details',
+      description: 'Medication Details',
+    },
+    fieldType: 'subTitle',
+    fieldWidth: 1,
+    isRequired: false,
+    options: [],
+    key: 'MedicationDetails',
+  },
+  {
+    fieldLabel: { label: 'Medication Name', placeholderText: 'Medication Name', description: 'Medication Name' },
+    fieldType: 'select',
+    fieldWidth: 0.5,
+    isRequired: true,
+    options: [
+      'Paracetamol',
+      'Aspirin',
+      'Benadryl',
+      'Theraflu Cough Relief',
+      'Metformin',
+      'Telma 40',
+      'Pepto-Bismol',
+      'Specimox',
     ],
-    "key": "Days"
+    disable: false,
+    key: 'MedicationName',
   },
   {
-    "fieldLabel": {
-      "label": "Description",
-      "placeholderText": "Description",
-      "description": "Description"
+    fieldLabel: { label: 'Medication Form', placeholderText: 'Medication Form', description: 'Medication Form' },
+    fieldType: 'textField',
+    fieldWidth: 0.5,
+    isRequired: false,
+    disable: true,
+    key: 'MedicationForm',
+  },
+  {
+    fieldLabel: { label: 'Dose', placeholderText: 'Dose', description: 'Dose' },
+    fieldType: 'textField',
+    fieldWidth: 0.25,
+    isRequired: false,
+    key: 'Dose',
+    validation: { validation: 'number' },
+  },
+  {
+    fieldLabel: { label: 'Dosage Unit', placeholderText: 'Dosage Unit', description: 'Dosage Unit' },
+    fieldType: 'textField',
+    fieldWidth: 0.25,
+    isRequired: false,
+    disable: true,
+    key: 'DosageUnit',
+  },
+  {
+    fieldLabel: {
+      label: 'Quantity Available',
+      placeholderText: 'Quantity Available',
+      description: 'Quantity Available',
     },
-    "fieldType": "textArea",
-    "fieldWidth": 0.5,
-    "isRequired": false,
-    "options": [],
-    "key": "Description"
-  }
+    fieldType: 'textField',
+    fieldWidth: 0.5,
+    isRequired: false,
+    disable: true,
+    key: 'QuantityAvailable',
+    validation: { validation: 'number' },
+  },
+  {
+    fieldLabel: { label: 'Units Provided', placeholderText: 'Units Provided', description: 'Units Provided' },
+    fieldType: 'textField',
+    fieldWidth: 0.5,
+    isRequired: true,
+    key: 'UnitsProvided',
+  },
+  {
+    fieldLabel: { label: 'More/Less Dosage', placeholderText: 'More/Less Dosage', description: 'More/Less Dosage' },
+    fieldType: 'checkbox',
+    fieldWidth: 0.25,
+    isRequired: false,
+    options: [],
+    disable: true,
+    key: 'More/LessDosage',
+  },
+  {
+    fieldLabel: { label: 'Visit Outcome', placeholderText: 'Visit Outcome', description: 'Visit Outcome' },
+    fieldType: 'select',
+    fieldWidth: 1,
+    isRequired: false,
+    options: ['Asthma', 'Documentation', 'Home per Guardian', 'Returned to class', 'Sent Home'],
+    key: 'VisitOutcome',
+  },
+  {
+    fieldLabel: { label: 'Time In', placeholderText: 'Time In', description: 'Time In' },
+    fieldType: 'time',
+    fieldWidth: 0.5,
+    isRequired: false,
+    options: [],
+    key: 'TimeIn',
+  },
+  {
+    fieldLabel: { label: 'Time Out', placeholderText: 'Time Out', description: 'Time Out' },
+    fieldType: 'time',
+    fieldWidth: 0.5,
+    isRequired: false,
+    options: [],
+    key: 'TimeOut',
+  },
+  {
+    fieldLabel: { label: 'Date In', placeholderText: 'Date In', description: 'Date In' },
+    fieldType: 'date',
+    fieldWidth: 0.5,
+    isRequired: false,
+    options: [],
+    key: 'DateIn',
+  },
+  {
+    fieldLabel: { label: 'Date Out', placeholderText: 'Date Out', description: 'Date Out' },
+    fieldType: 'date',
+    fieldWidth: 0.5,
+    isRequired: false,
+    options: [],
+    key: 'DateOut',
+  },
+  {
+    fieldLabel: {
+      label: 'Contact with Parent',
+      placeholderText: 'Contact with Parent',
+      description: 'Contact with Parent',
+    },
+    fieldType: 'checkbox',
+    fieldWidth: 1,
+    isRequired: false,
+    options: [],
+    key: 'ContactwithParent',
+  },
+  {
+    fieldLabel: { label: 'Description', placeholderText: 'Description', description: 'Description' },
+    fieldType: 'textArea',
+    fieldWidth: 1,
+    isRequired: false,
+    options: [],
+    disable: true,
+    key: 'Description',
+  },
+  {
+    fieldLabel: { label: 'Note', placeholderText: 'Note', description: 'Note' },
+    fieldType: 'textArea',
+    fieldWidth: 1,
+    isRequired: false,
+    options: [],
+    key: 'Note',
+  },
+  {
+    fieldLabel: {
+      label: 'Prescription Details',
+      placeholderText: 'Prescription Details',
+      description: 'Prescription Details',
+    },
+    fieldType: 'subTitle',
+    fieldWidth: 1,
+    isRequired: false,
+    options: [],
+    key: 'PrescriptionDetails',
+  },
+  {
+    fieldLabel: { label: 'RX Number', placeholderText: 'RX Number', description: 'RX Number' },
+    fieldType: 'textField',
+    fieldWidth: 0.5,
+    isRequired: false,
+    disable: true,
+    key: 'RXNumber',
+  },
+  {
+    fieldLabel: { label: 'RX Provider Name', placeholderText: 'RX Provider Name', description: 'RX Provider Name' },
+    fieldType: 'textField',
+    fieldWidth: 0.5,
+    isRequired: false,
+    disable: true,
+    key: 'RXProviderName',
+  },
+  {
+    fieldLabel: {
+      label: 'Drag your file here or Browse',
+      placeholderText: 'Drag your file here or Browse',
+      description: 'Drag your file here or Browse',
+    },
+    fieldType: 'file',
+    fieldWidth: 1,
+    isRequired: false,
+    options: [],
+    key: 'DragyourfilehereorBrowse',
+  },
 ];

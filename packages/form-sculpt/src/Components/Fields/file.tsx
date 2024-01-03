@@ -80,9 +80,7 @@ const FormFileUpload = (props: InputFieldProps) => {
       <input type='file' hidden name={key} ref={inputRef} onChange={onUpload} accept={getInputFileAccept()} />
       <Grid container>
         <Grid item xs={12}>
-          <InputLabel sx={inputFieldStyle?.file?.labelStyle || {}} >
-            {fieldLabel.label}
-          </InputLabel>
+          <InputLabel sx={inputFieldStyle?.file?.labelStyle || {}}>{fieldLabel.label}</InputLabel>
         </Grid>
         <Grid item xs={12} sx={{ mt: 2 }}>
           <Typography variant='subtitle2' color='grey'>

@@ -2,7 +2,6 @@ import { Grid, InputLabel } from '@mui/material';
 import { Controller } from 'react-hook-form';
 
 import { InputFieldProps } from './type';
-// import moment from "moment";
 import { useProps } from '../../Context/PropContext/hook';
 import { TimePicker } from '@mui/x-date-pickers';
 import { useValueHolder } from '../../Context/DataHolderContext/hook';
@@ -49,8 +48,8 @@ const FormTime = (props: InputFieldProps) => {
                     fullWidth: true,
                     size: inputFieldSize,
                     error: error[data.key] || '' ? true : false,
-                    FormHelperTextProps:{
-                      sx:inputFieldStyle?.time?.errorStyle || {}
+                    FormHelperTextProps: {
+                      sx: inputFieldStyle?.time?.errorStyle || {},
                     },
                     helperText:
                       error[data.key] || ''

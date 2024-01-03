@@ -2,10 +2,10 @@ import { Grid, InputLabel } from '@mui/material';
 import { Controller } from 'react-hook-form';
 
 import { InputFieldProps } from './type';
-// import moment from "moment";
-import { useProps } from '../../Context/PropContext/hook';
 import { DatePicker } from '@mui/x-date-pickers';
+import { useProps } from '../../Context/PropContext/hook';
 import { useValueHolder } from '../../Context/DataHolderContext/hook';
+import dayjs from 'dayjs';
 
 const FormDate = (props: InputFieldProps) => {
   const { control, data, error, onChange } = props;
@@ -39,7 +39,7 @@ const FormDate = (props: InputFieldProps) => {
                 {data.isRequired && <span style={{ color: 'red' }}>*</span>}
               </InputLabel>
               <DatePicker
-                value={new Date(values[data.key])}
+                value={values[data.key]?dayjs(values[data.key]):null}
                 disabled={Boolean(data.disable)}
                 sx={inputFieldStyle?.textField?.fieldStyle || {}}
                 onChange={(e: any) => onChange(e, data, field.onChange)}
@@ -47,8 +47,8 @@ const FormDate = (props: InputFieldProps) => {
                   textField: {
                     fullWidth: true,
                     size: inputFieldSize,
-                    FormHelperTextProps:{
-                      sx:inputFieldStyle?.date?.errorStyle || {}
+                    FormHelperTextProps: {
+                      sx: inputFieldStyle?.date?.errorStyle || {},
                     },
                     error: error[data.key] || '' ? true : false,
                     helperText:

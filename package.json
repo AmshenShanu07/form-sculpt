@@ -10,18 +10,18 @@
   "scripts": {
     "bootstrap": "lerna bootstrap",
     "start:dev": "lerna run --parallel dev ",
-    "start:package":"lerna run dev --scope=form-sculpt",
-    "start:docs":"lerna run dev --scope=docs",
-    "start:playground":"lerna run dev --scope=playground",
+    "start:package": "lerna run dev --scope=form-sculpt",
+    "start:docs": "lerna run dev --scope=docs",
+    "start:playground": "lerna run dev --scope=playground",
     "lint": "lerna run lint",
-    "cs-check":"lerna run cs-check",
-    "cs-format":"lerna run cs-format",
+    "cs-check": "lerna run cs-check",
+    "cs-format": "lerna run cs-format",
     "build": "lerna run build --stream",
     "build:web": "lerna exec --parallel --scope '{playground,docs}' -- npm run build",
     "publish": "lerna run release --stream",
-    "publish:package":"lerna run release --scope=form-sculpt --stream",
-    "publish:docs":"lerna run release --scope=docs --stream",
-    "publish:playground":"lerna run release --scope=playground --stream",
+    "publish:package": "lerna run release --scope=form-sculpt --stream",
+    "publish:docs": "lerna run release --scope=docs --stream",
+    "publish:playground": "lerna run release --scope=playground --stream",
     "clean": "lerna clean --yes"
   },
   "workspaces": [
@@ -37,5 +37,6 @@
     "lerna": "^6.6.2",
     "prettier": "^2.8.8",
     "tslint-config-prettier": "^1.18.0"
-  }
+  },
+  "version": "0.0.0"
 }

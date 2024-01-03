@@ -1,27 +1,22 @@
-import { useEffect, Fragment, useState } from 'react';
+import { useEffect, Fragment } from 'react';
 
 import * as yup from 'yup';
-import { Grid } from '@mui/material';
+import getField from '../../Utils/getFields';
 import { useForm } from 'react-hook-form';
+import { Grid } from '@mui/material';
 import { yupResolver } from '@hookform/resolvers/yup';
+import { useProps } from '../../Context/PropContext/hook';
+import { useValueHolder } from '../../Context/DataHolderContext/hook';
+import getButtonTemplate from '../../Utils/getButtonTemplate';
 import { LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
-
-import getField from '../../Utils/getFields';
-import { useProps } from '../../Context/PropContext/hook';
-import { SchemaType } from '../../Context/PropContext/type';
-import getButtonTemplate from '../../Utils/getButtonTemplate';
-import { useValueHolder } from '../../Context/DataHolderContext/hook';
 import getValidationCriteria from '../../Utils/getValidationCriteria';
 
 const FormComponent = () => {
-  const [init, setInit] = useState<boolean>(false);
-
   const { onSubmit, schema, defaultValue, customFields } = useProps();
   const { values, setValues, isError } = useValueHolder();
 
   useEffect(() => {
-    setInit(false);
     let tempValue: any = {};
     for (const { key, fieldType, isRequired, ...data } of schema) {
       if (fieldType === 'checkbox') {
@@ -46,31 +41,22 @@ const FormComponent = () => {
         setValue(key, defaultValue[key]);
       }
     }
-    
+
     setValues(tempValue);
-    setInit(true);
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-
   useEffect(() => {
-
-    if (!init) return;
-
     let tempValue = { ...values };
-    
     for (const { key } of schema) {
-      if (defaultValue && defaultValue[key] !== undefined) {
+      if (defaultValue && defaultValue[key] !== undefined ) {
         tempValue = { ...tempValue, [key]: defaultValue[key] };
         setValue(key, defaultValue[key]);
       }
     }
-
     setValues(tempValue);
-    
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [defaultValue]);
+  },[defaultValue]);
 
   const checkIfValidationNeeded = (data: any): boolean => {
     const { fieldType, dependentParentLabel, ifValueIs } = data;
@@ -104,68 +90,73 @@ const FormComponent = () => {
   const onChangeHandler = (e: any, data: any, callback: (e: any) => any) => {
     const { fieldType, key } = data;
     const prvVal = values[key] || null;
-
-    let tempVal = { ...values };
     
+    
+    let tempVal = { ...values };
     tempVal[key] = e?.target?.value || '';
-
+    
     if (fieldType === 'checkbox') {
       tempVal = { ...tempVal, [key]: !values[key] };
     }
-
+    
     if (fieldType === 'checkboxes') {
       const vals = prvVal ? [...prvVal] : [];
-
+      
       const index = vals.findIndex((d) => d === e.target.name);
-
+      
       if (index === -1) {
         e.target.name && vals.push(e.target.name);
       } else {
         vals.splice(index, 1);
       }
-
+      
       tempVal = { ...tempVal, [key]: vals };
     }
-
+    
     if (fieldType === 'date' || fieldType === 'time' || fieldType === 'dateTime') {
       delete tempVal[key];
-
+      console.log(key);
+      
       tempVal[key] = new Date(e);
-
+      
+      console.log(tempVal[key]);
+      console.log(tempVal);
+      
     }
-
+    
+    
     reset({ resolver: yupResolver(getYupResolver()) });
-
+    
 
     for (const field of schema) {
       const { key, dependentParentLabel, ifValueIs, ...data } = field;
 
+      
       if (!tempVal[key] && data.fieldType === 'select' && data.isRequired && data.options) {
         tempVal = { ...tempVal, [key]: data?.options[0] };
       }
-
+      
       if (dependentParentLabel && !checkIfValueIsEqual(tempVal[dependentParentLabel], ifValueIs)) {
         delete tempVal[key];
       }
-
-        
+      
+      
       if (
-        !tempVal[key] &&
-        defaultValue &&
-        dependentParentLabel &&
-        defaultValue[key] !== undefined &&
-        checkIfValueIsEqual(tempVal[dependentParentLabel], ifValueIs)
+          !tempVal[key] && 
+          defaultValue &&
+          dependentParentLabel &&
+          defaultValue[key] !== undefined &&
+          checkIfValueIsEqual(tempVal[dependentParentLabel],ifValueIs)
         ) {
-          
-          tempVal[key] = defaultValue[key];
-        }
+        tempVal[key] = defaultValue[key];
+      }      
 
-        
-      if (tempVal[key] != undefined) {
+      if (tempVal[key]) {
         setValue(key, tempVal[key]);
       }
-    }
 
+    }
+    
     setValues(tempVal);
     callback(e);
   };
@@ -178,8 +169,8 @@ const FormComponent = () => {
     return value === ifValue;
   };
 
-  const renderFields = (fields: SchemaType[]): any => {
-    return fields.map((d: SchemaType, i: number) => {
+  const renderFields = (fields: any[]): any => {
+    return fields.map((d: any, i: number) => {
       if (d.dependentParentLabel) {
         return (
           <Fragment key={i}>
