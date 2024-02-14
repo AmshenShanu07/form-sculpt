@@ -79,7 +79,7 @@ export type FieldType =
 export type OptionsType = {
   key: string;
   label: string;
-} 
+};
 
 export type SchemaType = {
   key: string;

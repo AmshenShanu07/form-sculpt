@@ -39,7 +39,7 @@ const FormDate = (props: InputFieldProps) => {
                 {data.isRequired && <span style={{ color: 'red' }}>*</span>}
               </InputLabel>
               <DatePicker
-                value={values[data.key]?dayjs(values[data.key]):null}
+                value={values[data.key] ? dayjs(values[data.key]) : null}
                 disabled={Boolean(data.disable)}
                 sx={inputFieldStyle?.textField?.fieldStyle || {}}
                 onChange={(e: any) => onChange(e, data, field.onChange)}

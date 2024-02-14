@@ -3,7 +3,7 @@ import { ccJson } from './sampleData';
 // import { ButtonTemplateProps } from './Context/PropContext/type';
 
 // const ButtonTemplate: React.FC<ButtonTemplateProps> = ({ errors, values }) => {
-  
+
 //   return (
 //     <React.Fragment>
 //       <button type='submit'>Submit</button>
@@ -21,11 +21,7 @@ const App = () => {
 
   return (
     <div>
-      <Form
-        schema={ccJson}
-        onSubmit={(d) => console.log(d)}
-        onFileUpload={uploadFile}
-      />
+      <Form schema={ccJson} onSubmit={(d) => console.log(d)} onFileUpload={uploadFile} />
     </div>
   );
 };
