@@ -1,5 +1,5 @@
 import Form from './Components/Form';
-import { sampleJsonField } from './sampleData';
+import { ccJson } from './sampleData';
 // import { ButtonTemplateProps } from './Context/PropContext/type';
 
 // const ButtonTemplate: React.FC<ButtonTemplateProps> = ({ errors, values }) => {
@@ -22,7 +22,7 @@ const App = () => {
   return (
     <div>
       <Form
-        schema={sampleJsonField}
+        schema={ccJson}
         onSubmit={(d) => console.log(d)}
         onFileUpload={uploadFile}
       />
