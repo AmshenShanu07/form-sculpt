@@ -13,8 +13,6 @@ const FormDateTime = (props: InputFieldProps) => {
   const { inputFieldSize, inputFieldStyle, templates } = useProps();
   const { values } = useValueHolder();
 
-    
-
   return (
     <Grid item xs={data.fieldWidth * 12}>
       <Controller
@@ -41,7 +39,7 @@ const FormDateTime = (props: InputFieldProps) => {
                 {data.isRequired && <span style={{ color: 'red' }}>*</span>}
               </InputLabel>
               <DateTimePicker
-                value={values[data.key]?dayjs(values[data.key]):null}
+                value={values[data.key] ? dayjs(values[data.key]) : null}
                 disabled={Boolean(data.disable)}
                 sx={inputFieldStyle?.textField?.fieldStyle || {}}
                 onChange={(e: any) => onChange(e, data, field.onChange)}

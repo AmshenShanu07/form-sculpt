@@ -4,6 +4,7 @@ import { Controller } from 'react-hook-form';
 import { InputFieldProps } from './type';
 import { useValueHolder } from '../../Context/DataHolderContext/hook';
 import { useProps } from '../../Context/PropContext/hook';
+import { OptionsType } from '../../Context/PropContext/type';
 
 const FormCheckboxes = (props: InputFieldProps) => {
   const { control, data, error, onChange } = props;
@@ -21,12 +22,12 @@ const FormCheckboxes = (props: InputFieldProps) => {
           </InputLabel>
         </Grid>
 
-        {data.options &&
-          data.options.map((d: string, i: number) => {
+        {data.options?.length &&
+          data.options.map((d: OptionsType, i: number) => {
             return (
               <Box key={i} sx={{ display: 'flex', flexWrap: 'wrap' }}>
                 <Controller
-                  name={d}
+                  name={d.key}
                   control={control}
                   render={({ field }) => {
                     if (templates?.CheckBox) {
@@ -44,12 +45,12 @@ const FormCheckboxes = (props: InputFieldProps) => {
                     return (
                       <>
                         <FormControlLabel
-                          label={d}
+                          label={d.label}
                           {...field}
                           disabled={Boolean(data.disable)}
                           sx={inputFieldStyle?.checkboxes?.labelStyle || {}}
                           onClick={(e: any) => onChange(e, data, field.onChange)}
-                          checked={(values[data.key] && values[data.key].includes(d)) || false}
+                          checked={(values[data.key] && values[data.key].includes(d.key)) || false}
                           control={
                             <Checkbox
                               sx={inputFieldStyle?.checkboxes?.fieldStyle || {}}

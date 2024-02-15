@@ -29,6 +29,7 @@ const PropProvider = (props: Props) => {
     onSubmit,
     onFileUpload,
     customFields,
+    globalValidationMessages,
   } = props;
 
   const values = {
@@ -41,6 +42,7 @@ const PropProvider = (props: Props) => {
     sessionStyling,
     onFileUpload,
     customFields,
+    globalValidationMessages,
   };
 
   return <PropContext.Provider value={values}>{children}</PropContext.Provider>;
