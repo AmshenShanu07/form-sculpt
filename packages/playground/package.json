@@ -23,7 +23,7 @@
   },
   "dependencies": {
     "@monaco-editor/react": "^4.5.1",
-    "form-sculpt": "^0.4.0",
+    "form-sculpt": "0.4.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },

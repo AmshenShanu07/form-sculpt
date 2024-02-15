@@ -28,12 +28,9 @@ jobs:
       - run: npm run bootstrap
       - run: npm run cs-format
       - run: npm run cs-check
+      - run: npm run build:web
 
-      - name: Build with Netlify badge
-        run: npm run build:web
-        env:
-          VITE_SHOW_NETLIFY_BADGE: true
-          NODE_OPTIONS: --max_old_space_size=4096
+      # - name: Build with Netlify badge
 
       - if: matrix.node-version == '18.x'
         uses: actions/upload-artifact@v3
