@@ -1,3 +1,4 @@
+import { LocaleObject } from 'yup';
 import Form from './Components/Form';
 
 import {
@@ -37,5 +38,6 @@ export {
   CustomFieldI,
   CustomFieldProps,
   CustomTemplateComponentType,
-  OptionsType
+  OptionsType,
+  LocaleObject,
 };

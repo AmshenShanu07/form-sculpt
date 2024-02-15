@@ -1,5 +1,6 @@
 import { SxProps } from '@mui/material';
 import React from 'react';
+import { LocaleObject } from 'yup';
 
 export type CustomTemplateComponentType<T> = React.ComponentType<T> | React.FC<T>;
 
@@ -141,4 +142,5 @@ export interface FormPropType {
   sessionStyling?: SessionStylingI;
   inputFieldSize?: 'small' | 'medium';
   customFields?: CustomFieldI;
+  globalValidationMessages?: LocaleObject;
 }

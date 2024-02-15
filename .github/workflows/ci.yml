@@ -23,8 +23,7 @@ jobs:
           node-version: ${{ matrix.node-version }}
           cache: 'npm'
           cache-dependency-path: 'packages/**/package-lock.json'
-      - run: npm i -g lerna@6.6.2
-      - run: npm install --legacy-peer-deps
+      - run: npm install
       - run: npm run clean
       - run: npm run bootstrap
       - run: npm run cs-format

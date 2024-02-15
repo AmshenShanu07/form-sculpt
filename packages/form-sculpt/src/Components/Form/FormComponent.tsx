@@ -7,17 +7,17 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 
-import getField from '../../Utils/getFields';
+import getField from '../../utils/getFields';
 import { useProps } from '../../Context/PropContext/hook';
 import { SchemaType } from '../../Context/PropContext/type';
-import getButtonTemplate from '../../Utils/getButtonTemplate';
+import getButtonTemplate from '../../utils/getButtonTemplate';
 import { useValueHolder } from '../../Context/DataHolderContext/hook';
-import getValidationCriteria from '../../Utils/getValidationCriteria';
+import getValidationCriteria from '../../utils/getValidationCriteria';
 
 const FormComponent = () => {
   const [init, setInit] = useState<boolean>(false);
 
-  const { onSubmit, schema, defaultValue, customFields } = useProps();
+  const { onSubmit, schema, defaultValue, customFields, globalValidationMessages } = useProps();
   const { values, setValues, isError } = useValueHolder();
 
   useEffect(() => {
@@ -86,6 +86,11 @@ const FormComponent = () => {
 
   const getYupResolver = () => {
     const validationSchema: any = {};
+
+    if (globalValidationMessages) {
+      yup.setLocale(globalValidationMessages);
+    }
+
     for (const data of schema) {
       if (!checkIfValidationNeeded(data)) {
         continue;
