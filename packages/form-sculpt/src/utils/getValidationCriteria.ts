@@ -114,7 +114,7 @@ const getValidationCriteria = (data: SchemaType): yup.AnyObject => {
 
       if (max) yupObj = yupObj['max'](max, `This field must have fewer than ${max} characters.`);
     } else if (validation?.validation && validation.validation === 'email') {
-      yupObj = yupObj['string']()['email']('This field should be a valid email');
+      yupObj = yupObj['string']()['email']();
     } else if (validation?.validation && validation.validation === 'url') {
       yupObj = yupObj['string']()['url']();
     } else {

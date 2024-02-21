@@ -1332,3 +1332,20 @@ export const ccJson: SchemaType[] = [
     key: 'DragyourfilehereorBrowse',
   },
 ];
+
+export const validationSchema: SchemaType[] = [
+  {
+    fieldLabel: {
+      description: 'Validation test',
+      label: 'validation test',
+      placeholderText: 'validation test'
+    },
+    fieldType: 'textField',
+    fieldWidth:1,
+    isRequired:true,
+    key:'testName',
+    validation: {
+      validation:'email'
+    }
+  }
+];
