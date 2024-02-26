@@ -1345,7 +1345,9 @@ export const validationSchema: SchemaType[] = [
     isRequired:true,
     key:'testName',
     validation: {
-      validation:'email'
+      validation:'limit',
+      max: 10,
+      min:3
     }
   }
 ];

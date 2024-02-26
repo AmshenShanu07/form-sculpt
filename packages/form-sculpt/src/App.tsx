@@ -9,7 +9,7 @@ const ButtonTemplate: React.FC<ButtonTemplateProps> = ({ errors, values }) => {
   return (
     <React.Fragment>
       <button type='submit'>Submit</button>
-      <button onClick={() => console.log(errors)}>Errors</button>
+      <button onClick={() => console.log(errors)}>Err  ors</button>
       <button onClick={() => console.log(values)}>Values</button>
     </React.Fragment>
   );
@@ -21,22 +21,27 @@ const App = () => {
     return url;
   };
 
-  const validationSampleFuntion = (data:any) => {
+  const validationSampleFuntion = (data:any, otherData?: any) => {
     console.log(data);
-    return { key: 'some_key', values: { ...data }, type:'email' };
+    return JSON.stringify({ key: 'some_key', values: { ...data }, type:'email',  ...otherData });
   };
 
   const validationMsgs:LocaleObject = {
     mixed:{
-      required: validationSampleFuntion,
+      required: 'this is required field',
       notType: validationSampleFuntion,
 
     },
     string: {
-      email: validationSampleFuntion,
+      email: validationSampleFuntion({ type: 'email' }),
+      url: validationSampleFuntion({ type: 'url' }),
+      max: (data) => validationSampleFuntion({},{ ...data }),
+      min: (data) => validationSampleFuntion({},{ ...data }),
     },
     number: {
       integer: validationSampleFuntion,
+      max: validationSampleFuntion,
+      min: validationSampleFuntion,
     }
     
   };
