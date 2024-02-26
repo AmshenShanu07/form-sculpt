@@ -29,10 +29,12 @@ const getValidationCriteria = (data: SchemaType, customValidation?: yup.LocaleOb
   let yupObj: any = yup;
 
   if (fieldType === 'checkbox') {
-    yupObj = yupObj['boolean']().typeError(customValidation?.mixed?.notType?undefined:`This field must a boolean value`);
+    yupObj = yupObj['boolean']();
+
+    if (customValidation?.mixed?.notType) yupObj.typeError(`This field must a boolean value`);
   }
 
-  if (fieldType === 'checkboxes') {
+  if (fieldType === 'checkboxes') { 
     yupObj = yupObj['array']()['of'](yup.string());
 
     if (validation?.min) {
@@ -99,7 +101,9 @@ const getValidationCriteria = (data: SchemaType, customValidation?: yup.LocaleOb
   if (fieldType === 'textField' || fieldType === 'textArea') {
     if (validation?.validation && validation.validation === 'number') {
       const { min, max } = validation;
-      yupObj = yupObj['number']().typeError(customValidation?.mixed?.notType?undefined:`This field field must be valid integer`);
+      yupObj = yupObj['number']();
+      
+      if (customValidation?.mixed?.notType) yupObj.typeError(`This field field must be valid integer`);
 
       if (min) yupObj = yupObj['min'](min, customValidation?.number?.min?undefined:`This field must be greater than ${min}`);
 
@@ -107,7 +111,9 @@ const getValidationCriteria = (data: SchemaType, customValidation?: yup.LocaleOb
       
     } else if (validation?.validation && validation.validation === 'limit') {
       const { min, max } = validation;
-      yupObj = yupObj['string']().typeError(customValidation?.mixed?.notType?undefined:'This field must be a valid string');
+      yupObj = yupObj['string']();
+      
+      if (customValidation?.mixed?.notType)  yupObj.typeError('This field must be a valid string');
 
       if (min) yupObj = yupObj['min'](min, customValidation?.string?.min?undefined:`This field must have more than ${min} characters.`);
 
