@@ -58,7 +58,7 @@ const FormTextField = (props: InputFieldProps) => {
                 }}
                 helperText={
                   error[data.key] || ''
-                    ? (error[data.key]?.message as string).replace(data.key, data.fieldLabel.label)
+                    ? (error[data.key]?.message?.toString() as string).replace(data.key, data.fieldLabel.label)
                     : ''
                 }
               />

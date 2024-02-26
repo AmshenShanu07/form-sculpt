@@ -53,7 +53,7 @@ const FormDate = (props: InputFieldProps) => {
                     error: error[data.key] || '' ? true : false,
                     helperText:
                       error[data.key] || ''
-                        ? (error[data.key]?.message as string).replace(data.key, data.fieldLabel.label)
+                        ? error[data.key]?.message?.toString().replace(data.key, data.fieldLabel.label)
                         : '',
                   },
                 }}

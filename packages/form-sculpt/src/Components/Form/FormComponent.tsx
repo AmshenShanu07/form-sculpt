@@ -7,12 +7,14 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 
-import getField from '../../utils/getFields';
+
+import getField from '../../Utils/getFields';
 import { useProps } from '../../Context/PropContext/hook';
 import { SchemaType } from '../../Context/PropContext/type';
-import getButtonTemplate from '../../utils/getButtonTemplate';
+import getButtonTemplate from '../../Utils/getButtonTemplate';
 import { useValueHolder } from '../../Context/DataHolderContext/hook';
-import getValidationCriteria from '../../utils/getValidationCriteria';
+import getValidationCriteria from '../../Utils/getValidationCriteria';
+
 
 const FormComponent = () => {
   const [init, setInit] = useState<boolean>(false);
@@ -96,7 +98,7 @@ const FormComponent = () => {
         continue;
       }
 
-      validationSchema[data.key] = getValidationCriteria(data);
+      validationSchema[data.key] = getValidationCriteria(data, globalValidationMessages);
     }
 
     return yup.object(validationSchema);
