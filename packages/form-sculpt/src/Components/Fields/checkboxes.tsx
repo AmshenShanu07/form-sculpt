@@ -5,6 +5,7 @@ import { InputFieldProps } from './type';
 import { useValueHolder } from '../../Context/DataHolderContext/hook';
 import { useProps } from '../../Context/PropContext/hook';
 import { OptionsType } from '../../Context/PropContext/type';
+import Wrapper from '../Form/Wrapper';
 
 const FormCheckboxes = (props: InputFieldProps) => {
   const { control, data, error, onChange } = props;
@@ -13,7 +14,7 @@ const FormCheckboxes = (props: InputFieldProps) => {
   const { inputFieldStyle, templates } = useProps();
 
   return (
-    <Grid item xs={data.fieldWidth * 12}>
+    <Wrapper item xs={data.fieldWidth * 12}>
       <Grid container>
         <Grid item xs={12}>
           <InputLabel sx={inputFieldStyle?.textField?.labelStyle || {}}>
@@ -71,7 +72,7 @@ const FormCheckboxes = (props: InputFieldProps) => {
           </Typography>
         </Grid>
       </Grid>
-    </Grid>
+    </Wrapper>
   );
 };
 

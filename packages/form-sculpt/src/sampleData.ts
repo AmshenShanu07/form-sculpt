@@ -1334,20 +1334,87 @@ export const ccJson: SchemaType[] = [
 ];
 
 export const validationSchema: SchemaType[] = [
+  // {
+  //   fieldLabel: {
+  //     description: 'CheckBoxes',
+  //     label: 'checkboxes',
+  //     placeholderText: 'checkboxes'
+  //   },
+  //   fieldType: 'checkboxes',
+  //   fieldWidth:1,
+  //   isRequired:true,
+  //   options: [
+  //     {
+  //       key: 'sampleOne',
+  //       label: 'Sample One'
+  //     },
+  //     {
+  //       key: 'sampleTwo',
+  //       label: 'Sample Two'
+  //     },
+  //     {
+  //       key: 'sampleThree',
+  //       label: 'Sample Three'
+  //     },
+  //     {
+  //       key: 'sampleFour',
+  //       label: 'Sample Four'
+  //     },
+  //     {
+  //       key: 'sampleFive',
+  //       label: 'Sample Five'
+  //     },
+  //   ],
+  //   key:'checkboxes',
+  //   validation: {
+  //     max: 4,
+  //     min:2
+  //   }
+  // },
+  // {
+  //   fieldLabel: {
+  //     description: 'Date',
+  //     label: 'Date',
+  //     placeholderText: 'Date'
+  //   },
+  //   fieldType: 'date',
+  //   fieldWidth:1,
+  //   isRequired:true,
+  //   key:'date',
+  //   validation: {
+  //     preventFuture: true
+  //   }
+  // },
+  // {
+  //   fieldLabel: {
+  //     description: 'Number Field',
+  //     label: 'Number Field',
+  //     placeholderText: 'Number Field'
+  //   },
+  //   fieldType: 'textField',
+  //   fieldWidth:1,
+  //   isRequired:true,
+  //   key:'numberField',
+  //   validation: {
+  //     validation: 'number',
+  //     min: 3,
+  //     max:5
+  //   }
+  // },
   {
     fieldLabel: {
-      description: 'Validation test',
-      label: 'validation test',
-      placeholderText: 'validation test'
+      description: 'Limit Field',
+      label: 'Limit Field',
+      placeholderText: 'Limit Field',
     },
     fieldType: 'textField',
-    fieldWidth:1,
-    isRequired:true,
-    key:'testName',
+    fieldWidth: 1,
+    isRequired: true,
+    key: 'limitField',
     validation: {
-      validation:'limit',
-      max: 10,
-      min:3
-    }
-  }
+      validation: 'limit',
+      min: 3,
+      max: 5,
+    },
+  },
 ];

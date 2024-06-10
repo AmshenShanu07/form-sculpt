@@ -111,6 +111,7 @@ export interface SessionStylingI {
   subTitle?: SxProps<any>;
   description?: SxProps<any>;
   label?: SxProps<any>;
+  container?: SxProps<any>;
 }
 
 export interface CustomFieldProps {

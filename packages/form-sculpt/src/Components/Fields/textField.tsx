@@ -1,8 +1,9 @@
-import { Grid, InputLabel, TextField } from '@mui/material';
+import { InputLabel, TextField } from '@mui/material';
 import { Controller } from 'react-hook-form';
 
 import { InputFieldProps } from './type';
 import { useProps } from '../../Context/PropContext/hook';
+import Wrapper from '../Form/Wrapper';
 
 const FormTextField = (props: InputFieldProps) => {
   const { control, data, error, onChange } = props;
@@ -18,7 +19,7 @@ const FormTextField = (props: InputFieldProps) => {
   };
 
   return (
-    <Grid item xs={data.fieldWidth * 12}>
+    <Wrapper item xs={data.fieldWidth * 12}>
       <Controller
         name={data.key}
         control={control}
@@ -57,16 +58,14 @@ const FormTextField = (props: InputFieldProps) => {
                   sx: inputFieldStyle?.textField?.errorStyle || {},
                 }}
                 helperText={
-                  error[data.key] || ''
-                    ? (error[data.key]?.message?.toString() as string).replace(data.key, data.fieldLabel.label)
-                    : ''
+                  error[data.key]! ? error[data.key]?.message?.toString().replace(data.key, data.fieldLabel.label) : ''
                 }
               />
             </>
           );
         }}
       />
-    </Grid>
+    </Wrapper>
   );
 };
 

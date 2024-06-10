@@ -1,4 +1,4 @@
-import { Grid, InputLabel } from '@mui/material';
+import { InputLabel } from '@mui/material';
 import { Controller } from 'react-hook-form';
 
 import { InputFieldProps } from './type';
@@ -6,6 +6,7 @@ import { DatePicker } from '@mui/x-date-pickers';
 import { useProps } from '../../Context/PropContext/hook';
 import { useValueHolder } from '../../Context/DataHolderContext/hook';
 import dayjs from 'dayjs';
+import Wrapper from '../Form/Wrapper';
 
 const FormDate = (props: InputFieldProps) => {
   const { control, data, error, onChange } = props;
@@ -14,7 +15,7 @@ const FormDate = (props: InputFieldProps) => {
   const { values } = useValueHolder();
 
   return (
-    <Grid item xs={data.fieldWidth * 12}>
+    <Wrapper item xs={data.fieldWidth * 12}>
       <Controller
         name={data.key}
         control={control}
@@ -62,7 +63,7 @@ const FormDate = (props: InputFieldProps) => {
           );
         }}
       />
-    </Grid>
+    </Wrapper>
   );
 };
 

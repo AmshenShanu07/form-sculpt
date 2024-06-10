@@ -1,9 +1,9 @@
-import { Grid } from '@mui/material';
 import { Controller } from 'react-hook-form';
 
 import { InputFieldProps } from './type';
 import { useProps } from '../../Context/PropContext/hook';
 import { useValueHolder } from '../../Context/DataHolderContext/hook';
+import Wrapper from '../Form/Wrapper';
 
 const FormCustomElement = (props: InputFieldProps) => {
   const { control, data, error, onChange } = props;
@@ -11,7 +11,7 @@ const FormCustomElement = (props: InputFieldProps) => {
   const { customFields, schema } = useProps();
 
   return (
-    <Grid item xs={data.fieldWidth * 12}>
+    <Wrapper item xs={data.fieldWidth * 12}>
       <Controller
         name={data.key}
         control={control}
@@ -34,7 +34,7 @@ const FormCustomElement = (props: InputFieldProps) => {
           return <></>;
         }}
       />
-    </Grid>
+    </Wrapper>
   );
 };
 

@@ -1,16 +1,17 @@
-import { Grid, InputLabel, MenuItem, TextField } from '@mui/material';
+import { InputLabel, MenuItem, TextField } from '@mui/material';
 import { Controller } from 'react-hook-form';
 
 import { InputFieldProps } from './type';
 import { useProps } from '../../Context/PropContext/hook';
 import { OptionsType } from '../../Context/PropContext/type';
+import Wrapper from '../Form/Wrapper';
 
 const FormSelect = (props: InputFieldProps) => {
   const { control, data, error, onChange } = props;
   const { inputFieldSize, inputFieldStyle, templates } = useProps();
 
   return (
-    <Grid item xs={data.fieldWidth * 12}>
+    <Wrapper item xs={data.fieldWidth * 12}>
       <Controller
         name={data.key}
         control={control}
@@ -65,7 +66,7 @@ const FormSelect = (props: InputFieldProps) => {
           );
         }}
       />
-    </Grid>
+    </Wrapper>
   );
 };
 
