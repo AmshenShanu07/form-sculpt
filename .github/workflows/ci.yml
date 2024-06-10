@@ -28,7 +28,7 @@ jobs:
       - run: npm run bootstrap
       - run: npm run cs-format
       - run: npm run cs-check
-      - run: npm run build:web
+      - run: npm run build
 
       # - name: Build with Netlify badge
 

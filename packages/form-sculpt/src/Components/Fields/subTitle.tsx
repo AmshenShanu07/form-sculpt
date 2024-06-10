@@ -1,17 +1,18 @@
-import { Grid, Typography } from '@mui/material';
+import { Typography } from '@mui/material';
 import { InputFieldProps } from './type';
 import { useProps } from '../../Context/PropContext/hook';
+import Wrapper from '../Form/Wrapper';
 
 const SubTitle = (props: InputFieldProps) => {
   const { data } = props;
   const { sessionStyling } = useProps();
 
   return (
-    <Grid xs={12} item>
+    <Wrapper xs={12} item>
       <Typography variant='h5' sx={sessionStyling?.subTitle || {}}>
         {data.fieldLabel.label}
       </Typography>
-    </Grid>
+    </Wrapper>
   );
 };
 

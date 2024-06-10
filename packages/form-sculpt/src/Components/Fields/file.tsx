@@ -5,6 +5,7 @@ import { Grid, Button, Typography, InputLabel } from '@mui/material';
 import { useProps } from '../../Context/PropContext/hook';
 import { InputFieldProps } from './type';
 import { useValueHolder } from '../../Context/DataHolderContext/hook';
+import Wrapper from '../Form/Wrapper';
 
 const FormFileUpload = (props: InputFieldProps) => {
   const {
@@ -69,14 +70,14 @@ const FormFileUpload = (props: InputFieldProps) => {
     const { FileUploadField } = templates;
 
     return (
-      <Grid item xs={fieldWidth * 12} display='flex' flexDirection='column'>
+      <Wrapper item xs={fieldWidth * 12} display='flex' flexDirection='column'>
         <FileUploadField error={error} data={props.data} onUpload={onUpload} value={values[key] || ''} />
-      </Grid>
+      </Wrapper>
     );
   }
 
   return (
-    <Grid item xs={fieldWidth * 12} display='flex' flexDirection='column'>
+    <Wrapper item xs={fieldWidth * 12} display='flex' flexDirection='column'>
       <input type='file' hidden name={key} ref={inputRef} onChange={onUpload} accept={getInputFileAccept()} />
       <Grid container>
         <Grid item xs={12}>
@@ -101,7 +102,7 @@ const FormFileUpload = (props: InputFieldProps) => {
       <Typography sx={inputFieldStyle?.file?.errorStyle} variant='subtitle2' color='#d32f2f'>
         {error}
       </Typography>
-    </Grid>
+    </Wrapper>
   );
 };
 

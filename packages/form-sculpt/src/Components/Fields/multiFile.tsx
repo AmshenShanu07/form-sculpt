@@ -5,6 +5,7 @@ import { Grid, Button, Typography, InputLabel } from '@mui/material';
 import { useProps } from '../../Context/PropContext/hook';
 import { InputFieldProps } from './type';
 import { useValueHolder } from '../../Context/DataHolderContext/hook';
+import Wrapper from '../Form/Wrapper';
 
 const FormMultiFileUpload = (props: InputFieldProps) => {
   const {
@@ -90,14 +91,14 @@ const FormMultiFileUpload = (props: InputFieldProps) => {
     const { MultiFileUploadField } = templates;
 
     return (
-      <Grid item xs={fieldWidth * 12} display='flex' flexDirection='column'>
+      <Wrapper item xs={fieldWidth * 12} display='flex' flexDirection='column'>
         <MultiFileUploadField error={error} data={props.data} onUpload={onUpload} value={values[key] || ['']} />
-      </Grid>
+      </Wrapper>
     );
   }
 
   return (
-    <Grid item xs={fieldWidth * 12} display='flex' flexDirection='column'>
+    <Wrapper item xs={fieldWidth * 12} display='flex' flexDirection='column'>
       <input multiple hidden accept={getInputFileAccept()} name={key} type='file' ref={inputRef} onChange={onUpload} />
       <Grid container>
         <Grid item xs={12}>
@@ -124,7 +125,7 @@ const FormMultiFileUpload = (props: InputFieldProps) => {
       <Typography sx={inputFieldStyle?.multiFile?.errorStyle || {}} variant='subtitle2' color='#d32f2f'>
         {error}
       </Typography>
-    </Grid>
+    </Wrapper>
   );
 };
 

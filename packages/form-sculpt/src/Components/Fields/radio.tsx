@@ -1,16 +1,17 @@
-import { FormControlLabel, Grid, InputLabel, Radio, RadioGroup, Typography } from '@mui/material';
+import { FormControlLabel, InputLabel, Radio, RadioGroup, Typography } from '@mui/material';
 import { Controller } from 'react-hook-form';
 
 import { InputFieldProps } from './type';
 import { useProps } from '../../Context/PropContext/hook';
 import { OptionsType } from '../../Context/PropContext/type';
+import Wrapper from '../Form/Wrapper';
 
 const FormRadio = (props: InputFieldProps) => {
   const { control, data, error, onChange } = props;
   const { inputFieldStyle, inputFieldSize, templates } = useProps();
 
   return (
-    <Grid item xs={data.fieldWidth * 12}>
+    <Wrapper item xs={data.fieldWidth * 12}>
       <Controller
         name={data.key}
         control={control}
@@ -57,7 +58,7 @@ const FormRadio = (props: InputFieldProps) => {
           );
         }}
       />
-    </Grid>
+    </Wrapper>
   );
 };
 

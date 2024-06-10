@@ -1,7 +1,7 @@
 import { LocaleObject } from 'yup';
 import React from 'react';
 import Form from './Components/Form';
-import { validationSchema } from './sampleData';
+import { sampleJsonField } from './sampleData';
 import { ButtonTemplateProps } from './Context/PropContext/type';
 
 const ButtonTemplate: React.FC<ButtonTemplateProps> = ({ errors, values }) => {
@@ -83,7 +83,7 @@ const App = () => {
   return (
     <div>
       <Form 
-        schema={validationSchema}
+        schema={sampleJsonField}
         globalValidationMessages={validationMsgs}
         onSubmit={(d) => console.log(d)}
         onFileUpload={uploadFile}
