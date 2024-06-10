@@ -105,7 +105,7 @@ function App() {
         />
       </div>
       <div className='form_container'>
-        <Form onSubmit={onSubmitForm}  defaultValue={JSON.parse(values || '{}')} schema={parseSchema()} />
+        <Form onSubmit={onSubmitForm} defaultValue={JSON.parse(values || '{}')} schema={parseSchema()} />
       </div>
 
       <div className='default_value_container'>

@@ -7,14 +7,12 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 
-
 import getField from '../../Utils/getFields';
 import { useProps } from '../../Context/PropContext/hook';
 import { SchemaType } from '../../Context/PropContext/type';
 import getButtonTemplate from '../../Utils/getButtonTemplate';
 import { useValueHolder } from '../../Context/DataHolderContext/hook';
 import getValidationCriteria from '../../Utils/getValidationCriteria';
-
 
 const FormComponent = () => {
   const [init, setInit] = useState<boolean>(false);

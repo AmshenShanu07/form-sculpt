@@ -1405,17 +1405,16 @@ export const validationSchema: SchemaType[] = [
     fieldLabel: {
       description: 'Limit Field',
       label: 'Limit Field',
-      placeholderText: 'Limit Field'
+      placeholderText: 'Limit Field',
     },
     fieldType: 'textField',
-    fieldWidth:1,
-    isRequired:true,
-    key:'limitField',
+    fieldWidth: 1,
+    isRequired: true,
+    key: 'limitField',
     validation: {
       validation: 'limit',
       min: 3,
-      max:5
-    }
+      max: 5,
+    },
   },
-
 ];

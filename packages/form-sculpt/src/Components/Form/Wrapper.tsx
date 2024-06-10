@@ -2,16 +2,17 @@ import { Grid, GridProps } from '@mui/material';
 import { ReactNode } from 'react';
 import { useProps } from '../../Context/PropContext/hook';
 
-
 interface WrapperProps extends GridProps {
-  children:ReactNode
+  children: ReactNode;
 }
 
-const Wrapper = (props:WrapperProps) => {
+const Wrapper = (props: WrapperProps) => {
   const { sessionStyling } = useProps();
 
   return (
-    <Grid {...props} sx={sessionStyling?.container} >{props.children}</Grid>
+    <Grid {...props} sx={sessionStyling?.container}>
+      {props.children}
+    </Grid>
   );
 };
 

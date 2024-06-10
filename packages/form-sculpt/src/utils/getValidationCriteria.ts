@@ -34,18 +34,24 @@ const getValidationCriteria = (data: SchemaType, customValidation?: yup.LocaleOb
     if (customValidation?.mixed?.notType) yupObj.typeError(`This field must a boolean value`);
   }
 
-  if (fieldType === 'checkboxes') { 
+  if (fieldType === 'checkboxes') {
     yupObj = yupObj['array']()['of'](yup.string());
 
     if (validation?.min) {
-      yupObj = yupObj['min'](validation.min, customValidation?.array?.min?undefined:`At least ${validation.min} option must be selected`);
+      yupObj = yupObj['min'](
+        validation.min,
+        customValidation?.array?.min ? undefined : `At least ${validation.min} option must be selected`,
+      );
     }
     if (validation?.max) {
-      yupObj = yupObj['max'](validation.max, customValidation?.array?.max?undefined:`At most ${validation.max} option can be selected`);
+      yupObj = yupObj['max'](
+        validation.max,
+        customValidation?.array?.max ? undefined : `At most ${validation.max} option can be selected`,
+      );
     }
 
     if (!validation?.min && isRequired) {
-      yupObj = yupObj['min'](1, customValidation?.mixed?.required?undefined:`${data.key} is a required field`);
+      yupObj = yupObj['min'](1, customValidation?.mixed?.required ? undefined : `${data.key} is a required field`);
     }
   }
 
@@ -62,7 +68,7 @@ const getValidationCriteria = (data: SchemaType, customValidation?: yup.LocaleOb
 
       const validationMsg = `${data.key} must be later than ${getFormatedDate(fieldType, crntDate)}`;
 
-      yupObj = yupObj['min'](dayjs(crntDate), customValidation?.date?.min?undefined:validationMsg);
+      yupObj = yupObj['min'](dayjs(crntDate), customValidation?.date?.min ? undefined : validationMsg);
     } else if (validation?.preventFuture) {
       if (fieldType === 'date') {
         crntDate = crntDate.add(1, 'day').format('YYYY-MM-DD');
@@ -70,7 +76,7 @@ const getValidationCriteria = (data: SchemaType, customValidation?: yup.LocaleOb
         crntDate = crntDate.format();
       }
       const validationMsg = `${data.key} must be ealier than ${getFormatedDate(fieldType, crntDate)}`;
-      yupObj = yupObj['max'](new Date(crntDate), customValidation?.date?.max?undefined:validationMsg);
+      yupObj = yupObj['max'](new Date(crntDate), customValidation?.date?.max ? undefined : validationMsg);
     }
   }
 
@@ -86,15 +92,21 @@ const getValidationCriteria = (data: SchemaType, customValidation?: yup.LocaleOb
     yupObj = yupObj['array']()['of'](fileTypeSchema);
 
     if (validation?.min) {
-      yupObj = yupObj['min'](validation.min, customValidation?.string?.min?undefined:`At least ${validation.min} files must be uploaded`);
+      yupObj = yupObj['min'](
+        validation.min,
+        customValidation?.string?.min ? undefined : `At least ${validation.min} files must be uploaded`,
+      );
     }
 
     if (validation?.max) {
-      yupObj = yupObj['max'](validation.max, customValidation?.string?.max?undefined:`At Most ${validation.max} files can be selected`);
+      yupObj = yupObj['max'](
+        validation.max,
+        customValidation?.string?.max ? undefined : `At Most ${validation.max} files can be selected`,
+      );
     }
 
     if (!validation?.min && isRequired) {
-      yupObj = yupObj['min'](1, customValidation?.mixed?.required?undefined:`${label} is a required field`);
+      yupObj = yupObj['min'](1, customValidation?.mixed?.required ? undefined : `${label} is a required field`);
     }
   }
 
@@ -102,33 +114,45 @@ const getValidationCriteria = (data: SchemaType, customValidation?: yup.LocaleOb
     if (validation?.validation && validation.validation === 'number') {
       const { min, max } = validation;
       yupObj = yupObj['number']();
-      
+
       if (customValidation?.mixed?.notType) yupObj.typeError(`This field field must be valid integer`);
 
-      if (min) yupObj = yupObj['min'](min, customValidation?.number?.min?undefined:`This field must be greater than ${min}`);
+      if (min)
+        yupObj = yupObj['min'](
+          min,
+          customValidation?.number?.min ? undefined : `This field must be greater than ${min}`,
+        );
 
-      if (max) yupObj = yupObj['max'](max, customValidation?.number?.max?undefined:`${data.key} must be less than ${max}`);
-      
+      if (max)
+        yupObj = yupObj['max'](max, customValidation?.number?.max ? undefined : `${data.key} must be less than ${max}`);
     } else if (validation?.validation && validation.validation === 'limit') {
       const { min, max } = validation;
       yupObj = yupObj['string']();
-      
-      if (customValidation?.mixed?.notType)  yupObj.typeError('This field must be a valid string');
 
-      if (min) yupObj = yupObj['min'](min, customValidation?.string?.min?undefined:`This field must have more than ${min} characters.`);
+      if (customValidation?.mixed?.notType) yupObj.typeError('This field must be a valid string');
 
-      if (max) yupObj = yupObj['max'](max, customValidation?.string?.max?undefined:`This field must have fewer than ${max} characters.`);
+      if (min)
+        yupObj = yupObj['min'](
+          min,
+          customValidation?.string?.min ? undefined : `This field must have more than ${min} characters.`,
+        );
+
+      if (max)
+        yupObj = yupObj['max'](
+          max,
+          customValidation?.string?.max ? undefined : `This field must have fewer than ${max} characters.`,
+        );
     } else if (validation?.validation && validation.validation === 'email') {
-      yupObj = yupObj['string']()['email'](customValidation?.string?.email?undefined:"Enter a valid email");
+      yupObj = yupObj['string']()['email'](customValidation?.string?.email ? undefined : 'Enter a valid email');
     } else if (validation?.validation && validation.validation === 'url') {
-      yupObj = yupObj['string']()['url'](customValidation?.string?.url?undefined:'Enter a valid url');
+      yupObj = yupObj['string']()['url'](customValidation?.string?.url ? undefined : 'Enter a valid url');
     } else {
       yupObj = yupObj['string']();
     }
   }
 
   if (isRequired) {
-    yupObj = yupObj['required'](customValidation?.mixed?.required?undefined:'This is a required field');
+    yupObj = yupObj['required'](customValidation?.mixed?.required ? undefined : 'This is a required field');
   }
 
   return yupObj;
