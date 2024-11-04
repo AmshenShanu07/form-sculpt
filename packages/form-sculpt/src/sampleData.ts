@@ -493,13 +493,13 @@ export const sampleJsonField: SchemaType[] = [
   },
   {
     fieldWidth: 1 / 2,
-    key: 'date-test',
+    key: 'dateSampleText',
     fieldLabel: {
-      label: 'Completed Referrals Report',
+      label: 'Completed Referrals Report Sample',
       description: '',
       placeholderText: '',
     },
-    fieldType: 'date',
+    fieldType: 'dateTime',
     isRequired: true,
   },
   {
