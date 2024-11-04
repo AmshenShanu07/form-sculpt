@@ -19,8 +19,6 @@ interface CustomFormProps {
 }
 
 const CustomForm = ({ customFields, schema, defaultValues }: CustomFormProps) => {
-
-
   const uploadFile = async (file: File) => {
     const url = await URL.createObjectURL(file);
     return url;
@@ -86,7 +84,7 @@ const CustomForm = ({ customFields, schema, defaultValues }: CustomFormProps) =>
 
   useEffect(() => {
     console.log('ping');
-  },[customFields]);
+  }, [customFields]);
 
   return (
     <div>
@@ -101,7 +99,6 @@ const CustomForm = ({ customFields, schema, defaultValues }: CustomFormProps) =>
         }}
         customFields={{ ...customFields }}
       />
-      
     </div>
   );
 };

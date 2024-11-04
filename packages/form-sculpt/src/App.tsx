@@ -9,28 +9,25 @@ const App = () => {
 
   // const onSampleButtonClick = (val: string) => setVal(val);
 
-
   return (
     <CustomForm
       schema={sampleJsonField}
       defaultValues={dVal}
-      customFields={{ 
-        customField: (props) => <CustomSampleButton {...props}  handleClick={setVal} text={val} />
-       }}
+      customFields={{
+        customField: (props) => <CustomSampleButton {...props} handleClick={setVal} text={val} />,
+      }}
     />
   );
 };
 
 export default App;
 
-
 interface CustomSampleButtonProps extends CustomFieldProps {
-  handleClick: (val:string) => void;
+  handleClick: (val: string) => void;
   text: string;
 }
 
 const CustomSampleButton = ({ handleClick, text }: CustomSampleButtonProps) => {
-
   const onButtonClick = () => {
     handleClick('BUtton Clicked');
   };
@@ -38,9 +35,7 @@ const CustomSampleButton = ({ handleClick, text }: CustomSampleButtonProps) => {
   return (
     <>
       <p>{text}</p>
-      <button onClick={onButtonClick} >
-        Sample Button
-      </button>
+      <button onClick={onButtonClick}>Sample Button</button>
     </>
   );
 };

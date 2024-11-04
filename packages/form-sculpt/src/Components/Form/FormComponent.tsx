@@ -16,11 +16,12 @@ import getValidationCriteria from '../../Utils/getValidationCriteria';
 
 const FormComponent = () => {
   const [init, setInit] = useState<boolean>(false);
+  const [tempDVals, setTempDVals] = useState<any>({});
 
   const { onSubmit, schema, defaultValue, customFields, globalValidationMessages } = useProps();
   const { values, setValues, isError } = useValueHolder();
 
-  useEffect(() => {
+  useEffect(() => {    
     setInit(false);
     let tempValue: any = {};
     for (const { key, fieldType, isRequired, ...data } of schema) {
@@ -47,6 +48,7 @@ const FormComponent = () => {
       }
     }
 
+    setTempDVals(defaultValue);
     setValues(tempValue);
     setInit(true);
 
@@ -56,6 +58,25 @@ const FormComponent = () => {
   useEffect(() => {
     if (!init) return;
 
+    let defaultChange = false;
+
+    // Check if default value updated or not
+    for ( const key of Object.keys(tempDVals) ) { 
+      if (defaultValue[key] == undefined) {        
+        defaultChange = true;
+        break;
+      }
+
+      if (defaultValue[key] != tempDVals[key]) {
+        defaultChange = true;
+        break;
+       }
+
+    }
+    
+    if (!defaultChange) return;
+    
+    setTempDVals({ ...defaultValue });
     let tempValue = { ...values };
 
     for (const { key } of schema) {
@@ -102,7 +123,7 @@ const FormComponent = () => {
     return yup.object(validationSchema);
   };
 
-  const { control, formState, handleSubmit, reset, setValue } = useForm({ resolver: yupResolver(getYupResolver()) });
+  const { control, formState, handleSubmit, reset, setValue, getValues } = useForm({ resolver: yupResolver(getYupResolver()) });
 
   const onChangeHandler = (e: any, data: any, callback: (e: any) => any) => {
     const { fieldType, key } = data;
